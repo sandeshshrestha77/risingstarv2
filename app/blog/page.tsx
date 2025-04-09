@@ -59,11 +59,6 @@ export default function BlogPage() {
               </div>
             ))}
           </div>
-          <div className="flex justify-center mt-10">
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
-              Load More
-            </Button>
-          </div>
         </div>
       </section>
 
@@ -97,65 +92,15 @@ export default function BlogPage() {
   )
 }
 
-// Sample data
-const categories = ["Events", "Success Stories", "Interviews", "Behind the Scenes", "Announcements"]
 
 const recentPosts = [
-  {
-    id: 1,
-    title: "Top 10 Moments from Dance Sikkim Dance 2022",
-    date: "May 10, 2023",
-    category: "Events",
-    excerpt:
-      "Relive the most spectacular performances from last year's dance competition that left the audience spellbound.",
-    image: "/placeholder.svg?height=400&width=600",
-    slug: "top-moments-dance-sikkim",
-  },
-  {
-    id: 2,
-    title: "From Sikkim to Bollywood: Priya's Journey",
-    date: "May 5, 2023",
-    category: "Success Stories",
-    excerpt: "How our 2019 dance competition winner made her way to choreographing for major Bollywood productions.",
-    image: "/placeholder.svg?height=400&width=600",
-    slug: "sikkim-to-bollywood",
-  },
-  {
-    id: 3,
-    title: "Judges Announced for Sikkim Idol 2023",
-    date: "April 30, 2023",
-    category: "Announcements",
-    excerpt:
-      "Meet the panel of esteemed judges who will be evaluating performances in this year's singing competition.",
-    image: "/placeholder.svg?height=400&width=600",
-    slug: "judges-sikkim-idol-2023",
-  },
-  {
-    id: 4,
-    title: "Talent Hunt Workshop: Preparing for Auditions",
-    date: "April 25, 2023",
-    category: "Events",
-    excerpt: "Join our free workshop to learn tips and tricks to ace your audition from previous winners and judges.",
-    image: "/placeholder.svg?height=400&width=600",
-    slug: "workshop-audition-preparation",
-  },
-  {
-    id: 5,
-    title: "The Impact of Talent Hunts on Sikkim's Cultural Scene",
-    date: "April 20, 2023",
-    category: "Behind the Scenes",
-    excerpt:
-      "How talent competitions have revitalized and transformed the cultural landscape of Sikkim over the years.",
-    image: "/placeholder.svg?height=400&width=600",
-    slug: "impact-cultural-scene",
-  },
-  {
-    id: 6,
-    title: "Sponsorship Opportunities for Sikkim's Got Talent 2023",
-    date: "April 15, 2023",
-    category: "Announcements",
-    excerpt: "Learn how your business can partner with Sikkim's biggest talent platform and reach a wider audience.",
-    image: "/placeholder.svg?height=400&width=600",
-    slug: "sponsorship-opportunities",
-  },
+{
+id: 1,
+title: "Top 10 Moments from Rising Star Season 3",
+date: "May 10, 2023",
+category: "Events",
+excerpt:"Relive the most spectacular performances from last year's dance competition that left the audience spellbound.",
+image: "/s3 main.jpg",
+slug: "top-moments-dance-sikkim",
+},
 ]
