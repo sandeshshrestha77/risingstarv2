@@ -76,7 +76,7 @@ export default function Home() {
             </div>
             <div>
               <p className="text-gray-500 text-sm">Trusted by</p>
-              <p className="font-medium text-lg">500+ participants across Sikkim</p>
+              <p className="font-medium text-lg">500+ Participants</p>
             </div>
           </div>
         </div>
@@ -229,7 +229,7 @@ export default function Home() {
         <div className="container px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">4</div>
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">3</div>
               <p className="text-gray-400">Seasons Completed</p>
             </div>
             <div className="text-center">
