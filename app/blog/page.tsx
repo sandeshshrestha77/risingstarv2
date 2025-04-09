@@ -7,81 +7,6 @@ import { Input } from "@/components/ui/input"
 export default function BlogPage() {
   return (
     <>
-      {/* Featured Post */}
-      <section className="w-full py-12 md:py-24 lg:py-32">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-start space-y-4">
-            <div className="space-y-2">
-              <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white">Featured</div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Latest Stories</h2>
-            </div>
-          </div>
-          <div className="grid gap-6 mt-8 lg:grid-cols-[1fr_400px] lg:gap-12">
-            <div className="group relative overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md">
-              <div className="relative h-80 w-full overflow-hidden">
-                <Image
-                  src="/placeholder.svg?height=600&width=800"
-                  alt="Success Stories from Sikkim Idol 2022"
-                  fill
-                  className="object-cover transition-transform group-hover:scale-105"
-                />
-              </div>
-              <div className="p-6">
-                <div className="flex items-center gap-4 text-sm text-gray-500 mb-2">
-                  <div className="flex items-center gap-1">
-                    <Calendar className="h-4 w-4 text-primary" />
-                    <span>May 15, 2023</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <User className="h-4 w-4 text-primary" />
-                    <span>Admin</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Tag className="h-4 w-4 text-primary" />
-                    <span>Success Stories</span>
-                  </div>
-                </div>
-                <h3 className="text-2xl font-bold">Success Stories from Sikkim Idol 2022</h3>
-                <p className="mt-2 text-gray-500">
-                  Follow the journey of last year's Sikkim Idol winners and how the competition changed their lives.
-                  From local performances to national recognition, these talented individuals are making Sikkim proud.
-                </p>
-                <div className="mt-4">
-                  <Link href="/blog/success-stories-sikkim-idol-2022">
-                    <Button className="bg-primary hover:bg-primary/90 text-white">
-                      Read More <ChevronRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="space-y-6">
-              {featuredPosts.map((post) => (
-                <div key={post.id} className="group flex gap-4 items-start">
-                  <div className="relative h-20 w-20 overflow-hidden rounded-lg flex-shrink-0">
-                    <Image
-                      src={post.image || "/placeholder.svg"}
-                      alt={post.title}
-                      fill
-                      className="object-cover transition-transform group-hover:scale-105"
-                    />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 text-xs text-gray-500 mb-1">
-                      <Calendar className="h-3 w-3 text-primary" />
-                      <span>{post.date}</span>
-                    </div>
-                    <h3 className="font-medium group-hover:text-primary transition-colors">
-                      <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                    </h3>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Recent Posts */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
         <div className="container px-4 md:px-6">
@@ -174,37 +99,6 @@ export default function BlogPage() {
 
 // Sample data
 const categories = ["Events", "Success Stories", "Interviews", "Behind the Scenes", "Announcements"]
-
-const featuredPosts = [
-  {
-    id: 1,
-    title: "Interview with Tenzin Dorjee, Sikkim Idol 2022 Winner",
-    date: "April 28, 2023",
-    image: "/placeholder.svg?height=200&width=200",
-    slug: "interview-tenzin-dorjee",
-  },
-  {
-    id: 2,
-    title: "Behind the Scenes: Organizing Sikkim's Biggest Talent Hunt",
-    date: "April 15, 2023",
-    image: "/placeholder.svg?height=200&width=200",
-    slug: "behind-the-scenes-organizing",
-  },
-  {
-    id: 3,
-    title: "How Participating in Talent Hunts Can Shape Your Career",
-    date: "April 5, 2023",
-    image: "/placeholder.svg?height=200&width=200",
-    slug: "talent-hunts-shape-career",
-  },
-  {
-    id: 4,
-    title: "Announcing New Categories for Sikkim's Got Talent 2023",
-    date: "March 22, 2023",
-    image: "/placeholder.svg?height=200&width=200",
-    slug: "new-categories-2023",
-  },
-]
 
 const recentPosts = [
   {

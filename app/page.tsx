@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Calendar, MapPin, Mic, Star, Trophy } from "lucide-react"
+import { ArrowRight, Calendar, MapPin, Mic, Star, Trophy, ChevronRight, Play } from "lucide-react"
 import { Analytics } from "@vercel/analytics/react"
 
 export default function Home() {
@@ -10,209 +10,315 @@ export default function Home() {
     { name: "Sponsor 1", logo: "/sandesh logo.png" },
     { name: "Sponsor 2", logo: "/rod logo.png" },
     { name: "Sponsor 3", logo: "/falanocrafts logo.png" },
-
   ]
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-secondary">
-        <div className="container px-4 md:px-6">
-          <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-            <div className="flex flex-col justify-center space-y-4">
-              <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-white">
-                  Sikkim's Premier Talent Hunt Competition
-                </h1>
-                <p className="max-w-[600px] text-gray-300 md:text-xl">
-                  Discovering extraordinary talents since 2018. Join us in celebrating the diverse talents across
-                  Sikkim.
-                </p>
-              </div>
-              <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Link href="/events">
-                  <Button className="bg-primary hover:bg-primary/90 text-white">
-                    Upcoming Events <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-                <Link href="/contact">
-                  <Button variant="outline" className="text-primary">
-                    Register Now
-                  </Button>
-                </Link>
-              </div>
+     {/* Hero Section with clean white background */}
+<section className="relative bg-white text-black overflow-hidden w-full">
+  <div className="container relative z-10 px-4 sm:px-6 py-20 md:py-28 lg:py-36 mx-auto">
+    <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-10 items-center">
+      
+      {/* Left Content */}
+      <div className="space-y-7">
+        <div className="inline-block rounded-full bg-primary/10 px-4 py-2">
+          <span className="text-sm font-medium text-primary">Season 4 Registration Open</span>
+        </div>
+
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
+          Discover <br />
+          <span className="text-primary relative inline-block mt-2">
+            Sikkim's Brightest Stars
+          </span>
+        </h1>
+
+        <p className="text-lg md:text-xl text-gray-600 max-w-xl">
+          The largest talent competition in Sikkim returns with its most spectacular season yet. Join us for an unforgettable journey.
+        </p>
+
+        <div className="flex flex-wrap gap-5 pt-2">
+          <Link href="/events">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white gap-2 px-6 py-4 text-sm sm:text-base">
+              <span className="relative z-10 flex items-center gap-2">
+                Explore Events
+                <ArrowRight className="h-4 w-4" />
+              </span>
+            </Button>
+          </Link>
+
+          <Link href={`/events/${events[0].id}`}>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-primary/20 text-primary hover:bg-primary/5 gap-2 px-6 py-4 text-sm sm:text-base"
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                <Play className="h-4 w-4 fill-primary text-primary" />
+                View Season 4
+              </span>
+            </Button>
+          </Link>
+        </div>
+
+        <div className="mt-10 pt-7 border-t border-gray-200">
+          <div className="flex items-center gap-5 flex-wrap">
+            <div className="flex -space-x-3">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="relative w-12 h-12 rounded-full border-2 border-white overflow-hidden shadow-sm">
+                  <Image
+                    src={`/placeholder.svg?text=P${i}`}
+                    alt={`Participant ${i}`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              ))}
             </div>
-            <div className="relative h-[300px] lg:h-[400px] xl:h-[500px]">
-              <Image
-                src="/placeholder.svg?height=500&width=500"
-                alt="Talent Hunt Performance"
-                fill
-                className="object-cover rounded-lg"
-                priority
-              />
+            <div>
+              <p className="text-gray-500 text-sm">Trusted by</p>
+              <p className="font-medium text-lg">500+ participants across Sikkim</p>
             </div>
           </div>
         </div>
-      </section>
-      {/* Featured Events */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-        <div className="space-y-2"></div>
-        <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white">Featured Events</div>
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Upcoming Competitions</h2>
-        <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-          Don't miss your chance to showcase your talent and win amazing prizes.
-        </p>
-          </div>
-          <div className="flex justify-center mt-8">
-        {events.map((event) => (
-          <div
-            key={event.id}
-            className="group relative overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md max-w-2xl w-full"
-          >
-            <div className="relative aspect-[16/9] w-full">
+      </div>
+
+      {/* Right Image */}
+      <div className="relative w-full max-w-md mx-auto md:max-w-none">
+        <div className="relative w-full h-[300px] md:h-[450px] lg:h-[550px] rounded-xl overflow-hidden shadow-md">
           <Image
-            src={event.image || "/placeholder.svg"}
-            alt={event.title}
+            src="/s4 main.jpg"
+            alt="Rising Star Performance"
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover object-center transition-transform group-hover:scale-105"
+            className="object-cover object-center w-full"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            </div>
-            <div className="p-6">
-          <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
-            <Calendar className="h-5 w-5 text-primary" />
-            <span className="text-base">{event.date}</span>
-            <MapPin className="h-5 w-5 text-primary ml-4" />
-            <span className="text-base">{event.location}</span>
+          <div className="absolute top-5 right-5 bg-primary/90 px-4 py-2 rounded-full z-20 flex items-center gap-2 shadow-sm">
+            <span className="text-sm font-medium text-white">Registration Open</span>
           </div>
-          <h3 className="text-2xl font-bold">{event.title}</h3>
-          <p className="mt-3 text-gray-500 text-lg">{event.description}</p>
-          <div className="mt-6">
-            <Link href={`/events/${event.id}`}>
-              <Button
-            variant="outline"
-            className="w-full border-primary text-primary hover:bg-primary hover:text-white text-lg py-6"
-              >
-            View Details
-              </Button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+      {/* Featured Event */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container px-4">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+            <div>
+              <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary mb-3">
+                Featured Event
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold">Upcoming Competition</h2>
+            </div>
+            <Link href="/events" className="mt-4 md:mt-0 group inline-flex items-center text-primary hover:text-primary/80">
+              View all events
+              <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
+              <Image
+                src={events[0].image || "/placeholder.svg"}
+                alt={events[0].title}
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                <div className="inline-block rounded-full bg-primary/90 px-3 py-1 text-xs text-white mb-2 w-fit">
+                  Registration Open
+                </div>
+                <h3 className="text-2xl font-bold text-white">{events[0].title}</h3>
+                <div className="flex items-center gap-4 mt-2 text-white/80">
+                  <div className="flex items-center gap-1">
+                    <Calendar className="h-4 w-4" />
+                    <span className="text-sm">{events[0].date}</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <MapPin className="h-4 w-4" />
+                    <span className="text-sm">{events[0].location}</span>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
-          </div>
-          <div className="flex justify-center mt-10">
-        <Link href="/events">
-          <Button className="bg-primary hover:bg-primary/90">
-            View All Events <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-        </Link>
+            
+            <div className="space-y-6">
+              <h3 className="text-2xl md:text-3xl font-bold">{events[0].title}</h3>
+              <p className="text-gray-600 text-lg">{events[0].description}</p>
+              
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Calendar className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500">Date</p>
+                    <p className="font-medium">{events[0].date}</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <MapPin className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500">Location</p>
+                    <p className="font-medium">{events[0].location}</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Trophy className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500">Prize</p>
+                    <p className="font-medium">₹1,00,000 + Recording Contract</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="pt-4">
+                <Link href={`/events/${events[0].id}`}>
+                  <Button size="lg" className="w-full md:w-auto bg-black hover:bg-black/80 text-white">
+                    View Details
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Categories */}
-      <section className="w-full py-20 bg-gradient-to-b from-gray-900 to-black text-white">
-        <div className="container px-4 md:px-6">
-          <div className="text-center mb-16">
-        <div className="inline-block rounded-lg bg-primary/20 px-3 py-1 text-sm text-primary mb-4">Categories</div>
-        <h2 className="text-4xl font-bold tracking-tight mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-          Discover Your Stage
-        </h2>
-        <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-          Choose your category and let your talent shine in Sikkim's biggest talent hunt
-        </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-        {categories.map((category) => (
-          <div
-            key={category.name}
-            className="group relative overflow-hidden rounded-xl bg-gray-800/50 backdrop-blur-sm hover:bg-gray-800/80 transition-all duration-300"
-          >
-            <div className="p-6 flex flex-col items-center">
-          <div className="mb-4 p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transform group-hover:scale-110 transition-all duration-300">
-            {category.icon}
-          </div>
-          <h3 className="text-lg font-medium text-gray-100 group-hover:text-primary transition-colors">
-            {category.name}
-          </h3>
-          <div className="mt-3 h-0.5 w-12 bg-primary/30 group-hover:w-16 transition-all duration-300"/>
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="container px-4">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary mb-3">
+              Categories
             </div>
-            <div className="absolute inset-0 border border-gray-700/50 rounded-xl group-hover:border-primary/50 transition-colors"/>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Find Your Stage</h2>
+            <p className="text-gray-600">
+              Choose your category and let your talent shine in Sikkim's biggest talent hunt competition
+            </p>
           </div>
-        ))}
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {categories.map((category) => (
+              <div
+                key={category.name}
+                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 text-center group"
+              >
+                <div className="mx-auto w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                  {category.icon}
+                </div>
+                <h3 className="font-medium">{category.name}</h3>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Sponsors Carousel */}
-      <section className="w-full py-20 bg-black text-white">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8">
-            <div className="space-y-2">
-              <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white">Our Sponsors</div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Proudly Supported By</h2>
-              <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed">
-                Thank you to our amazing sponsors who make this event possible
-              </p>
+      {/* Stats Section */}
+      <section className="py-16 md:py-24 bg-black text-white">
+        <div className="container px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">4</div>
+              <p className="text-gray-400">Seasons Completed</p>
             </div>
-          </div>
-          
-          <div className="overflow-hidden relative">
-            <div className="flex animate-slide whitespace-nowrap">
-              {[...sponsors, ...sponsors].map((sponsor, index) => (
-                <div 
-                  key={`${sponsor.name}-${index}`} 
-                  className="flex-shrink-0 mx-8"
-                >
-                  <div className="relative w-48 h-24">
-                    <Image
-                      src={sponsor.logo}
-                      alt={`${sponsor.name} logo`}
-                      fill
-                      className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                    />
-                  </div>
-                </div>
-              ))}
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">500+</div>
+              <p className="text-gray-400">Participants</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">50+</div>
+              <p className="text-gray-400">Winners & Finalists</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">10+</div>
+              <p className="text-gray-400">Districts Covered</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Success Stories */}
-      <section className="w-full py-12 md:py-24 lg:py-32">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
-              <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white">Success Stories</div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Our Champions</h2>
-              <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Meet the talented individuals who have gone on to achieve great success after participating in our
-                competition.
-              </p>
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container px-4">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary mb-3">
+              Success Stories
             </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Champions</h2>
+            <p className="text-gray-600">
+              Meet the talented individuals who have gone on to achieve great success after participating in our competition
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {champions.map((champion) => (
               <div
                 key={champion.name}
-                className="flex flex-col items-center text-center p-6 rounded-lg border border-gray-200 bg-white shadow-sm"
+                className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all"
               >
-                <div className="relative h-32 w-32 rounded-full overflow-hidden mb-4">
-                  <Image src={champion.image || "/placeholder.svg"} alt={champion.name} fill className="object-cover" />
+                <div className="relative h-64 w-full">
+                  <Image 
+                    src={champion.image} 
+                    alt={champion.name} 
+                    fill 
+                    className="object-cover"
+                  />
                 </div>
-                <h3 className="text-xl font-bold">{champion.name}</h3>
-                <p className="text-primary mb-2">{champion.category}</p>
-                <p className="text-gray-500">{champion.achievement}</p>
-                <div className="flex items-center mt-2">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
-                  ))}
+                <div className="p-6">
+                  <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs text-primary mb-3">
+                    {champion.category}
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">{champion.name}</h3>
+                  <p className="text-gray-600">{champion.achievement}</p>
+                  <div className="flex items-center mt-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Sponsors */}
+      <section className="py-16 md:py-20 bg-gray-50">
+        <div className="container px-4">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary mb-3">
+              Our Sponsors
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Proudly Supported By</h2>
+            <p className="text-gray-600">
+              Thank you to our amazing sponsors who make this event possible
+            </p>
+          </div>
+          
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            {sponsors.map((sponsor, index) => (
+              <div 
+                key={`${sponsor.name}-${index}`} 
+                className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all"
+              >
+                <div className="relative w-36 h-20">
+                  <Image
+                    src={sponsor.logo}
+                    alt={`${sponsor.name} logo`}
+                    fill
+                    className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                  />
                 </div>
               </div>
             ))}
@@ -221,23 +327,22 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-primary text-white">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Ready to Showcase Your Talent?</h2>
-              <p className="max-w-[900px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Join Sikkim's Premier Talent Hunt Competition and let your talent shine on the biggest stage.
-              </p>
-            </div>
-            <div className="flex flex-col gap-2 min-[400px]:flex-row">
+      <section className="py-16 md:py-20 bg-gradient-to-r from-primary to-primary/80 text-white">
+        <div className="container px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Showcase Your Talent?</h2>
+            <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
+              Join Sikkim's Premier Talent Hunt Competition and let your talent shine on the biggest stage in the region.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
-                <Button className="bg-secondary hover:bg-secondary/90 text-white">
-                  Register Now <ArrowRight className="ml-2 h-4 w-4" />
+                <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-white">
+                  Register Now
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
               <Link href="/events">
-                <Button variant="outline" className="border-white text-black hover:bg-white hover:text-primary">
+                <Button size="lg" variant="outline" className="border-white text-black hover:bg-white hover:text-primary">
                   View Events
                 </Button>
               </Link>
@@ -251,11 +356,11 @@ export default function Home() {
 
 const events = [
   {
-    id: 1,
+    id: 201,
     title: "Rising Star Season 4",
     description:
-      "The biggest singing competition in Sikkim returns for its 5th season. Showcase your vocal talent and win exciting prizes.",
-    date: "June 15, 2023",
+      "The biggest singing competition in Sikkim returns for its 4th season. Showcase your vocal talent and win exciting prizes including a recording contract with a major label.",
+    date: "July 25, 2025",
     location: "Gangtok",
     image: "/s4 main.jpg",
   },
