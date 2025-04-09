@@ -6,22 +6,6 @@ import Link from "next/link"
 export default function AboutPage() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative w-full py-12 md:py-24 lg:py-32 bg-secondary">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-white">
-                About Sikkim&apos;s Premier Talent Hunt
-              </h1>
-              <p className="max-w-[700px] text-gray-300 md:text-xl mx-auto">
-                Discovering and nurturing extraordinary talents since 2018.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Our Story */}
       <section className="w-full py-12 md:py-24 lg:py-32">
         <div className="container px-4 md:px-6">
@@ -90,12 +74,11 @@ export default function AboutPage() {
               {timeline.map((item, index) => (
                 <div
                   key={index}
-                  className={`relative flex items-center ${index % 2 === 0 ? "justify-start" : "justify-end"} md:justify-between`}
+                  className="relative flex items-center justify-between"
                 >
-                  <div className={`hidden md:block ${index % 2 === 0 ? "order-1" : "order-2"} w-5/12`}>
-                    <div
-                      className={`p-6 rounded-lg shadow-lg bg-white ${index % 2 === 0 ? "text-right" : "text-left"}`}
-                    >
+                  {/* Desktop timeline item */}
+                  <div className={`hidden md:block w-5/12 ${index % 2 === 0 ? "" : "md:ml-auto"}`}>
+                    <div className={`p-6 rounded-lg shadow-lg bg-white ${index % 2 === 0 ? "text-right" : "text-left"}`}>
                       <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white mb-2">
                         {item.year}
                       </div>
@@ -103,30 +86,21 @@ export default function AboutPage() {
                       <p className="mt-2 text-gray-500">{item.description}</p>
                     </div>
                   </div>
+                  {/* Timeline dot */}
                   <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
                     <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
                       <Calendar className="h-4 w-4 text-white" />
                     </div>
                   </div>
-                  <div className={`md:hidden block w-full`}>
-                    <div className={`p-6 rounded-lg shadow-lg bg-white ml-10`}>
+                  {/* Mobile timeline item */}
+                  <div className="md:hidden w-full">
+                    <div className="p-6 rounded-lg shadow-lg bg-white ml-10">
                       <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white mb-2">
                         {item.year}
                       </div>
                       <h3 className="text-xl font-bold">{item.title}</h3>
                       <p className="mt-2 text-gray-500">{item.description}</p>
                     </div>
-                  </div>
-                  <div className={`hidden md:block ${index % 2 === 0 ? "order-2" : "order-1"} w-5/12`}>
-                    {index % 2 !== 0 && (
-                      <div className="p-6 rounded-lg shadow-lg bg-white">
-                        <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white mb-2">
-                          {item.year}
-                        </div>
-                        <h3 className="text-xl font-bold">{item.title}</h3>
-                        <p className="mt-2 text-gray-500">{item.description}</p>
-                      </div>
-                    )}
                   </div>
                 </div>
               ))}
@@ -221,7 +195,7 @@ export default function AboutPage() {
                 </Button>
               </Link>
               <Link href="/events">
-                <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
+                <Button variant="outline" className="border-white text-black hover:bg-white hover:text-primary">
                   Upcoming Events
                 </Button>
               </Link>
@@ -237,33 +211,23 @@ export default function AboutPage() {
 const timeline = [
   {
     year: "2018",
-    title: "The Beginning",
-    description: "First talent hunt organized in Gangtok with 100 participants across 3 categories.",
+    title: "Inception",
+    description: "Sikkim's Premier Talent Hunt was founded to discover local talents.",
   },
   {
     year: "2019",
-    title: "Expansion",
-    description: "Extended to all four districts of Sikkim with 500+ participants.",
+    title: "First Event",
+    description: "Our first event was held in Gangtok, attracting participants from across the state.",
   },
   {
     year: "2020",
-    title: "Virtual Edition",
-    description: "Adapted to the pandemic with our first virtual talent hunt reaching 1000+ participants.",
+    title: "Expansion",
+    description: "We expanded our reach to all districts of Sikkim, discovering hidden talents.",
   },
   {
     year: "2021",
     title: "National Recognition",
-    description: "Our winners performed at national level events, bringing recognition to Sikkim's talent.",
-  },
-  {
-    year: "2022",
-    title: "International Collaboration",
-    description: "Partnered with international talent agencies to provide global exposure to our winners.",
-  },
-  {
-    year: "2023",
-    title: "Record Breaking",
-    description: "Largest edition yet with 2000+ participants and televised finals.",
+    description: "Our winners gained recognition on national platforms, showcasing their skills.",
   },
 ]
 
@@ -306,7 +270,7 @@ const stats = [
     icon: <Users className="h-6 w-6 text-primary" />,
   },
   {
-    value: "20+",
+    value: "3+",
     label: "Events",
     icon: (
       <svg

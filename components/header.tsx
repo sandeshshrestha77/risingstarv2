@@ -16,10 +16,9 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
-          <Link href="/" className="flex items-center">
-            <span className="text-2xl font-bold text-primary">SIKKIM</span>
-            <span className="text-2xl font-bold text-secondary">TALENT</span>
-          </Link>
+            <Link href="/" className="flex items-center">
+            <img src="/logo.png" alt="SIKKIM Rising Star Logo" className="h-8" />
+            </Link>
         </div>
 
         {/* Desktop Navigation */}

@@ -2,6 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Calendar, MapPin, Mic, Star, Trophy } from "lucide-react"
+import { Analytics } from "@vercel/analytics/react"
 
 export default function Home() {
   // Sample sponsors data
@@ -53,18 +54,16 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Featured Events */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
-        <div className="space-y-2">
-          <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white">Featured Events</div>
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Upcoming Competitions</h2>
-          <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-            Don't miss your chance to showcase your talent and win amazing prizes.
-          </p>
-        </div>
+        <div className="space-y-2"></div>
+        <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white">Featured Events</div>
+        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Upcoming Competitions</h2>
+        <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+          Don't miss your chance to showcase your talent and win amazing prizes.
+        </p>
           </div>
           <div className="flex justify-center mt-8">
         {events.map((event) => (
@@ -72,12 +71,14 @@ export default function Home() {
             key={event.id}
             className="group relative overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md max-w-2xl w-full"
           >
-            <div className="relative h-80 w-full overflow-hidden">
+            <div className="relative aspect-[16/9] w-full">
           <Image
             src={event.image || "/placeholder.svg"}
             alt={event.title}
             fill
-            className="object-cover transition-transform group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover object-center transition-transform group-hover:scale-105"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             </div>
@@ -256,7 +257,7 @@ const events = [
       "The biggest singing competition in Sikkim returns for its 5th season. Showcase your vocal talent and win exciting prizes.",
     date: "June 15, 2023",
     location: "Gangtok",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/s4 main.jpg",
   },
 ]
 

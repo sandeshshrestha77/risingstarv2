@@ -7,47 +7,6 @@ import { Input } from "@/components/ui/input"
 export default function BlogPage() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative w-full py-12 md:py-24 lg:py-32 bg-secondary">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-white">
-                Blog & News
-              </h1>
-              <p className="max-w-[700px] text-gray-300 md:text-xl mx-auto">
-                Stay updated with the latest news, stories, and insights from Sikkim&apos;s Premier Talent Hunt.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Search and Categories */}
-      <section className="w-full py-8 border-b">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col md:flex-row gap-4 justify-between">
-            <div className="relative w-full md:w-1/3">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500" />
-              <Input type="search" placeholder="Search articles..." className="w-full bg-white pl-8 shadow-none" />
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
-                <Link key={category} href={`/blog/category/${category.toLowerCase()}`}>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="border-primary text-primary hover:bg-primary hover:text-white"
-                  >
-                    {category}
-                  </Button>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Featured Post */}
       <section className="w-full py-12 md:py-24 lg:py-32">
         <div className="container px-4 md:px-6">

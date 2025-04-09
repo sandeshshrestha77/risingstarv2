@@ -8,8 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <Link href="/" className="flex items-center mb-4">
-              <span className="text-2xl font-bold text-primary">SIKKIM</span>
-              <span className="text-2xl font-bold text-white">TALENT</span>
+              <img src="/logo.png" alt="Sikkim RIsing Star Logo" className="h-12" />
             </Link>
             <p className="text-gray-300 mb-4">
               Discovering extraordinary talents since 2018. Sikkim's Premier Talent Hunt Competition.
