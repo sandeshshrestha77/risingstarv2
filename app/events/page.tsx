@@ -225,7 +225,7 @@ const pastEvents = [
     description: "Season 3 brought together exceptional talents from across Sikkim and beyond.",
     date: "December 15, 2024",
     location: "Namchi",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/s3 main.jpg",
   },
   {
     id: "102",
@@ -233,7 +233,7 @@ const pastEvents = [
     description: "A vibrant showcase of young stars competing in music, dance, and drama.",
     date: "July 10, 2024",
     location: "Pelling",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/s2 main.jpg",
   },
   {
     id: "101",
@@ -241,7 +241,7 @@ const pastEvents = [
     description: "The inaugural season that kickstarted a new era of talent recognition in Sikkim.",
     date: "March 5, 2024",
     location: "Ravangla",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/s1 main.jpg",
   },
 ]
 

@@ -80,7 +80,7 @@ const eventData: Record<string, Event> = {
     longDescription: "Rising Star Season 1 marked the beginning of our journey to discover and showcase Sikkim's finest talents. This groundbreaking event featured participants from all corners of the state, competing in various categories including singing, dancing, and performing arts. The event was hosted in Ravangla and witnessed an overwhelming response from both participants and audiences alike.",
     date: "March 5, 2024",
     location: "Ravangla",
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/s1 main.jpg",
     gallery: [
       "/placeholder.svg?height=400&width=600",
       "/placeholder.svg?height=400&width=600",
@@ -118,7 +118,7 @@ const eventData: Record<string, Event> = {
     longDescription: "Building on the success of our inaugural season, Rising Star Season 2 expanded its reach to include participants from neighboring states as well. The competition was fiercer, the stage was larger, and the performances were more spectacular. Held in the picturesque town of Pelling, this season introduced new categories including group performances and original compositions.",
     date: "July 10, 2024",
     location: "Pelling",
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/s2 main.jpg",
     gallery: [
       "/placeholder.svg?height=400&width=600",
       "/placeholder.svg?height=400&width=600",
@@ -156,7 +156,7 @@ const eventData: Record<string, Event> = {
     longDescription: "Rising Star Season 3 elevated the competition to a national level, attracting participants from across India. The event was hosted in Namchi and featured celebrity judges from the entertainment industry. This season introduced a mentorship program where participants received guidance from established artists weeks before the finals. The grand finale was broadcast live on regional television channels.",
     date: "December 15, 2024",
     location: "Namchi",
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/s3 main.jpg",
     gallery: [
       "/placeholder.svg?height=400&width=600",
       "/placeholder.svg?height=400&width=600",
