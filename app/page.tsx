@@ -24,7 +24,7 @@ export default function Home() {
             <div className="space-y-7">
               {featuredEvent && (
                 <div className="inline-block rounded-full bg-primary/10 px-4 py-2">
-                  <span className="text-sm font-medium text-primary">Season {featuredEvent.season} Registration Open</span>
+                  <span className="text-sm font-medium text-primary">Season {featuredEvent.season} Registration opening soon</span>
                 </div>
               )}
 
@@ -64,27 +64,6 @@ export default function Home() {
                   </Link>
                 )}
               </div>
-
-              <div className="mt-10 pt-7 border-t border-gray-200">
-                <div className="flex items-center gap-5 flex-wrap">
-                  <div className="flex -space-x-3">
-                    {[1, 2, 3, 4].map((i) => (
-                        <div key={i} className="relative w-12 h-12 rounded-full border-2 border-white overflow-hidden shadow-sm">
-                        <Image
-                          src={`/participants/participant${i}.jpg`}
-                          alt={`Participant ${i}`}
-                          fill
-                          className="object-cover"
-                        />
-                        </div>
-                    ))}
-                  </div>
-                  <div>
-                    <p className="text-gray-500 text-sm">Trusted by</p>
-                    <p className="font-medium text-lg">500+ Participants</p>
-                  </div>
-                </div>
-              </div>
             </div>
 
             {/* Right Image */}
@@ -97,11 +76,7 @@ export default function Home() {
                   className="object-cover object-center w-full"
                   priority
                 />
-                {featuredEvent && (
-                  <div className="absolute top-5 right-5 bg-primary/90 px-4 py-2 rounded-full z-20 flex items-center gap-2 shadow-sm">
-                    <span className="text-sm font-medium text-white">Registration Open</span>
-                  </div>
-                )}
+               
               </div>
             </div>
           </div>
