@@ -23,6 +23,7 @@ export default function ContactPage() {
     inquiryType: "",
     agreeToTerms: false,
   })
+  const [loading, setLoading] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -37,10 +38,9 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, agreeToTerms: checked }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    // Validate form
     if (!formData.name || !formData.email || !formData.message || !formData.inquiryType || !formData.agreeToTerms) {
       toast({
         title: "Error",
@@ -50,26 +50,55 @@ export default function ContactPage() {
       return
     }
 
-    // Form submission logic would go here
-    console.log("Form submitted:", formData)
+    setLoading(true)
+    const data = new FormData()
+    data.append("access_key", "ce70048d-f810-4230-bdb7-6dd5684c6a48") // Replace with your actual Web3Forms access key
+    data.append("name", formData.name)
+    data.append("email", formData.email)
+    data.append("phone", formData.phone)
+    data.append("subject", formData.subject)
+    data.append("message", formData.message)
+    data.append("inquiryType", formData.inquiryType)
 
-    toast({
-      title: "Success!",
-      description: "Your message has been sent. We'll get back to you soon.",
-    })
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: data,
+      })
 
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: "",
-      inquiryType: "",
-      agreeToTerms: false,
-    })
+      const result = await response.json()
+
+      if (result.success) {
+        toast({
+          title: "Success!",
+          description: "Your message has been sent. We'll get back to you soon.",
+        })
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+          inquiryType: "",
+          agreeToTerms: false,
+        })
+      } else {
+        toast({
+          title: "Submission Failed",
+          description: result.message || "Something went wrong. Please try again.",
+          variant: "destructive",
+        })
+      }
+    } catch (error) {
+      toast({
+        title: "Network Error",
+        description: "Could not reach the server. Please try again later.",
+        variant: "destructive",
+      })
+    } finally {
+      setLoading(false)
+    }
   }
-
   return (
     <>
       {/* Contact Information */}
@@ -113,8 +142,8 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-medium">Email</h3>
                     <p className="text-gray-500">
-                      <a href="mailto:info@sikkimtalent.com" className="hover:text-primary">
-                        info@sikkimtalent.com
+                      <a href="mailto:sikkimrisingstar@gmail.com" className="hover:text-primary">
+                        sikkimrisingstar@gmail.com
                       </a>
                     </p>
                   </div>

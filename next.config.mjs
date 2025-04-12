@@ -19,19 +19,21 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  images: {
-    unoptimized: true,
-  },
   experimental: {
     webpackBuildWorker: true,
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
 }
+const customConfig = {
+  images: {
+    domains: ['images.unsplash.com'],
+  },
+}
 
-if (userConfig) {
+if (customConfig) {
   // ESM imports will have a "default" property
-  const config = userConfig.default || userConfig
+  const config = customConfig.default || customConfig
 
   for (const key in config) {
     if (

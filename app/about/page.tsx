@@ -43,7 +43,7 @@ export default function AboutPage() {
             </div>
             <div className="relative h-[400px] lg:h-[600px]">
               <Image
-                src="/placeholder.svg?height=600&width=500"
+                src="/02 About Section Main.jpg"
                 alt="Talent Hunt Journey"
                 fill
                 className="object-cover rounded-lg"

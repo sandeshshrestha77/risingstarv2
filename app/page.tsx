@@ -50,7 +50,7 @@ export default function Home() {
                 </Link>
 
                 {featuredEvent && (
-                  <Link href={`/events/${featuredEvent.id}`}>
+                  <Link href={`/event /${featuredEvent.id}`}>
                     <Button
                       size="lg"
                       variant="outline"
@@ -69,14 +69,14 @@ export default function Home() {
                 <div className="flex items-center gap-5 flex-wrap">
                   <div className="flex -space-x-3">
                     {[1, 2, 3, 4].map((i) => (
-                      <div key={i} className="relative w-12 h-12 rounded-full border-2 border-white overflow-hidden shadow-sm">
+                        <div key={i} className="relative w-12 h-12 rounded-full border-2 border-white overflow-hidden shadow-sm">
                         <Image
-                          src={`/placeholder.svg?text=P${i}`}
+                          src={`/participants/participant${i}.jpg`}
                           alt={`Participant ${i}`}
                           fill
                           className="object-cover"
                         />
-                      </div>
+                        </div>
                     ))}
                   </div>
                   <div>
@@ -91,7 +91,7 @@ export default function Home() {
             <div className="relative w-full max-w-md mx-auto md:max-w-none">
               <div className="relative w-full h-[300px] md:h-[450px] lg:h-[550px] rounded-xl overflow-hidden shadow-md">
                 <Image
-                  src={featuredEvent?.image || "/placeholder.svg"}
+                  src="/01 Home Page Image.jpg"
                   alt="Rising Star Performance"
                   fill
                   className="object-cover object-center w-full"
@@ -255,50 +255,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Success Stories */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container px-4">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary mb-3">
-              Success Stories
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Champions</h2>
-            <p className="text-gray-600">
-              Meet the talented individuals who have gone on to achieve great success after participating in our competition
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {champions.map((champion) => (
-              <div
-                key={champion.name}
-                className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all"
-              >
-                <div className="relative h-64 w-full">
-                  <Image 
-                    src={champion.image} 
-                    alt={champion.name} 
-                    fill 
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs text-primary mb-3">
-                    {champion.category}
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">{champion.name}</h3>
-                  <p className="text-gray-600">{champion.achievement}</p>
-                  <div className="flex items-center mt-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-primary text-primary" />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* Sponsors */}
       <section className="py-16 md:py-20 bg-gray-50">
@@ -451,26 +408,29 @@ const categories = [
   {
     name: "Others",
     icon: <Trophy className="h-6 w-6 text-primary" />,
-  },
+  }
 ]
 
-const champions = [
+const participants = [
   {
-    name: "Tenzin Dorjee",
-    category: "Singing",
-    achievement: "Now a professional singer with two albums released nationally",
-    image: "/placeholder.svg?height=200&width=200",
+    id: 1,
+    name: "Participant 1",
+    imageUrl: "https://images.unsplash.com/photo-1502767089025-6572583495b4?auto=format&fit=crop&w=500&q=80",
   },
   {
-    name: "Priya Sharma",
-    category: "Dancing",
-    achievement: "Choreographer for major Bollywood productions",
-    image: "/placeholder.svg?height=200&width=200",
+    id: 2,
+    name: "Participant 2",
+    imageUrl: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=500&q=80",
   },
   {
-    name: "Karma Bhutia",
-    category: "Acting",
-    achievement: "Lead role in award-winning regional films",
-    image: "/placeholder.svg?height=200&width=200",
+    id: 3,
+    name: "Participant 3",
+    imageUrl: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80",
   },
+  {
+    id: 4,
+    name: "Participant 4",
+    imageUrl: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=500&q=80",
+  }
 ]
+

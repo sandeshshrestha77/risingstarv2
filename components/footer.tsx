@@ -66,7 +66,7 @@ export default function Footer() {
               </p>
               <p>
                 <a href="mailto:info@sikkimrisingstar.com" className="hover:text-primary">
-                  info@sikkimrisingstar.com
+                sikkimrisingstar@gmail.com
                 </a>
               </p>
             </address>
