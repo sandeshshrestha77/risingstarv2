@@ -268,10 +268,6 @@ export default async function EventDetailPage({ params }: { params: { id: string
                       <p className="text-gray-600 text-sm mb-2">
                         Registration closes on <span className="font-medium">{event.registrationDeadline}</span>
                       </p>
-                      <div className="w-full bg-gray-100 h-2 rounded-full mt-3 mb-1">
-                        <div className="bg-primary h-full rounded-full w-3/4"></div>
-                      </div>
-                      <p className="text-xs text-gray-500">Registration filling fast</p>
                     </div>
                     <Link href="/contact">
                       <Button className="w-full bg-primary hover:bg-primary/90">
