@@ -1,11 +1,14 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Calendar, Filter, MapPin, ArrowRight } from "lucide-react"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Calendar, MapPin, ArrowRight } from "lucide-react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { getUpcomingEvents, getPastEvents } from "@/lib/events"
 
-export default function EventsPage() {
+export default async function EventsPage() {
+  const upcomingEvents = await getUpcomingEvents()
+  const pastEvents = await getPastEvents()
+
   return (
     <>
       {/* Upcoming Events */}
@@ -35,11 +38,9 @@ export default function EventsPage() {
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                  {event.featured && (
-                    <div className="absolute top-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
-                      Featured
-                    </div>
-                  )}
+                  <div className="absolute top-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
+                    Featured
+                  </div>
                   <div className="absolute bottom-4 left-4 right-4">
                     <h3 className="text-xl md:text-2xl font-bold text-white">{event.title}</h3>
                   </div>
@@ -204,46 +205,6 @@ export default function EventsPage() {
     </>
   )
 }
-
-const upcomingEvents = [
-  {
-    id: "201",
-    title: "Rising Star Season 4",
-    description: "The highly anticipated fourth season is here. New talents. Bigger stage. Higher stakes.",
-    date: "July 25, 2025",
-    location: "Gangtok",
-    image: "/s4 main.jpg",
-    featured: true,
-    registrationOpen: true,
-  },
-]
-
-const pastEvents = [
-  {
-    id: "103",
-    title: "Rising Star Season 3",
-    description: "Season 3 brought together exceptional talents from across Sikkim and beyond.",
-    date: "December 15, 2024",
-    location: "Namchi",
-    image: "/s3 main.jpg",
-  },
-  {
-    id: "102",
-    title: "Rising Star Season 2",
-    description: "A vibrant showcase of young stars competing in music, dance, and drama.",
-    date: "July 10, 2024",
-    location: "Pelling",
-    image: "/s2 main.jpg",
-  },
-  {
-    id: "101",
-    title: "Rising Star Season 1",
-    description: "The inaugural season that kickstarted a new era of talent recognition in Sikkim.",
-    date: "March 5, 2024",
-    location: "Ravangla",
-    image: "/s1 main.jpg",
-  },
-]
 
 const faqs = [
   {
