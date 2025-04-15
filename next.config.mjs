@@ -25,14 +25,21 @@ const nextConfig = {
     parallelServerCompiles: true,
   },
 }
+
 const customConfig = {
   images: {
-    domains: ['images.unsplash.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
 }
 
 if (customConfig) {
-  // ESM imports will have a "default" property
   const config = customConfig.default || customConfig
 
   for (const key in config) {

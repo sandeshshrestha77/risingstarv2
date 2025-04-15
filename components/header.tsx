@@ -13,13 +13,12 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-secondary text-white ">
-      <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Link href="/" className="flex items-center">
-            <img src="/logo.png" alt="SIKKIM Rising Star Logo" className="h-8" />
-          </Link>
-        </div>
+    <header className="sticky top-0 z-50 w-full bg-secondary text-white border-b">
+      <div className="container flex h-16 items-center justify-between px-4">
+        {/* Logo */}
+        <Link href="/" className="flex items-center">
+          <img src="/logo.png" alt="SIKKIM Rising Star Logo" className="h-auto" />
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
@@ -39,7 +38,9 @@ export default function Header() {
             Contact
           </Link>
           <Link href="/contact">
-            <Button className="bg-primary hover:bg-primary/90">Register Now</Button>
+            <Button className="bg-primary hover:bg-primary/90 transition-colors">
+              Register Now
+            </Button>
           </Link>
         </nav>
 
@@ -51,46 +52,26 @@ export default function Header() {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-16 left-0 right-0 bg-secondary border-b z-50">
+        <div className="md:hidden absolute top-16 left-0 right-0 bg-secondary z-50 border-b">
           <nav className="container flex flex-col py-4 gap-4">
-            <Link
-              href="/"
-              className="text-sm font-medium text-gray-300 hover:text-primary transition-colors px-4 py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link href="/" className="text-sm font-medium text-gray-300 hover:text-primary transition-colors px-4 py-2" onClick={() => setIsMenuOpen(false)}>
               Home
             </Link>
-            <Link
-              href="/about"
-              className="text-sm font-medium text-gray-300 hover:text-primary transition-colors px-4 py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link href="/about" className="text-sm font-medium text-gray-300 hover:text-primary transition-colors px-4 py-2" onClick={() => setIsMenuOpen(false)}>
               About
             </Link>
-            <Link
-              href="/events"
-              className="text-sm font-medium text-gray-300 hover:text-primary transition-colors px-4 py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link href="/events" className="text-sm font-medium text-gray-300 hover:text-primary transition-colors px-4 py-2" onClick={() => setIsMenuOpen(false)}>
               Events
             </Link>
-            <Link
-              href="/blog"
-              className="text-sm font-medium text-gray-300 hover:text-primary transition-colors px-4 py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link href="/blog" className="text-sm font-medium text-gray-300 hover:text-primary transition-colors px-4 py-2" onClick={() => setIsMenuOpen(false)}>
               Blog
             </Link>
-            <Link
-              href="/contact"
-              className="text-sm font-medium text-gray-300 hover:text-primary transition-colors px-4 py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link href="/contact" className="text-sm font-medium text-gray-300 hover:text-primary transition-colors px-4 py-2" onClick={() => setIsMenuOpen(false)}>
               Contact
             </Link>
             <div className="px-4">
               <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
-                <Button className="w-full bg-primary hover:bg-primary/90">Register Now</Button>
+                <Button className="w-full bg-primary hover:bg-primary/90 transition-colors">Register Now</Button>
               </Link>
             </div>
           </nav>
