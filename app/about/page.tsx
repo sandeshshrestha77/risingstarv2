@@ -208,38 +208,43 @@ export default function AboutPage() {
     <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
       <div className="inline-block rounded-full bg-primary/10 px-4 py-2 text-xs sm:text-sm text-primary mb-2 sm:mb-3 uppercase font-semibold">Thank You</div>
       <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Trusted By</h2>
-      <p className="text-gray-600 text-lg sm:text-xl">We are grateful to all our past supporters and partners whose valuable contributions helped shape the success of our previous seasons.</p>
+      <p className="text-gray-600 text-lg sm:text-xl">We are grateful to all our past supporters and partners whose valuable contributions helped shape the success of our previous seasons.</p>
     </div>
 
     {/* Carousel container with infinite scroll */}
     <div className="overflow-hidden relative">
       <div className="flex animate-marquee space-x-6 sm:space-x-8 md:space-x-12 px-2">
+        {/* First set of logos */}
         {sponsors.map((sponsor, index) => (
           <div
             key={`${sponsor.name}-${index}`}
-            className="shrink-0 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all w-36 sm:w-40 h-24 flex items-center justify-center"
+            className="shrink-0 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all w-36 sm:w-40 h-36 flex items-center justify-center"
           >
-            <div className="relative w-32 h-16">
+            <div className="relative w-full h-full">
               <Image
                 src={sponsor.logo}
                 alt={`${sponsor.name} logo`}
-                fill
+                layout="intrinsic"  // Changed to intrinsic to preserve aspect ratio
+                width={150}  // Adjust width of the image
+                height={150} // Adjust height of the image
                 className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
               />
             </div>
           </div>
         ))}
-        {/* Duplicate sponsors for smooth scrolling */}
+        {/* Duplicate set of logos for infinite scroll effect */}
         {sponsors.map((sponsor, index) => (
           <div
-            key={`${sponsor.name}-${index}-duplicate`}
-            className="shrink-0 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all w-36 sm:w-40 h-24 flex items-center justify-center"
+            key={`${sponsor.name}-duplicate-${index}`}
+            className="shrink-0 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all w-36 sm:w-40 h-36 flex items-center justify-center"
           >
-            <div className="relative w-32 h-16">
+            <div className="relative w-full h-full">
               <Image
                 src={sponsor.logo}
                 alt={`${sponsor.name} logo`}
-                fill
+                layout="intrinsic"
+                width={150}
+                height={150}
                 className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
               />
             </div>
@@ -257,12 +262,12 @@ export default function AboutPage() {
       transform: translateX(0);
     }
     100% {
-      transform: translateX(-100vw); /* Use viewport width (vw) for consistency */
+      transform: translateX(-100%); /* Moves the logos by the full width of the container */
     }
   }
 
   .animate-marquee {
-    animation: marquee 15s linear infinite; /* Adjust speed by changing the duration */
+    animation: marquee 15s linear infinite; /* Increased speed by changing the duration to 15s */
   }
 `}</style>
 
