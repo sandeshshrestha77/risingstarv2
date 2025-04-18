@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
+import { Facebook, Instagram,  Youtube } from "lucide-react";
 
 export default function Footer() {
   const [showQR, setShowQR] = useState(false);
@@ -33,16 +33,14 @@ export default function Footer() {
               Sikkim's Premier Talent Hunt Competition since 2018.
             </p>
             <div className="flex space-x-4">
-              <Link href="#" aria-label="Facebook" className="text-gray-300 hover:text-primary transition-transform duration-200 transform hover:scale-110">
+              <Link href="https://www.facebook.com/sikkimrisingstar/
+" aria-label="Facebook" className="text-gray-300 hover:text-primary transition-transform duration-200 transform hover:scale-110">
                 <Facebook className="h-5 w-5" />
               </Link>
-              <Link href="#" aria-label="Instagram" className="text-gray-300 hover:text-primary transition-transform duration-200 transform hover:scale-110">
+              <Link href="https://www.instagram.com/sikkimrisingstar_official_/" aria-label="Instagram" className="text-gray-300 hover:text-primary transition-transform duration-200 transform hover:scale-110">
                 <Instagram className="h-5 w-5" />
               </Link>
-              <Link href="#" aria-label="Twitter" className="text-gray-300 hover:text-primary transition-transform duration-200 transform hover:scale-110">
-                <Twitter className="h-5 w-5" />
-              </Link>
-              <Link href="#" aria-label="Youtube" className="text-gray-300 hover:text-primary transition-transform duration-200 transform hover:scale-110">
+              <Link href="https://youtube.com/@sikkimrisingstar" aria-label="Youtube" className="text-gray-300 hover:text-primary transition-transform duration-200 transform hover:scale-110">
                 <Youtube className="h-5 w-5" />
               </Link>
             </div>
@@ -63,10 +61,10 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4 hover:underline">Contact Us</h3>
             <address className="not-italic text-gray-300 space-y-2">
-              <p>Gangtok, Sikkim 737101</p>
+              <p>Indira Bypass Road, Gangtok East Sikkim</p>
               <p className="pt-1">
                 <a href="tel:+919876543210" className="hover:text-primary">
-                  +91 9876543210
+                  +91 9734013211 / 8918215965
                 </a>
               </p>
               <p>

@@ -52,7 +52,7 @@ export default function ContactPage() {
 
     setLoading(true)
     const data = new FormData()
-    data.append("access_key", "ce70048d-f810-4230-bdb7-6dd5684c6a48") // Replace with your actual Web3Forms access key
+    data.append("access_key", "ce70048d-f810-4230-bdb7-6dd5684c6a48")
     data.append("name", formData.name)
     data.append("email", formData.email)
     data.append("phone", formData.phone)
@@ -118,9 +118,9 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-medium">Our Location</h3>
                     <address className="not-italic text-gray-500">
-                      123 MG Marg
+                    Indira Bypass Road,
                       <br />
-                      Gangtok, Sikkim 737101
+                      Gangtok East Sikkim
                       <br />
                       India
                     </address>
@@ -132,7 +132,7 @@ export default function ContactPage() {
                     <h3 className="font-medium">Phone</h3>
                     <p className="text-gray-500">
                       <a href="tel:+919876543210" className="hover:text-primary">
-                        +91 9876543210
+                      +91 9734013211 / 8918215965
                       </a>
                     </p>
                   </div>
