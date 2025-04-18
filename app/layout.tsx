@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Sikkim Rising Star: Register Now for Season 4 Talent Hunt",
-  description: "Register for Rising Star Season 4 - Sikkim's premier talent hunt competition. Join now to showcase your talent on the biggest stage in the region. Register Today!",
+  description: "Join Rising Star Season 4 - Sikkim's premier talent hunt competition. Showcase your talent on the biggest stage in the region. Register Today!",
   alternates: {
     canonical: "https://sikkimrisingstar.com",
   },
