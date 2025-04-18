@@ -172,7 +172,7 @@ export const events: Event[] = [
     title: "Rising Star Season 4",
     description: "The highly anticipated fourth season is here. New talents. Bigger stage. Higher stakes.",
     longDescription: "Be part of Sikkim's biggest talent hunt! Showcase your skills on a grand stage with international judges, live streaming, and unprecedented opportunities. Join us for an unforgettable journey of talent, creativity, and stardom.",
-    date: "2025",
+    date: "June 7, 2025",
     location: "Gangtok",
     image: "/s4 main.jpg",
     gallery: [],
