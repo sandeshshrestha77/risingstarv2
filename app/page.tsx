@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, MapPin, Mic, Star, Trophy, ChevronRight, Play } from "lucide-react";
-import { Analytics } from "@vercel/analytics/react";
 import { getFeaturedEvent } from "@/lib/events";
 
 const categories = [
@@ -116,7 +115,7 @@ export default function Home() {
             <div className="space-y-7">
               {featuredEvent && (
                 <div className="inline-block rounded-full bg-primary/10 px-4 py-2">
-                  <span className="text-sm font-medium text-primary">Season {featuredEvent.season} Registration opening soon</span>
+                  <span className="text-sm font-medium text-primary">Season {featuredEvent.season} Registration open</span>
                 </div>
               )}
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
