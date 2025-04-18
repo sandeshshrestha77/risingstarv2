@@ -3,16 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Instagram,  Youtube } from "lucide-react";
+import { Facebook, Instagram, Youtube } from "lucide-react";
 
 export default function Footer() {
   const [showQR, setShowQR] = useState(false);
-  const [selectedPayment, setSelectedPayment] = useState<null | "gpay" | "upi" | "visa">(null);
-
-  const handleQRClick = (type: "gpay" | "upi" | "visa") => {
-    setSelectedPayment(type);
-    setShowQR(true);
-  };
 
   return (
     <footer className="bg-secondary text-white relative">
@@ -33,8 +27,7 @@ export default function Footer() {
               Sikkim's Premier Talent Hunt Competition since 2018.
             </p>
             <div className="flex space-x-4">
-              <Link href="https://www.facebook.com/sikkimrisingstar/
-" aria-label="Facebook" className="text-gray-300 hover:text-primary transition-transform duration-200 transform hover:scale-110">
+              <Link href="https://www.facebook.com/sikkimrisingstar/" aria-label="Facebook" className="text-gray-300 hover:text-primary transition-transform duration-200 transform hover:scale-110">
                 <Facebook className="h-5 w-5" />
               </Link>
               <Link href="https://www.instagram.com/sikkimrisingstar_official_/" aria-label="Instagram" className="text-gray-300 hover:text-primary transition-transform duration-200 transform hover:scale-110">
@@ -63,7 +56,7 @@ export default function Footer() {
             <address className="not-italic text-gray-300 space-y-2">
               <p>Indira Bypass Road, Gangtok East Sikkim</p>
               <p className="pt-1">
-                <a href="tel:+919876543210" className="hover:text-primary">
+                <a href="tel:+919734013211" className="hover:text-primary">
                   +91 9734013211 / 8918215965
                 </a>
               </p>
@@ -77,31 +70,15 @@ export default function Footer() {
 
           {/* Payment Options */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 hover:underline">Payment Options</h3>
-            <div className="flex space-x-4 items-center">
+            <h3 className="text-lg font-semibold mb-4 hover:underline">Payment Method</h3>
+            <div className="flex items-center">
               <Image
-                src="/google-pay.svg"
-                alt="Google Pay"
-                width={40}
-                height={40}
+                src="/phonepe.svg"
+                alt="PhonePe"
+                width={120}
+                height={120}
                 className="cursor-pointer hover:scale-105 transition-transform"
-                onClick={() => handleQRClick("gpay")}
-              />
-              <Image
-                src="/upi.svg"
-                alt="UPI"
-                width={40}
-                height={40}
-                className="cursor-pointer hover:scale-105 transition-transform"
-                onClick={() => handleQRClick("upi")}
-              />
-              <Image
-                src="/visa.svg"
-                alt="Visa"
-                width={40}
-                height={40}
-                className="cursor-pointer hover:scale-105 transition-transform"
-                onClick={() => handleQRClick("visa")}
+                onClick={() => setShowQR(true)}
               />
             </div>
           </div>
@@ -133,27 +110,15 @@ export default function Footer() {
       </div>
 
       {/* QR Modal */}
-      {showQR && selectedPayment && (
-        <QRModal method={selectedPayment} onClose={() => setShowQR(false)} />
+      {showQR && (
+        <QRModal onClose={() => setShowQR(false)} />
       )}
     </footer>
   );
 }
 
-// QR Modal Component
-function QRModal({
-  method,
-  onClose,
-}: {
-  method: "gpay" | "upi" | "visa";
-  onClose: () => void;
-}) {
-  const qrMap = {
-    gpay: "/qr-gpay.png",
-    upi: "/qr-upi.png",
-    visa: "/qr-visa.png",
-  };
-
+// QR Modal for PhonePe Only
+function QRModal({ onClose }: { onClose: () => void }) {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50">
       <div className="bg-white rounded-xl p-6 text-center relative w-[300px] animate-fadeIn">
@@ -164,10 +129,10 @@ function QRModal({
         >
           ✕
         </button>
-        <h2 className="text-lg font-bold mb-4 text-black capitalize">Scan to Pay via {method}</h2>
+        <h2 className="text-lg font-bold mb-4 text-black">Scan to Pay via PhonePe</h2>
         <Image
-          src={qrMap[method]}
-          alt={`${method} QR Code`}
+          src="/qr-phonepe.png"
+          alt="PhonePe QR Code"
           width={200}
           height={200}
           className="mx-auto"
