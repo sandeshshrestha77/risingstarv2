@@ -120,7 +120,7 @@ export const events: Event[] = [
       "/season 3/6.jpg",
       "/season 3/7.jpg",
       "/season 3/8.jpg",
-      "/season 2/9.jpg",
+      "/season 3/9.jpg",
       "/season 3/10.jpg",
       "/season 3/11.jpg",
       "/season 3/12.jpg",
