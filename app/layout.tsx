@@ -1,4 +1,3 @@
-import type React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -11,7 +10,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Sikkim Rising Star: Register Now for Season 4 Talent Hunt",
-  description: "Join Rising Star Season 4 - Sikkim's premier talent hunt competition. Showcase your talent on the biggest stage in the region. Register Today!",
+  description:
+    "Join Rising Star Season 4 - Sikkim's premier talent hunt competition. Showcase your talent on the biggest stage in the region. Register Today!",
   alternates: {
     canonical: "https://sikkimrisingstar.com",
   },
@@ -24,12 +24,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link
-          rel="canonical"
-          href="https://sikkimrisingstar.com" 
-        />
-      </head>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
@@ -42,7 +36,7 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
             <Footer />
           </div>
-          <Analytics /> 
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
