@@ -210,96 +210,93 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Team */}
-      <section className="w-full py-12 md:py-24 lg:py-32">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center space-y-4 mb-12">
-            <span className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white font-medium">
-              Meet the Team
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-              Our Dedicated Team
-            </h2>
-            <p className="max-w-3xl mx-auto text-gray-600 text-lg md:text-xl">
-              The passionate individuals driving Sikkim's premier talent hunt.
-            </p>
-          </div>
-          
-          <div className="relative">
-            <div className="flex gap-6 overflow-x-auto scrollbar-hide">
-              {TEAM.map((member) => (
-                <div
-                  key={`team-${member.name}`}
-                  className="flex-shrink-0 w-64 relative rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow bg-white"
-                >
-                  <Image
-                    src={member.image || "/placeholder.svg"}
-                    alt={member.name}
-                    width={256}
-                    height={256}
-                    className="object-cover h-64 w-full"
-                    priority={false}
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                    <h3 className="text-lg font-semibold text-white">
-                      {member.name}
-                    </h3>
-                    <p className="text-sm text-gray-300">
-                      {member.role}
-                    </p>
-                  </div>
-                </div>
-              ))}
+     {/* Our Team */}
+<section className="w-full pt-12 md:pt-24 lg:pt-32 pb-8 md:pb-12 lg:pb-16">
+  <div className="container mx-auto px-4 md:px-6">
+    <div className="text-center space-y-4 mb-12">
+      <span className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white font-medium">
+        Meet the Team
+      </span>
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
+        Our Dedicated Team
+      </h2>
+      <p className="max-w-3xl mx-auto text-gray-600 text-lg md:text-xl">
+        The passionate individuals driving Sikkim's premier talent hunt.
+      </p>
+    </div>
+
+    <div className="relative">
+      <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
+        {TEAM.map((member) => (
+          <div
+            key={`team-${member.name}`}
+            className="flex-shrink-0 w-64 relative rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow bg-white"
+          >
+            <Image
+              src={member.image || "/placeholder.svg"}
+              alt={member.name}
+              width={256}
+              height={256}
+              className="object-cover h-64 w-full"
+              priority={false}
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+              <h3 className="text-lg font-semibold text-white">{member.name}</h3>
+              <p className="text-sm text-gray-300">{member.role}</p>
             </div>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
 
-      <style jsx>{`
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
+{/* Hide Scrollbar */}
+<style jsx>{`
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+`}</style>
 
-      {/* Sponsors */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center space-y-4 mb-12">
-            <span className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary font-medium">
-              Our Partners
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-              Trusted Partners
-            </h2>
-            <p className="max-w-3xl mx-auto text-gray-600 text-lg md:text-xl">
-              We extend our heartfelt gratitude to our past sponsors whose support has been instrumental in our success.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-2 md:gap-6">
-            {SPONSORS.map((sponsor, index) => (
-              <div
-                key={`sponsor-${index}`}
-                className="p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow flex items-center justify-center"
-              >
-                <div className="relative w-24 h-24 md:w-32 md:h-32">
-                  <Image
-                    src={sponsor.logo}
-                    alt={`${sponsor.name} logo`}
-                    fill
-                    className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                    priority={index < 8}
-                  />
-                </div>
-              </div>
-            ))}
+{/* Sponsors */}
+<section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50 mt-0">
+  <div className="container mx-auto px-4 md:px-6">
+    <div className="text-center space-y-4 mb-12">
+      <span className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary font-medium">
+        Our Partners
+      </span>
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
+        Trusted Partners
+      </h2>
+      <p className="max-w-3xl mx-auto text-gray-600 text-lg md:text-xl">
+        We extend our heartfelt gratitude to our past sponsors whose support has been instrumental in our success.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-2 md:gap-6">
+      {SPONSORS.map((sponsor, index) => (
+        <div
+          key={`sponsor-${index}`}
+          className="p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow flex items-center justify-center"
+        >
+          <div className="relative w-24 h-24 md:w-32 md:h-32">
+            <Image
+              src={sponsor.logo}
+              alt={`${sponsor.name} logo`}
+              fill
+              className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
+              priority={index < 8}
+            />
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* CTA */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-primary text-white">
