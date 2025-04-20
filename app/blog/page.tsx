@@ -1,10 +1,15 @@
+
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Calendar, ChevronRight, Search, Tag, User } from "lucide-react"
 import { Input } from "@/components/ui/input"
+import { getBlogPosts, getRecentBlogPosts } from "@/lib/blog"
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const allPosts = getBlogPosts();
+  const recentPosts = getRecentBlogPosts(3);
+  
   return (
     <>
       {/* Recent Posts */}
@@ -13,9 +18,6 @@ export default function BlogPage() {
           <div className="flex flex-col items-start space-y-4">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Recent Posts</h2>
-              <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Catch up on the latest news and stories from our talent hunt competitions.
-              </p>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
@@ -30,6 +32,62 @@ export default function BlogPage() {
                     alt={post.title}
                     fill
                     className="object-cover transition-transform group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </div>
+                <div className="p-4">
+                  <div className="flex items-center gap-4 text-xs text-gray-500 mb-2">
+                    <div className="flex items-center gap-1">
+                      <Calendar className="h-3 w-3 text-primary" />
+                      <span>{post.date}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Tag className="h-3 w-3 text-primary" />
+                      <span>{post.category}</span>
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold">{post.title}</h3>
+                  <p className="mt-2 text-gray-500 line-clamp-2">{post.excerpt}</p>
+                  <div className="mt-4">
+                    <Link href={`/blog/${post.slug}`}>
+                      <Button
+                        variant="outline"
+                        className="border-primary text-primary hover:bg-primary hover:text-white"
+                      >
+                        Read More
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* All Blog Posts */}
+      <section className="w-full py-12 md:py-24 lg:py-32">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+            <div className="space-y-2">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">All Articles</h2>
+              <p className="text-gray-500">Browse our complete collection of blog posts and articles.</p>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {allPosts.map((post) => (
+              <div
+                key={post.id}
+                className="group relative overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md"
+              >
+                <div className="relative h-48 w-full overflow-hidden">
+                  <Image
+                    src={post.image || "/placeholder.svg"}
+                    alt={post.title}
+                    fill
+                    className="object-cover transition-transform group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
                 <div className="p-4">
@@ -91,16 +149,3 @@ export default function BlogPage() {
     </>
   )
 }
-
-
-const recentPosts = [
-{
-id: 1,
-title: "Top 10 Moments from Rising Star Season 3",
-date: "May 10, 2023",
-category: "Events",
-excerpt:"Relive the most spectacular performances from last year's dance competition that left the audience spellbound.",
-image: "/s3 main.jpg",
-slug: "top-moments-dance-sikkim",
-},
-]

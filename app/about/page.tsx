@@ -36,17 +36,17 @@ interface Value {
 const TEAM: TeamMember[] = [
   { name: "Dinesh Rai", role: "Founder", image: "/team/john-doe.jpg" },
   { name: "Basant Rai", role: "Event Manager", image: "/team/jane-smith.jpg" },
-  { name: "Sandesh Shrestha", role: "Developer", image: "/sandeshshrestha.jpeg" },
+  { name: "Sandesh Shrestha", role: "Tech Lead", image: "/sandeshshrestha.jpeg" },
   { name: "Gyatsen Gurung", role: "Executive Head", image: "/team/emily-davis.jpg" },
   { name: "Yangchen Lhamu Tamang", role: "Co-Executive Head", image: "/team/michael-brown.jpg" },
   { name: "Giwan Chettri", role: "Photographer", image: "/team/michael-brown.jpg" },
 ];
 
 const STATS: Stat[] = [
-  { icon: <Users className="w-6 h-6 text-primary" />, value: "250+", label: "Participants" },
+  { icon: <Users className="w-6 h-6 text-primary" />, value: "2500+", label: "Participants" },
   { icon: <Calendar className="w-6 h-6 text-primary" />, value: "4", label: "Events" },
-  { icon: <Award className="w-6 h-6 text-primary" />, value: "50+", label: "Awards" },
-  { icon: <CheckCircle className="w-6 h-6 text-primary" />, value: "100+", label: "Talent Categories" },
+  { icon: <Award className="w-6 h-6 text-primary" />, value: "5+", label: "Awards" },
+  { icon: <CheckCircle className="w-6 h-6 text-primary" />, value: "10+", label: "Talent Categories" },
 ];
 
 const VALUES: Value[] = [
