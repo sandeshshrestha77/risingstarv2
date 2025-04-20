@@ -119,33 +119,6 @@ export default async function BlogPage() {
           </div>
         </div>
       </section>
-
-      {/* Newsletter */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-secondary text-white">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Subscribe to Our Newsletter</h2>
-              <p className="max-w-[600px] text-gray-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Stay updated with the latest news, events, and stories from Sikkim&apos;s Premier Talent Hunt.
-              </p>
-            </div>
-            <div className="mx-auto w-full max-w-sm space-y-2">
-              <form className="flex gap-2">
-                <Input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="max-w-lg flex-1 bg-gray-800 border-gray-700 text-white"
-                />
-                <Button type="submit" className="bg-primary hover:bg-primary/90 text-white">
-                  Subscribe
-                </Button>
-              </form>
-              <p className="text-xs text-gray-400">We respect your privacy. Unsubscribe at any time.</p>
-            </div>
-          </div>
-        </div>
-      </section>
     </>
   )
 }
