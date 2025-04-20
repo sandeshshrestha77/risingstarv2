@@ -280,7 +280,7 @@ export default function AboutPage() {
             </p>
           </div>
           
-          <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-2 md:gap-4">
+          <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-2 md:gap-6">
             {SPONSORS.map((sponsor, index) => (
               <div
                 key={`sponsor-${index}`}
