@@ -272,7 +272,7 @@ export default async function EventDetailPage({ params }: { params: { id: string
                         Registration closes on <span className="font-medium">{event.registrationDeadline}</span>
                       </p>
                     </div>
-                    <Link href="/contact">
+                    <Link href="https://surveyheart.com/form/6804a758e96bdb66c8dfc332">
                       <Button className="w-full bg-primary hover:bg-primary/90 text-sm md:text-base">
                         Register Now
                       </Button>

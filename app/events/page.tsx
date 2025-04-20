@@ -199,7 +199,7 @@ export default async function EventsPage() {
           </p>
         </div>
         <div className="flex flex-col sm:flex-row gap-4">
-          <Link href="/contact">
+          <Link href="https://surveyheart.com/form/6804a758e96bdb66c8dfc332" passHref legacyBehavior>
           <Button className="bg-secondary hover:bg-secondary/90 text-white">
             Register Now
           </Button>

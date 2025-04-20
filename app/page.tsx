@@ -332,7 +332,7 @@ export default function Home() {
               Join Sikkim's Premier Talent Hunt Competition and let your talent shine on the biggest stage in the region.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
+              <Link href="https://surveyheart.com/form/6804a758e96bdb66c8dfc332" passHref legacyBehavior>
                 <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-white">
                   Register Now
                   <ArrowRight className="ml-2 h-4 w-4" />
