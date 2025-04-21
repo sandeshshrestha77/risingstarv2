@@ -193,14 +193,6 @@ export default function Home() {
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
                 </div>
-
-                <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-xl max-w-[200px] hidden md:block">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Trophy className="h-5 w-5 text-amber-500" />
-                    <p className="font-bold text-sm">Grand Prize</p>
-                  </div>
-                  <p className="text-lg font-bold text-primary">₹2,00,000</p>
-                </div>
               </div>
             </div>
           </div>
