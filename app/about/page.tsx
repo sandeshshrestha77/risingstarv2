@@ -34,9 +34,9 @@ interface Value {
 }
 
 const TEAM: TeamMember[] = [
-  { name: "Dinesh Rai", role: "Founder", image: "/team/john-doe.jpg" },
+  { name: "Dinesh Rai", role: "Founder", image: "/team/dineshrai.jpg" },
   { name: "Basant Rai", role: "Event Manager", image: "/team/jane-smith.jpg" },
-  { name: "Sandesh Shrestha", role: "Tech Lead", image: "/sandeshshrestha.jpeg" },
+  { name: "Sandesh Shrestha", role: "Tech Lead", image: "/team/sandeshshrestha.jpeg" },
   { name: "Gyatsen Gurung", role: "Executive Head", image: "/team/emily-davis.jpg" },
   { name: "Yangchen Lhamu Tamang", role: "Co-Executive Head", image: "/team/michael-brown.jpg" },
   { name: "Giwan Chettri", role: "Photographer", image: "/team/michael-brown.jpg" },
@@ -65,184 +65,174 @@ const TIMELINE: TimelineItem[] = [
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col min-h-screen">
-      
-      {/* Our Story */}
-      <section className="w-full py-12 md:py-24 lg:py-32">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
-            <div className="space-y-6">
-              <div className="space-y-4">
-                <span className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white font-medium">
-                  Our Story
-                </span>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-                  Sikkim's Premier Talent Platform
-                </h2>
-                <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
-                  Since 2018, Sikkim Rising Star has been the beacon for hidden talents across Sikkim, transforming a modest Gangtok event into the state's most celebrated talent hunt.
-                </p>
-              </div>
-              <p className="text-gray-600 leading-relaxed">
-                From remote villages to vibrant towns, our mission is to discover, nurture, and elevate local talent, providing a stage for artists to shine nationally and globally.
-              </p>
-              <Link href="/events" passHref legacyBehavior>
-                <Button className="bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3">
-                  Explore Events <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-            </div>
-            
-            <div className="relative h-[300px] md:h-[400px] lg:h-[500px]">
-              <Image
-                src="/02 About Section Main.jpg"
-                alt="Talent Hunt Journey"
-                fill
-                className="object-cover rounded-xl shadow-lg"
-                priority
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center space-y-4 mb-12">
-            <span className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white font-medium">
-              Our Journey
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-              Key Milestones
-            </h2>
-            <p className="max-w-3xl mx-auto text-gray-600 text-lg md:text-xl">
-              Celebrating the milestones that define our journey in uncovering Sikkim's extraordinary talents.
-            </p>
-          </div>
-          
-          <div className="relative max-w-4xl mx-auto">
-            <div className="absolute left-1/2 -translate-x-1/2 h-full w-1 bg-primary"></div>
-            {TIMELINE.map((item, index) => (
-              <div
-                key={`timeline-${index}`}
-                className={`relative flex items-center mb-12 ${index % 2 === 0 ? 'flex-row-reverse' : ''}`}
-              >
-                <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
-                  <div className="p-6 rounded-xl bg-white shadow-md hover:shadow-lg transition-shadow">
-                    <span className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white mb-3">
-                      {item.year}
-                    </span>
-                    <h3 className="text-xl md:text-2xl font-semibold">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-gray-600">
-                      {item.description}
-                    </p>
+        <div className="min-h-screen">
+          {/* Hero Section */}
+          <section className="relative bg-secondary/5 py-20">
+            <div className="container mx-auto px-4">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div className="space-y-6 text-center lg:text-left">
+                  <div className="inline-block rounded-lg bg-primary/5 px-4 py-2 border border-primary/10">
+                    <span className="text-sm font-medium text-primary">Our Story</span>
                   </div>
+                  <h1 className="text-4xl lg:text-5xl font-bold">Sikkim's Premier Talent Platform</h1>
+                  <p className="text-lg text-gray-600">
+                    Since 2018, we've been discovering and nurturing exceptional talent across Sikkim,
+                    transforming dreams into reality on the biggest stage.
+                  </p>
                 </div>
-                <div className="absolute left-1/2 -translate-x-1/2">
-                  <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center shadow-md">
-                    <Calendar className="h-5 w-5 text-white" />
+                <div className="relative h-[400px] rounded-xl overflow-hidden shadow-xl">
+                  <Image
+                    src="/02 About Section Main.jpg"
+                    alt="About Us"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+    
+          {/* Stats */}
+          <section className="py-16 bg-white">
+            <div className="container mx-auto px-4">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                {STATS.map((stat, index) => (
+                  <div key={index} className="p-6 rounded-xl bg-secondary/5 text-center">
+                    <div className="mb-4 flex justify-center">
+                      <div className="p-3 rounded-lg bg-primary/10 text-primary">
+                        {stat.icon}
+                      </div>
+                    </div>
+                    <div className="text-3xl font-bold text-primary mb-2">{stat.value}</div>
+                    <div className="text-gray-600">{stat.label}</div>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
+          </section>
 
-      {/* Values */}
-      <section className="w-full py-12 md:py-24 lg:py-32">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center space-y-4 mb-12">
-            <span className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white font-medium">
-              Our Values
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-              Our Core Principles
-            </h2>
-            <p className="max-w-3xl mx-auto text-gray-600 text-lg md:text-xl">
-              The guiding values that shape our mission and events.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {VALUES.map((value, index) => (
-              <div
-                key={`value-${index}`}
-                className="flex flex-col items-center text-center p-6 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="p-3 rounded-full bg-primary/10 mb-4">
-                  {value.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-2">
-                  {value.title}
-                </h3>
-                <p className="text-gray-600">
-                  {value.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-secondary text-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {STATS.map((stat, index) => (
-              <div key={`stat-${index}`} className="flex flex-col items-center text-center space-y-3">
-                <div className="p-3 rounded-full bg-primary/20">
-                  {stat.icon}
-                </div>
-                <h3 className="text-3xl md:text-4xl font-bold text-primary">
-                  {stat.value}
-                </h3>
-                <p className="text-gray-200">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-     {/* Our Team */}
-<section className="w-full pt-12 md:pt-24 lg:pt-32 pb-8 md:pb-12 lg:pb-16">
+          <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
   <div className="container mx-auto px-4 md:px-6">
     <div className="text-center space-y-4 mb-12">
-      <span className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white font-medium">
-        Meet the Team
+      <span className="inline-block rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">
+        Our Journey
       </span>
       <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-        Our Dedicated Team
+        Key Milestones
       </h2>
       <p className="max-w-3xl mx-auto text-gray-600 text-lg md:text-xl">
-        The passionate individuals driving Sikkim's premier talent hunt.
+        Celebrating the milestones that define our journey in uncovering Sikkim's extraordinary talents.
       </p>
     </div>
 
-    <div className="relative">
-      <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
-        {TEAM.map((member) => (
+    <div className="relative max-w-4xl mx-auto">
+      <div className="absolute left-1/2 -translate-x-1/2 h-full w-1 bg-primary"></div>
+      {TIMELINE.map((item, index) => (
+        <div
+          key={`timeline-${index}`}
+          className={`relative flex flex-col sm:flex-row items-center mb-12 ${index % 2 === 0 ? 'sm:flex-row-reverse' : ''}`}
+        >
+          <div className={`w-full sm:w-5/12 ${index % 2 === 0 ? 'sm:text-right sm:pr-8' : 'sm:text-left sm:pl-8'}`}>
+            <div className="p-6 rounded-xl bg-white shadow-md hover:shadow-lg transition-shadow">
+              <span className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white mb-3">
+                {item.year}
+              </span>
+              <h3 className="text-xl md:text-2xl font-semibold">
+                {item.title}
+              </h3>
+              <p className="mt-2 text-gray-600">
+                {item.description}
+              </p>
+            </div>
+          </div>
+          <div className="absolute left-1/2 -translate-x-1/2 sm:left-auto sm:right-1/2 sm:-translate-x-1/2">
+            <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center shadow-md">
+              <Calendar className="h-5 w-5 text-white" />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+{/* Values */}
+<section className="w-full py-12 md:py-24 lg:py-32">
+  <div className="container mx-auto px-4 md:px-6">
+    <div className="text-center space-y-4 mb-12">
+      <span className="inline-block rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">
+        Our Values
+      </span>
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
+        Our Core Principles
+      </h2>
+      <p className="max-w-3xl mx-auto text-gray-600 text-lg md:text-xl">
+        The guiding values that shape our mission and events.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {VALUES.map((value, index) => (
+        <div
+          key={`value-${index}`}
+          className="flex flex-col items-center text-center p-6 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
+        >
+          <div className="p-3 rounded-full bg-primary/10 mb-4">
+            {value.icon}
+          </div>
+          <h3 className="text-xl font-semibold mb-2">
+            {value.title}
+          </h3>
+          <p className="text-gray-600">
+            {value.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+{/* Team - Final Styled Version */}
+<section className="py-16 bg-neutral-50">
+  <div className="container mx-auto px-6">
+    <div className="text-center mb-12 space-y-4">
+      <span className="inline-block rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">
+        Our Team
+      </span>
+      <h2 className="text-4xl font-extrabold mb-4 text-neutral-800">Meet the People Behind</h2>
+      <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
+        Our dedicated team works tirelessly to discover and showcase Sikkim's brightest talents.
+      </p>
+    </div>
+
+    {/* Horizontal Scroll Without Scrollbar */}
+    <div className="overflow-x-auto pb-2 no-scrollbar">
+      <div className="flex gap-8 min-w-max">
+        {TEAM.map((member, index) => (
           <div
-            key={`team-${member.name}`}
-            className="flex-shrink-0 w-64 relative rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow bg-white"
+            key={index}
+            className="flex-shrink-0 w-64 rounded-xl overflow-hidden relative hover:shadow-xl transition-shadow duration-300"
           >
-            <Image
-              src={member.image || "/placeholder.svg"}
-              alt={member.name}
-              width={256}
-              height={256}
-              className="object-cover h-64 w-full"
-              priority={false}
-            />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-              <h3 className="text-lg font-semibold text-white">{member.name}</h3>
-              <p className="text-sm text-gray-300">{member.role}</p>
+            {/* 256x256 Image Section */}
+            <div className="relative w-[256px] h-[256px] mx-auto grayscale hover:grayscale-0 transition-all duration-300">
+              <div>
+                <Image
+                  src={member.image || '/placeholder.jpg'}
+                  alt={member.name}
+                  width={256}
+                  height={256}
+                  className="object-cover w-[256px] h-[256px] rounded-xl"
+                />
+
+                {/* Overlay - Name & Role in Rounded Rectangle */}
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/80 px-5 py-3 rounded-lg shadow-sm text-center w-[85%] backdrop-blur">
+                  <h3 className="text-base font-semibold text-neutral-800 leading-tight">{member.name}</h3>
+                  <p className="text-sm text-gray-500">{member.role}</p>
+                </div>
+              </div>
             </div>
           </div>
         ))}
@@ -251,52 +241,46 @@ export default function AboutPage() {
   </div>
 </section>
 
-{/* Hide Scrollbar */}
-<style jsx>{`
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-`}</style>
-
-{/* Sponsors */}
-<section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50 mt-0">
-  <div className="container mx-auto px-4 md:px-6">
-    <div className="text-center space-y-4 mb-12">
-      <span className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary font-medium">
-        Our Partners
+ {/* Sponsors */}
+<section className="py-16 md:py-20 bg-gray-50 border-t border-gray-200">
+  <div className="container px-4">
+    <div className="text-center max-w-2xl mx-auto mb-12">
+      <span className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-3">
+        Supported by
       </span>
-      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-        Trusted Partners
+      <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 mb-4">
+        Our Esteemed Sponsors
       </h2>
-      <p className="max-w-3xl mx-auto text-gray-600 text-lg md:text-xl">
-        We extend our heartfelt gratitude to our past sponsors whose support has been instrumental in our success.
-      </p>
+      <p className="text-gray-600 leading-relaxed">We are grateful for the incredible support from our sponsors. Their contributions have been essential to our growth and success.</p>
     </div>
 
-    <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-2 md:gap-6">
+    <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
       {SPONSORS.map((sponsor, index) => (
         <div
-          key={`sponsor-${index}`}
-          className="p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow flex items-center justify-center"
+          key={`${sponsor.name}-${index}`}
+          className="bg-white p-3 md:p-4 rounded-md shadow-sm hover:shadow-md transition duration-300 w-28 h-16 md:w-36 md:h-20 flex items-center justify-center"
         >
-          <div className="relative w-24 h-24 md:w-32 md:h-32">
+          <div className="relative w-full h-full">
             <Image
               src={sponsor.logo}
               alt={`${sponsor.name} logo`}
               fill
-              className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
-              priority={index < 8}
+              className="object-contain grayscale hover:grayscale-0 transition duration-300"
+              sizes="(max-width: 768px) 112px, 144px"
             />
           </div>
         </div>
       ))}
     </div>
+
+    <p className="text-center mt-8 text-gray-600">
+      Interested in becoming a sponsor? <Link href="/contact" className="text-primary underline">Contact us</Link> to learn more about partnership opportunities.
+    </p>
   </div>
 </section>
+
+
+
 
       {/* CTA */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-primary text-white">

@@ -25,7 +25,7 @@ export default function Header() {
   }, [])
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-secondary text-white border-b">
+      <header className="sticky top-0 z-50 w-full bg-secondary text-white">
       <div className="container flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <Link 
@@ -37,14 +37,14 @@ export default function Header() {
           <img 
             src="/logo.png" 
             alt="SIKKIM Rising Star Logo" 
-            className="h-auto max-h-12" 
+            className="h-auto max-h-12 mix-blend-screen"
             width={120} 
-            height={48}
+            height={256}
           />
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6">
+        {/* Centered Nav */}
+        <nav className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 items-center gap-6">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
@@ -54,6 +54,10 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
+        </nav>
+
+        {/* Right-aligned Button */}
+        <div className="hidden md:flex">
           <Link href="/contact" legacyBehavior passHref>
             <Button 
               asChild
@@ -62,7 +66,7 @@ export default function Header() {
               <a>Register Now</a>
             </Button>
           </Link>
-        </nav>
+        </div>
 
         {/* Mobile Menu Button */}
         <button 

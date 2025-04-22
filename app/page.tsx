@@ -135,63 +135,52 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative py-20 md:py-28 lg:py-32 overflow-hidden w-full bg-white">
-        <div className="absolute inset-0 bg-[url('/01 Home Page Image.jpg')] bg-cover bg-center opacity-20"></div>
-        <div className="absolute inset-0 bg-white/80"></div>
-        <div className="container relative z-10 px-4 sm:px-6 mx-auto">
-          <div className="flex flex-col lg:flex-row gap-10 items-center">
-            {/* Left Content */}
-            <div className="lg:w-1/2 space-y-8 text-center lg:text-left">
-              {featuredEvent && (
-                <div className="inline-block rounded-full bg-primary px-5 py-2.5 shadow-md">
-                  <span className="text-sm font-bold text-white">Season {featuredEvent.season} Registration Open</span>
-                </div>
-              )}
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-secondary">
-                <span className="block mb-2">Discover</span>
-                <span className="text-primary">Sikkim's Brightest Stars</span>
+      <section className="bg-white py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8 text-center lg:text-left">
+              <div className="inline-block rounded-xl bg-primary/5 px-4 py-2 border border-primary/10">
+                <span className="text-sm font-medium text-primary flex items-center gap-2">
+                  <Star className="w-4 h-4" />
+                  Season {featuredEvent?.season} Registration Open
+                </span>
+              </div>
+              <h1 className="text-6xl md:text-7xl font-bold">
+                <span className="text-secondary">Discover</span>
+                <br />
+                <span className="text-primary">Sikkim's Stars</span>
               </h1>
-              <p className="text-lg md:text-xl text-gray-700 max-w-xl mx-auto lg:mx-0">
-                The largest talent competition in Sikkim returns with its most spectacular season yet. Join us for an unforgettable journey of talent discovery and celebration.
+              <p className="text-xl text-gray-600 max-w-xl">
+                Join Sikkim's premier talent hunt competition and showcase your skills on the biggest stage.
               </p>
-              <div className="flex flex-wrap gap-5 pt-4 justify-center lg:justify-start">
-                <Link href="/events">
-                  <Button className="bg-primary hover:bg-primary/90 text-white gap-2 px-8 py-6 text-base rounded-xl shadow-lg shadow-primary/20 transition-all duration-300 hover:translate-y-1">
-                    <span className="relative z-10 flex items-center gap-2 font-bold">
-                      Explore Events
-                      <ArrowRight className="w-5 h-5" />
-                    </span>
-                  </Button>
-                </Link>
-                {featuredEvent && (
-                  <Link href="https://surveyheart.com/form/6804a758e96bdb66c8dfc332">
-                    <Button
-                      variant="outline"
-                      className="gap-2 px-8 py-6 text-base rounded-xl bg-black text-white hover:bg-gray-800 hover:text-gray-300 shadow-lg transition-transform duration-300 hover:translate-y-1 hover:shadow-xl"
-                    >
-                      <span className="font-bold">Register Now</span>
-                    </Button>  </Link>
-                )}
+              <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+                <Link href="https://surveyheart.com/form/6804a758e96bdb66c8dfc332" passHref legacyBehavior>
+          <Button className="bg-secondary hover:bg-secondary/90 text-white">
+            Register Now
+          </Button>
+          </Link>
               </div>
             </div>
-
-            {/* Right Content */}
-            <div className="lg:w-1/2 relative mt-10 lg:mt-0">
-              <div className="absolute -top-20 -left-20 w-64 h-64 bg-primary/30 rounded-full filter blur-3xl"></div>
-
-              <div className="relative z-10">
-                <div className="relative w-full max-w-lg mx-auto rounded-2xl overflow-hidden border-8 border-white/10 shadow-2xl">
-                  <div className="aspect-[4/3]">
-                    <Image
-                      src="/01 Home Page Image.jpg"
-                      alt="Rising Star Performance"
-                      fill
-                      className="object-cover"
-                      priority
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
+            <div className="relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/01 Home Page Image.jpg"
+                  alt="Rising Star Performance"
+                  width={800}
+                  height={600}
+                  className="object-cover"
+                  priority
+                />
+              </div>
+              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg">
+                <div className="flex items-center gap-3">
+                  <div className="bg-primary/10 p-2 rounded-lg">
+                    <Trophy className="w-6 h-6 text-primary" />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                  <div>
+                    <p className="text-sm text-gray-600">Total Prize Pool</p>
+                    <p className="text-xl font-bold text-primary">₹2,00,000+</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -374,188 +363,119 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Process Steps */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container px-4">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary mb-3">
-              How It Works
+          {/* Stats Section */}
+          <section className="py-20 bg-secondary">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
+              <p className="text-4xl font-bold text-white mb-2">{pastEvents.length}</p>
+              <p className="text-gray-200">Seasons</p>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Your Journey to Stardom</h2>
-            <p className="text-gray-600">
-              Follow these simple steps to participate in Sikkim Rising Star
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
-              {
-                icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 text-primary"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>,
-                title: "Register Online",
-                description: "Complete the simple registration form with your details and chosen category"
-              },
-              {
-                icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 text-primary"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M15 13v2"></path><path d="M9 13v2"></path><path d="M12 9v6"></path></svg>,
-                title: "Audition",
-                description: "Showcase your talent in front of our expert panel of judges"
-              },
-              {
-                icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 text-primary"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M7 7h.01"></path><path d="M17 7h.01"></path><path d="M7 17h.01"></path><path d="M17 17h.01"></path></svg>,
-                title: "Competition Rounds",
-                description: "Progress through elimination rounds with guidance from mentors"
-              },
-              {
-                icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 text-primary"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>,
-                title: "Grand Finale",
-                description: "Perform in the spectacular finale event and win amazing prizes"
-              }
-            ].map((step, index) => (
-              <div 
-                key={index}
-                className="relative flex flex-col items-center text-center bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300"
-              >
-                <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">
-                  {index + 1}
-                </div>
-                <div className="mb-4 mt-4 w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-                  {step.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                <p className="text-gray-600">{step.description}</p>
-                {index < 3 && (
-                  <div className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2">
-                    <ArrowRight className="w-8 h-8 text-gray-300" />
-                  </div>
-                )}
-              </div>
-            ))}
+            <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
+              <p className="text-4xl font-bold text-white mb-2">
+                {pastEvents.reduce((total, event) => total + (event.statistics?.participants || 0), 0) || '500+'}
+              </p>
+              <p className="text-gray-200">Participants</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
+              <p className="text-4xl font-bold text-white mb-2">
+                {pastEvents.reduce((total, event) => total + (event.winners?.length || 0), 0) || '50+'}
+              </p>
+              <p className="text-gray-200">Winners</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
+              <p className="text-4xl font-bold text-white mb-2">10+</p>
+              <p className="text-gray-200">Districts</p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Recent Blogs */}
       {recentBlogs.length > 0 && (
-        <section className="py-16 md:py-24 bg-white">
-          <div className="container px-4">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
-              <div>
-                <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary mb-3">
-                  From Our Blog
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold">Latest Updates</h2>
-              </div>
-              <Link href="/blog" className="mt-4 md:mt-0 group inline-flex items-center text-primary hover:text-primary/80">
-                Read all posts
-                <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <span className="inline-block bg-primary/10 text-primary rounded-full px-4 py-1.5 text-sm font-medium mb-4">
+                Latest Updates
+              </span>
+              <h2 className="text-4xl font-bold">From Our Blog</h2>
             </div>
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {recentBlogs.map((blog) => (
-                <div 
+                <Link 
                   key={blog.id}
-                  className="group relative overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md"
+                  href={`/blog/${blog.slug}`}
+                  className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
                 >
-                  <div className="relative h-80 w-full overflow-hidden">
+                  <div className="relative h-60">
                     <Image
-                       src={blog.image || "/placeholder.svg"} 
-                       alt={blog.title}
-                       fill
-                       className="object-cover"
-                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-                       priority
+                      src={blog.image || "/placeholder.svg"}
+                      alt={blog.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
                   </div>
-                  <div className="p-4">
-                    <div className="flex items-center gap-4 text-xs text-gray-500 mb-2">
-                      <div className="flex items-center gap-1">
-                        <Calendar className="h-3 w-3 text-primary" />
-                        <span>{blog.date}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Tag className="h-3 w-3 text-primary" />
-                        <span>{blog.category}</span>
-                      </div>
+                  <div className="p-6">
+                    <div className="flex gap-4 text-sm text-gray-500 mb-3">
+                      <span className="flex items-center gap-1">
+                        <Calendar className="w-4 h-4" />
+                        {blog.date}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Tag className="w-4 h-4" />
+                        {blog.category}
+                      </span>
                     </div>
-                    <h3 className="text-xl font-bold">{blog.title}</h3>
-                    <p className="mt-2 text-gray-500 line-clamp-2">{blog.excerpt}</p>
-                    <div className="mt-4">
-                      <Link href={`/blog/${blog.slug}`}>
-                        <Button
-                          variant="outline"
-                          className="border-primary text-primary hover:bg-primary hover:text-white"
-                        >
-                          Read More
-                        </Button>
-                      </Link>
-                    </div>
+                    <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                      {blog.title}
+                    </h3>
+                    <p className="text-gray-600 line-clamp-2">{blog.excerpt}</p>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
         </section>
       )}
 
-      {/* Stats Section */}
-      <section className="py-16 md:py-24 bg-black text-white">
-        <div className="container px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center transform transition-transform hover:scale-105 duration-300">
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">{pastEvents.length}</div>
-              <p className="text-gray-400">Seasons Completed</p>
-            </div>
-            <div className="text-center transform transition-transform hover:scale-105 duration-300">
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
-                {pastEvents.reduce((total, event) => total + (event.statistics?.participants || 0), 0) || '500+'}
-              </div>
-              <p className="text-gray-400">Participants</p>
-            </div>
-            <div className="text-center transform transition-transform hover:scale-105 duration-300">
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
-                {pastEvents.reduce((total, event) => total + (event.winners?.length || 0), 0) || '50+'}
-              </div>
-              <p className="text-gray-400">Winners & Finalists</p>
-            </div>
-            <div className="text-center transform transition-transform hover:scale-105 duration-300">
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">10+</div>
-              <p className="text-gray-400">Districts Covered</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Sponsors */}
-      <section className="py-16 md:py-20 bg-gray-50">
-        <div className="container px-4">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary mb-3">
-              Our Sponsors
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Proudly Supported By</h2>
-            <p className="text-gray-600">
-              Thank you to our amazing sponsors who make this event possible
-            </p>
-          </div>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-            {sponsors.map((sponsor, index) => (
-              <div 
-                key={`${sponsor.name}-${index}`} 
-                className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all transform hover:-translate-y-1 duration-300"
-              >
-                <div className="relative w-36 h-20">
-                  <Image
-                    src={sponsor.logo}
-                    alt={`${sponsor.name} logo`}
-                    fill
-                    className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 150px"
-                  />
-                </div>
-              </div>
-            ))}
+<section className="py-16 md:py-20 bg-gray-50 border-t border-gray-200">
+  <div className="container px-4">
+    <div className="text-center max-w-2xl mx-auto mb-12">
+      <span className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-3">
+        Trusted By
+      </span>
+      <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 mb-4">
+        Proudly Supported By
+      </h2>
+      <p className="text-gray-600 leading-relaxed">
+        We’re honored to collaborate with forward-thinking brands that help us go further.
+      </p>
+    </div>
+
+    <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
+      {sponsors.map((sponsor, index) => (
+        <div
+          key={`${sponsor.name}-${index}`}
+          className="bg-white p-3 md:p-4 rounded-md shadow-sm hover:shadow-md transition duration-300 w-28 h-16 md:w-36 md:h-20 flex items-center justify-center"
+        >
+          <div className="relative w-full h-full">
+            <Image
+              src={sponsor.logo}
+              alt={`${sponsor.name} logo`}
+              fill
+              className="object-contain grayscale hover:grayscale-0 transition duration-300"
+              sizes="(max-width: 768px) 112px, 144px"
+            />
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* CTA */}
       <section className="w-full py-8 sm:py-16 bg-primary text-white">

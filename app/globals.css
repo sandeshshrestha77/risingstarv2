@@ -92,19 +92,28 @@ body {
     @apply bg-background text-foreground;
   }
 }
-@keyframes slide {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+@keyframes slide-x {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* For mobile/tablet, make it faster */
+.animate-slide-x {
+  animation: slide-x 18s linear infinite;
+}
+
+/* Optional: Adjust for larger screens using media queries */
+@media (min-width: 768px) {
+  .animate-slide-x {
+    animation-duration: 24s;
   }
 }
 
-.animate-slide {
-  animation: slide 20s linear infinite;
-}
-
-.animate-slide:hover {
-  animation-play-state: paused;
-}

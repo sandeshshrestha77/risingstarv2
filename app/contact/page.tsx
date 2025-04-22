@@ -100,133 +100,67 @@ export default function ContactPage() {
     }
   }
   return (
-    <>
+    <div className="min-h-screen">
+      {/* Hero */}
+      <section className="bg-secondary/5 py-20">
+        <div className="container mx-auto px-4 text-center">
+          <div className="inline-block rounded-lg bg-primary/5 px-4 py-2 border border-primary/10 mb-6">
+            <span className="text-sm font-medium text-primary">Contact Us</span>
+          </div>
+          <h1 className="text-4xl lg:text-5xl font-bold mb-6">Get in Touch</h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Have questions about our events? We're here to help!
+          </p>
+        </div>
+      </section>
+
+    {/* Contact Info & Form */}
+    <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12">
       {/* Contact Information */}
-      <section className="w-full py-12 md:py-24 lg:py-32">
-        <div className="container px-4 md:px-6">
-          <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
-            <div className="flex flex-col justify-center space-y-4">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Get in Touch</h2>
-                <p className="text-gray-500 md:text-xl">
-                  Have questions about our events, registration process, or anything else? We're here to help!
-                </p>
-              </div>
-              <div className="space-y-6 mt-6">
-                <div className="flex items-start space-x-4">
-                  <MapPin className="h-6 w-6 text-primary flex-shrink-0" />
-                  <div>
-                    <h3 className="font-medium">Our Location</h3>
-                    <address className="not-italic text-gray-500">
-                    Indira Bypass Road,
-                      <br />
-                      Gangtok East Sikkim
-                      <br />
-                      India
-                    </address>
-                  </div>
+      <div className="space-y-8">
+              <div className="flex items-start gap-4">
+                <div className="p-3 rounded-lg bg-primary/10">
+                  <MapPin className="h-6 w-6 text-primary" />
                 </div>
-                <div className="flex items-start space-x-4">
-                  <Phone className="h-6 w-6 text-primary flex-shrink-0" />
-                  <div>
-                    <h3 className="font-medium">Phone</h3>
-                    <p className="text-gray-500">
-                      <a href="tel:+919876543210" className="hover:text-primary">
-                      +91 9734013211 / 8918215965
-                      </a>
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <Mail className="h-6 w-6 text-primary flex-shrink-0" />
-                  <div>
-                    <h3 className="font-medium">Email</h3>
-                    <p className="text-gray-500">
-                      <a href="mailto:sikkimrisingstar@gmail.com" className="hover:text-primary">
-                        sikkimrisingstar@gmail.com
-                      </a>
-                    </p>
-                  </div>
+                <div>
+                  <h3 className="font-semibold mb-2">Our Location</h3>
+                  <p className="text-gray-600">
+                    Indira Bypass Road,<br />
+                    Gangtok East Sikkim<br />
+                    India
+                  </p>
                 </div>
               </div>
-              <div className="mt-6">
-                <h3 className="font-medium mb-2">Follow Us</h3>
-                <div className="flex space-x-4">
-                  <a href="#" className="text-gray-500 hover:text-primary">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="h-5 w-5"
-                    >
-                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                    </svg>
-                    <span className="sr-only">Facebook</span>
-                  </a>
-                  <a href="#" className="text-gray-500 hover:text-primary">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="h-5 w-5"
-                    >
-                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                    </svg>
-                    <span className="sr-only">Instagram</span>
-                  </a>
-                  <a href="#" className="text-gray-500 hover:text-primary">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="h-5 w-5"
-                    >
-                      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                    </svg>
-                    <span className="sr-only">Twitter</span>
-                  </a>
-                  <a href="#" className="text-gray-500 hover:text-primary">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="h-5 w-5"
-                    >
-                      <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
-                      <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
-                    </svg>
-                    <span className="sr-only">YouTube</span>
-                  </a>
+
+              <div className="flex items-start gap-4">
+                <div className="p-3 rounded-lg bg-primary/10">
+                  <Phone className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">Phone</h3>
+                  <p className="text-gray-600">
+                    +91 9734013211 / 8918215965
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="p-3 rounded-lg bg-primary/10">
+                  <Mail className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">Email</h3>
+                  <p className="text-gray-600">
+                    sikkimrisingstar@gmail.com
+                  </p>
                 </div>
               </div>
             </div>
-            <div className="space-y-4">
+
+            {/* Contact Form */}
+            <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-100">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Send Us a Message</h2>
                 <p className="text-gray-500">Fill out the form below and we'll get back to you as soon as possible.</p>
@@ -342,22 +276,22 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="w-full h-[400px] mt-8">
-        <div className="w-full h-full">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14129.754224044234!2d88.59602367535552!3d27.33903385454702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e6a56a5805eafb%3A0x73d6132c501c8f20!2sGangtok%2C%20Sikkim!5e0!3m2!1sen!2sin!4v1650956237702!5m2!1sen!2sin"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen={true}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Sikkim Talent Hunt Location"
-            className="rounded-lg"
-          ></iframe>
+     {/* Map */}
+     <section className="py-20 bg-secondary/5">
+        <div className="container mx-auto px-4">
+          <div className="rounded-xl overflow-hidden shadow-lg h-[400px]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14129.754224044234!2d88.59602367535552!3d27.33903385454702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e6a56a5805eafb%3A0x73d6132c501c8f20!2sGangtok%2C%20Sikkim!5e0!3m2!1sen!2sin!4v1650956237702!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
         </div>
       </section>
-    </>
+    </div>
   )
 }

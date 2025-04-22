@@ -1,124 +1,112 @@
 
-import Link from "next/link"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Calendar, ChevronRight, Search, Tag, User } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { getBlogPosts, getRecentBlogPosts } from "@/lib/blog"
+'use client';
 
-export default async function BlogPage() {
-  const allPosts = getBlogPosts();
-  const recentPosts = getRecentBlogPosts(3);
-  
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Calendar, ArrowRight, Tag } from "lucide-react";
+import { getBlogPosts } from "@/lib/blog";
+
+export default function BlogPage() {
+  const posts = getBlogPosts();
+  const featuredPost = posts[0];
+
   return (
-    <>
-      {/* Recent Posts */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-start space-y-4">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Recent Posts</h2>
+    <div className="min-h-screen">
+      {/* Hero */}
+      <section className="bg-secondary/5 py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <div className="inline-block rounded-lg bg-primary/5 px-4 py-2 border border-primary/10 mb-6">
+              <span className="text-sm font-medium text-primary">Our Blog</span>
             </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-            {recentPosts.map((post) => (
-              <div
-                key={post.id}
-                className="group relative overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md"
-              >
-                <div className="relative h-48 w-full overflow-hidden">
-                  <Image
-                    src={post.image || "/placeholder.svg"}
-                    alt={post.title}
-                    fill
-                    className="object-cover transition-transform group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                </div>
-                <div className="p-4">
-                  <div className="flex items-center gap-4 text-xs text-gray-500 mb-2">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-3 w-3 text-primary" />
-                      <span>{post.date}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Tag className="h-3 w-3 text-primary" />
-                      <span>{post.category}</span>
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold">{post.title}</h3>
-                  <p className="mt-2 text-gray-500 line-clamp-2">{post.excerpt}</p>
-                  <div className="mt-4">
-                    <Link href={`/blog/${post.slug}`}>
-                      <Button
-                        variant="outline"
-                        className="border-primary text-primary hover:bg-primary hover:text-white"
-                      >
-                        Read More
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6">Latest Updates</h1>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Stay updated with the latest news, events, and stories from Sikkim Rising Star.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* All Blog Posts */}
-      <section className="w-full py-12 md:py-24 lg:py-32">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">All Articles</h2>
-              <p className="text-gray-500">Browse our complete collection of blog posts and articles.</p>
+      {/* Featured Post */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          {featuredPost && (
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="relative h-[400px] rounded-xl overflow-hidden shadow-lg">
+                <Image
+                  src={featuredPost.image || "/placeholder.svg"}
+                  alt={featuredPost.title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+              <div className="space-y-6">
+                <div className="flex items-center gap-4 text-sm text-gray-500">
+                  <span className="flex items-center gap-1">
+                    <Calendar className="h-4 w-4" />
+                    {featuredPost.date}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Tag className="h-4 w-4" />
+                    {featuredPost.category}
+                  </span>
+                </div>
+                <h2 className="text-3xl font-bold">{featuredPost.title}</h2>
+                <p className="text-gray-600">{featuredPost.excerpt}</p>
+                <Link href={`/blog/${featuredPost.slug}`}>
+                  <Button>
+                    Read More
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
             </div>
+          )}
+        </div>
+      </section>
+
+      {/* All Posts */}
+      <section className="py-20 bg-secondary/5">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">All Articles</h2>
+            <p className="text-gray-600">Browse our complete collection of articles</p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {allPosts.map((post) => (
-              <div
-                key={post.id}
-                className="group relative overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md"
-              >
-                <div className="relative h-48 w-full overflow-hidden">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {posts.slice(1).map((post) => (
+              <div key={post.id} className="bg-white rounded-xl overflow-hidden shadow-lg">
+                <div className="relative h-48">
                   <Image
                     src={post.image || "/placeholder.svg"}
                     alt={post.title}
                     fill
-                    className="object-cover transition-transform group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover"
                   />
                 </div>
-                <div className="p-4">
-                  <div className="flex items-center gap-4 text-xs text-gray-500 mb-2">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-3 w-3 text-primary" />
-                      <span>{post.date}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Tag className="h-3 w-3 text-primary" />
-                      <span>{post.category}</span>
-                    </div>
+                <div className="p-6">
+                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                    <span className="flex items-center gap-1">
+                      <Calendar className="h-4 w-4" />
+                      {post.date}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Tag className="h-4 w-4" />
+                      {post.category}
+                    </span>
                   </div>
-                  <h3 className="text-xl font-bold">{post.title}</h3>
-                  <p className="mt-2 text-gray-500 line-clamp-2">{post.excerpt}</p>
-                  <div className="mt-4">
-                    <Link href={`/blog/${post.slug}`}>
-                      <Button
-                        variant="outline"
-                        className="border-primary text-primary hover:bg-primary hover:text-white"
-                      >
-                        Read More
-                      </Button>
-                    </Link>
-                  </div>
+                  <h3 className="text-xl font-bold mb-2">{post.title}</h3>
+                  <p className="text-gray-600 mb-4 line-clamp-2">{post.excerpt}</p>
+                  <Link href={`/blog/${post.slug}`}>
+                    <Button variant="outline" className="w-full">Read More</Button>
+                  </Link>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
-    </>
-  )
+    </div>
+  );
 }

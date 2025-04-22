@@ -20,150 +20,115 @@ export default async function EventsPage() {
   const pastEvents = await getPastEvents()
 
   return (
+    <div className="min-h-screen">
+      {/* Hero */}
+      <section className="bg-secondary/5 py-20">
+        <div className="container mx-auto px-4 text-center">
+          <div className="inline-block rounded-lg bg-primary/5 px-4 py-2 border border-primary/10 mb-6">
+            <span className="text-sm font-medium text-primary">Events</span>
+          </div>
+          <h1 className="text-4xl lg:text-5xl font-bold mb-6">Discover Our Events</h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Join Sikkim's most prestigious talent competitions and showcase your skills.
+          </p>
+        </div>
+      </section>
     <div className="flex flex-col items-center">
-      {/* Upcoming Events */}
-      <section id="upcoming" className="w-full py-8 md:py-16 scroll-mt-16">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center text-center space-y-4 mb-12">
-        <div className="bg-primary text-white text-xs font-medium px-4 py-1 rounded-full">
-          Upcoming
-        </div>
-        <h2 className="text-2xl md:text-3xl font-bold tracking-tighter">Upcoming Events</h2>
-        <p className="max-w-[700px] text-gray-500 text-sm md:text-lg">
-          Register now to participate in these exciting talent competitions.
-        </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-        {upcomingEvents.map((event) => (
-          <div
-          key={event.id}
-          className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md flex flex-col h-full"
-          >
-          <div className="relative h-40 sm:h-60 w-full overflow-hidden">
-            <Image
-            src={event.image || "/placeholder.svg"}
-            alt={event.title}
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-            <div className="absolute top-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
-            Featured
-            </div>
-            <div className="absolute bottom-4 left-4 right-4">
-            <h3 className="text-lg sm:text-xl font-bold text-white">{event.title}</h3>
-            </div>
+    {/* Upcoming Events */}
+    <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Upcoming Events</h2>
+            <p className="text-gray-600">Don't miss out on these exciting opportunities</p>
           </div>
-          <div className="p-4 sm:p-5 flex-grow flex flex-col">
-            <div className="flex items-center gap-3 text-xs sm:text-sm text-gray-500 mb-3">
-            <div className="flex items-center gap-1">
-              <Calendar className="h-4 w-4 text-primary" />
-              <span>{event.date}</span>
-            </div>
-            <div className="flex items-center gap-1">
-              <MapPin className="h-4 w-4 text-primary" />
-              <span>{event.location}</span>
-            </div>
-            </div>
-            <p className="mt-2 text-gray-600 line-clamp-2 mb-4 text-xs sm:text-sm">{event.description}</p>
-            <div className="mt-auto flex justify-between items-center pt-4 border-t border-gray-100">
-            <span
-              className={`text-xs sm:text-sm font-medium rounded-full px-2.5 py-0.5 ${
-              event.registrationOpen 
-                ? "bg-green-50 text-green-700" 
-                : "bg-red-50 text-red-700"
-              }`}
-            >
-              {event.registrationOpen ? "Registration Open" : "Registration Closed"}
-            </span>
-            <Link href={`/events/${event.id}`}>
-              <Button
-              variant="ghost"
-              className="text-primary hover:text-primary hover:bg-primary/5 p-0 h-auto gap-1 font-medium text-xs sm:text-sm"
-              >
-              Details <ArrowRight className="h-4 w-4" />
-              </Button>
-            </Link>
-            </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {upcomingEvents.map((event) => (
+              <div key={event.id} className="group bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100">
+                <div className="relative h-48">
+                  <Image
+                    src={event.image || "/placeholder.svg"}
+                    alt={event.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  {event.registrationOpen && (
+                    <div className="absolute top-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
+                      Registration Open
+                    </div>
+                  )}
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                    <span className="flex items-center gap-1">
+                      <Calendar className="h-4 w-4" />
+                      {event.date}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <MapPin className="h-4 w-4" />
+                      {event.location}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">{event.title}</h3>
+                  <p className="text-gray-600 mb-4 line-clamp-2">{event.description}</p>
+                  <Link href={`/events/${event.id}`}>
+                    <Button className="w-full">
+                      View Details
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
-          </div>
-        ))}
         </div>
-
-        {upcomingEvents.length === 0 && (
-        <div className="text-center py-8 sm:py-12 border border-dashed border-gray-200 rounded-lg bg-gray-50">
-          <p className="text-gray-500">No upcoming events at the moment. Check back soon!</p>
-        </div>
-        )}
-      </div>
       </section>
 
       {/* Past Events */}
-      <section id="past" className="w-full py-16 md:py-24 bg-gray-50 scroll-mt-16">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center text-center space-y-4 mb-12">
-        <div className="bg-secondary text-white text-sm font-medium px-4 py-1 rounded-full">
-          Past Events
-        </div>
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">Previous Competitions</h2>
-        <p className="max-w-[700px] text-gray-500 md:text-lg">
-          Relive the moments from our past talent hunt events.
-        </p>
-        </div>
-
-        {/* Horizontal Scroll for Past Events */}
-        <div className="relative w-full">
-          <div className="flex overflow-x-auto gap-4 md:gap-8 mt-8 pb-4 snap-x snap-mandatory scrollbar-hide">
-          {pastEvents.map((event) => (
-        <div
-        key={event.id}
-        className="snap-start flex-none w-[280px] sm:w-[300px] md:w-[350px] lg:w-[380px] group relative overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md"
-        >
-        <div className="relative h-60 w-full overflow-hidden">
-          <Image
-          src={event.image || "/placeholder.svg"}
-          alt={event.title}
-          fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105 filter grayscale group-hover:grayscale-0"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-          <div className="absolute bottom-4 left-4 right-4">
-          <h3 className="text-xl md:text-2xl font-bold text-white">{event.title}</h3>
+      <section className="py-20 bg-secondary/5">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Past Events</h2>
+            <p className="text-gray-600">Relive our previous successful events</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {pastEvents.map((event) => (
+              <div key={event.id} className="bg-white rounded-xl overflow-hidden shadow-lg">
+                <div className="relative h-48">
+                  <Image
+                    src={event.image || "/placeholder.svg"}
+                    alt={event.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                    <span className="flex items-center gap-1">
+                      <Calendar className="h-4 w-4" />
+                      {event.date}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <MapPin className="h-4 w-4" />
+                      {event.location}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">{event.title}</h3>
+                  <p className="text-gray-600 mb-4 line-clamp-2">{event.description}</p>
+                  <Link href={`/events/${event.id}`}>
+                    <Button variant="outline" className="w-full">View Details</Button>
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-        <div className="p-5 flex-grow flex flex-col">
-          <div className="flex items-center gap-3 text-sm text-gray-500 mb-3">
-          <div className="flex items-center gap-1">
-            <Calendar className="h-4 w-4 text-gray-400" />
-            <span>{event.date}</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <MapPin className="h-4 w-4 text-gray-400" />
-            <span>{event.location}</span>
-          </div>
-          </div>
-          <p className="mt-2 text-gray-600 line-clamp-2 mb-4">{event.description}</p>
-          <div className="mt-auto pt-4 border-t border-gray-100">
-          <Link href={`/events/${event.id}`}>
-            <Button className="w-full bg-white hover:bg-gray-50 text-gray-700 border border-gray-200">
-            View Event Details
-            </Button>
-          </Link>
-          </div>
-        </div>
-        </div>
-          ))}
-          </div>
-        </div>
-      </div>
       </section>
 
       {/* FAQs */}
       <section className="w-full py-8 sm:py-16">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-        <div className="bg-primary text-white text-xs font-medium px-4 py-1 rounded-full">
+        <div className="inline-block rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">
           FAQs
         </div>
         <h2 className="text-2xl md:text-3xl font-bold tracking-tighter">Frequently Asked Questions</h2>
@@ -213,6 +178,7 @@ export default async function EventsPage() {
         </div>
       </div>
       </section>
+      </div>
     </div>
   )
 }
