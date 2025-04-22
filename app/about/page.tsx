@@ -67,32 +67,38 @@ export default function AboutPage() {
   return (
         <div className="min-h-screen">
           {/* Hero Section */}
-          <section className="relative bg-secondary/5 py-20">
-            <div className="container mx-auto px-4">
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="space-y-6 text-center lg:text-left">
-                  <div className="inline-block rounded-lg bg-primary/5 px-4 py-2 border border-primary/10">
-                    <span className="text-sm font-medium text-primary">Our Story</span>
-                  </div>
-                  <h1 className="text-4xl lg:text-5xl font-bold">Sikkim's Premier Talent Platform</h1>
-                  <p className="text-lg text-gray-600">
-                    Since 2018, we've been discovering and nurturing exceptional talent across Sikkim,
-                    transforming dreams into reality on the biggest stage.
-                  </p>
-                </div>
-                <div className="relative h-[400px] rounded-xl overflow-hidden shadow-xl">
-                  <Image
-                    src="/02 About Section Main.jpg"
-                    alt="About Us"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
-          </section>
-    
+          <section className="relative bg-secondary/5 py-16">
+  <div className="container mx-auto px-4">
+    <div className="grid lg:grid-cols-2 gap-12 items-center">
+      
+      {/* Text Side */}
+      <div className="space-y-6 text-center lg:text-left">
+        <div className="inline-block rounded-lg bg-primary/5 px-4 py-2 border border-primary/10">
+          <span className="text-sm font-medium text-primary">Our Story</span>
+        </div>
+        <h1 className="text-4xl lg:text-5xl font-bold">
+          Sikkim's Premier Talent Platform
+        </h1>
+        <p className="text-lg text-gray-600">
+          Since 2018, we've been discovering and nurturing exceptional talent across Sikkim,
+          transforming dreams into reality on the biggest stage.
+        </p>
+      </div>
+
+      {/* Image Side – Cover, No Black Gaps, Mobile-Friendly */}
+      <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] rounded-xl overflow-hidden shadow-xl">
+        <Image
+          src="/02 About Section Main.jpg"
+          alt="About Us"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
           {/* Stats */}
           <section className="py-16 bg-white">
             <div className="container mx-auto px-4">

@@ -134,59 +134,78 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="bg-white py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8 text-center lg:text-left">
-              <div className="inline-block rounded-xl bg-primary/5 px-4 py-2 border border-primary/10">
-                <span className="text-sm font-medium text-primary flex items-center gap-2">
-                  <Star className="w-4 h-4" />
-                  Season {featuredEvent?.season} Registration Open
-                </span>
-              </div>
-              <h1 className="text-6xl md:text-7xl font-bold">
-                <span className="text-secondary">Discover</span>
-                <br />
-                <span className="text-primary">Sikkim's Stars</span>
-              </h1>
-              <p className="text-xl text-gray-600 max-w-xl">
-                Join Sikkim's premier talent hunt competition and showcase your skills on the biggest stage.
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                <Link href="https://surveyheart.com/form/6804a758e96bdb66c8dfc332" passHref legacyBehavior>
-          <Button className="bg-secondary hover:bg-secondary/90 text-white">
-            Register Now
-          </Button>
-          </Link>
-              </div>
+      <section className="bg-white py-16">
+  <div className="container mx-auto px-4">
+    {/* Top Notice - Mobile First */}
+    <div className="mb-6 lg:hidden flex justify-center">
+      <div className="inline-block rounded-xl bg-primary/5 px-4 py-2 border border-primary/10">
+        <span className="text-sm font-medium text-primary flex items-center gap-2">
+          <Star className="w-4 h-4" />
+          Season {featuredEvent?.season} Registration Open
+        </span>
+      </div>
+    </div>
+
+    <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* IMAGE First on Mobile */}
+      <div className="relative order-1 lg:order-2">
+        <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+          <Image
+            src="/01 Home Page Image.jpg"
+            alt="Rising Star Performance"
+            width={800}
+            height={600}
+            className="object-cover w-full h-auto"
+            priority
+          />
+        </div>
+        <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg">
+          <div className="flex items-center gap-3">
+            <div className="bg-primary/10 p-2 rounded-lg">
+              <Trophy className="w-6 h-6 text-primary" />
             </div>
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/01 Home Page Image.jpg"
-                  alt="Rising Star Performance"
-                  width={800}
-                  height={600}
-                  className="object-cover"
-                  priority
-                />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg">
-                <div className="flex items-center gap-3">
-                  <div className="bg-primary/10 p-2 rounded-lg">
-                    <Trophy className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-600">Total Prize Pool</p>
-                    <p className="text-xl font-bold text-primary">₹2,00,000+</p>
-                  </div>
-                </div>
-              </div>
+            <div>
+              <p className="text-sm text-gray-600">Total Prize Pool</p>
+              <p className="text-xl font-bold text-primary">₹2,00,000+</p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* TEXT CONTENT */}
+      <div className="space-y-8 text-center lg:text-left order-2 lg:order-1">
+        {/* Show notice again on large screens */}
+        <div className="hidden lg:inline-block rounded-xl bg-primary/5 px-4 py-2 border border-primary/10">
+          <span className="text-sm font-medium text-primary flex items-center gap-2">
+            <Star className="w-4 h-4" />
+            Season {featuredEvent?.season} Registration Open
+          </span>
+        </div>
+
+        <h1 className="text-5xl md:text-6xl font-bold">
+          <span className="text-secondary">Discover</span>
+          <br />
+          <span className="text-primary">Sikkim's Stars</span>
+        </h1>
+        <p className="text-lg md:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0">
+          Join Sikkim's premier talent hunt competition and showcase your skills on the biggest stage.
+        </p>
+        <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+          <Link
+            href="https://surveyheart.com/form/6804a758e96bdb66c8dfc332"
+            passHref
+            legacyBehavior
+          >
+            <Button className="bg-secondary hover:bg-secondary/90 text-white">
+              Register Now
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Featured Event */}
       {featuredEvent && (
