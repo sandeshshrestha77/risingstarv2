@@ -135,7 +135,7 @@ export default function Home() {
 
   return (
     <>
-    <ImagePopup imageSrc="/S4 main.jpg" targetLink="https://sikkimrisingstar.com/events/201" />
+    <ImagePopup imageSrc="/s4 main.jpg" targetLink="https://sikkimrisingstar.com/events/201" />
       <section className="bg-white py-16">
   <div className="container mx-auto px-4">
     {/* Top Notice - Mobile First */}
@@ -412,18 +412,18 @@ export default function Home() {
         </div>
       </section>
 
-     {/* Ads */}
+   {/* Ads */}
 <section className="w-full py-8 sm:py-16 bg-transparent text-transparent">
   <div className="container px-4 md:px-6">
     <div className="flex flex-col items-center justify-center text-center">
-      <div>
+      <div className="w-full max-w-[800px] aspect-[20/3] rounded-xl shadow-2xl overflow-hidden">
         {/* Image/GIF as a clickable link */}
         <Link href="./" legacyBehavior>
           <a>
             <img 
               src="/ad/ad.gif" 
               alt="Showcase Your Talent" 
-              className="cursor-pointer w-[800px] h-[120px] object-cover rounded-xl shadow-2xl"
+              className="w-full h-full object-cover cursor-pointer"
             />
           </a>
         </Link>
@@ -431,6 +431,7 @@ export default function Home() {
     </div>
   </div>
 </section>
+
 
 
       {/* Recent Blogs */}

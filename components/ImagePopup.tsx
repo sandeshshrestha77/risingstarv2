@@ -33,18 +33,17 @@ const ImagePopup = ({ imageSrc, targetLink }: ImagePopupProps) => {
       {show && (
         <div className="fixed inset-0 z-[9999] bg-black/70 flex items-center justify-center">
           <div
-            className="relative max-w-[90%] sm:max-w-lg lg:max-w-2xl cursor-pointer rounded-xl overflow-hidden"
+            className="relative w-[90%] max-w-[800px] aspect-[800/120] cursor-pointer rounded-xl overflow-hidden"
             onClick={handleRedirect}
           >
             <Image
               src={imageSrc}
               alt="Popup"
-              width={800}
-              height={600}
-              className="w-full h-auto object-cover rounded-xl shadow-lg"
+              fill
+              className="object-cover rounded-xl shadow-2xl"
             />
             <button
-              className="absolute top-2 right-2 bg-white/80 hover:bg-white text-black p-1 rounded-full"
+              className="absolute top-2 right-2 bg-white/80 hover:bg-white text-black p-1 rounded-full z-10"
               onClick={(e) => {
                 e.stopPropagation();
                 setShow(false);
