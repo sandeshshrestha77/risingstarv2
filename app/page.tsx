@@ -474,24 +474,48 @@ export default function Home() {
       </p>
     </div>
 
-    <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
-      {sponsors.map((sponsor, index) => (
-        <div
-          key={`${sponsor.name}-${index}`}
-          className="bg-white p-3 md:p-4 rounded-md shadow-sm hover:shadow-md transition duration-300 w-28 h-16 md:w-36 md:h-20 flex items-center justify-center"
-        >
-          <div className="relative w-full h-full">
-            <Image
-              src={sponsor.logo}
-              alt={`${sponsor.name} logo`}
-              fill
-              className="object-contain grayscale hover:grayscale-0 transition duration-300"
-              sizes="(max-width: 768px) 112px, 144px"
-            />
-          </div>
-        </div>
-      ))}
+    {/* Mobile */}
+<div className="flex flex-wrap justify-center items-center gap-4 md:hidden">
+  {sponsors.map((sponsor, index) => (
+    <div
+      key={`mobile-${sponsor.name}-${index}`}
+      className="bg-white p-3 rounded-md shadow-sm hover:shadow-md transition duration-300 w-1/4 h-16 flex items-center justify-center"
+    >
+      <div className="relative w-full h-full">
+        <Image
+          src={sponsor.logo}
+          alt={`${sponsor.name} logo`}
+          fill
+          className="object-contain grayscale hover:grayscale-0 transition duration-300"
+          sizes="112px"
+        />
+      </div>
     </div>
+  ))}
+</div>
+
+{/* Desktop: Show all sponsors */}
+<div className="hidden md:flex flex-wrap justify-center items-center gap-10">
+  {sponsors.map((sponsor, index) => (
+    <div
+      key={`desktop-${sponsor.name}-${index}`}
+      className="bg-white p-4 rounded-md shadow-sm hover:shadow-md transition duration-300 w-36 h-20 flex items-center justify-center"
+    >
+      <div className="relative w-full h-full">
+        <Image
+          src={sponsor.logo}
+          alt={`${sponsor.name} logo`}
+          fill
+          className="object-contain grayscale hover:grayscale-0 transition duration-300"
+          sizes="144px"
+        />
+      </div>
+    </div>
+  ))}
+</div>
+    <p className="text-center mt-8 text-gray-600">
+      Interested in becoming a sponsor? <Link href="/contact" className="text-primary underline">Contact us</Link> to learn more about partnership opportunities.
+    </p>
   </div>
 </section>
 

@@ -109,7 +109,6 @@ export default function Footer() {
   );
 }
 
-// QR Modal
 function QRModal({ onClose }: { onClose: () => void }) {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50">
