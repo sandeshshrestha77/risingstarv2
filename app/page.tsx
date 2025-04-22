@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, MapPin, Mic, Star, Trophy, ChevronRight, Play, Tag, User, Users } from "lucide-react";
 import { getFeaturedEvent, getPastEvents } from "@/lib/events";
 import { getRecentBlogPosts } from "@/lib/blog";
+import ImagePopup from "@/components/ImagePopup";
 
 // Define talent categories with icons
 const categories = [
@@ -134,6 +135,7 @@ export default function Home() {
 
   return (
     <>
+    <ImagePopup imageSrc="/S4 main.jpg" targetLink="https://sikkimrisingstar.com/events/201" />
       <section className="bg-white py-16">
   <div className="container mx-auto px-4">
     {/* Top Notice - Mobile First */}
@@ -409,6 +411,27 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+     {/* Ads */}
+<section className="w-full py-8 sm:py-16 bg-transparent text-transparent">
+  <div className="container px-4 md:px-6">
+    <div className="flex flex-col items-center justify-center text-center">
+      <div>
+        {/* Image/GIF as a clickable link */}
+        <Link href="./" legacyBehavior>
+          <a>
+            <img 
+              src="/ad/ad.gif" 
+              alt="Showcase Your Talent" 
+              className="cursor-pointer w-[800px] h-[120px] object-cover rounded-xl shadow-2xl"
+            />
+          </a>
+        </Link>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Recent Blogs */}
       {recentBlogs.length > 0 && (

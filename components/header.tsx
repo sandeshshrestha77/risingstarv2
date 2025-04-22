@@ -58,7 +58,7 @@ export default function Header() {
 
         {/* Right-aligned Button */}
         <div className="hidden md:flex">
-          <Link href="/contact" legacyBehavior passHref>
+          <Link href="https://surveyheart.com/form/6804a758e96bdb66c8dfc332" legacyBehavior passHref>
             <Button 
               asChild
               className="bg-primary hover:bg-primary/90 transition-colors focus-visible:ring-2 focus-visible:ring-offset-2"
