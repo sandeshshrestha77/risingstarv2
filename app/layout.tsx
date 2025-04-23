@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+// app/layout.tsx
+import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
@@ -10,8 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Sikkim Rising Star: Register Now for Season 4 Talent Hunt",
-  description:
-    "Join Rising Star Season 4 - Sikkim's premier talent hunt competition. Showcase your talent on the biggest stage in the region. Register Today!",
+  description: "Premier talent hunt competition in Sikkim. Showcase your talent today!",
   alternates: {
     canonical: "https://sikkimrisingstar.com",
   },
@@ -19,9 +19,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>

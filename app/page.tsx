@@ -130,7 +130,8 @@ export default function Home() {
   const sponsors = [
     { name: "Sandesh Creations", logo: "/sandesh logo.png" },
     { name: "ROD Nepal", logo: "/rod logo.png" },
-    { name: "Falano Crafts", logo: "/falanocrafts logo.png" }
+    { name: "Falano Crafts", logo: "/falanocrafts logo.png" },
+    { name: "Ole Sikkim", logo: "/ole logo.png" }
   ];
 
   return (
