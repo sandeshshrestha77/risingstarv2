@@ -1,9 +1,23 @@
+import { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Calendar, MapPin, ArrowRight } from "lucide-react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { getUpcomingEvents, getPastEvents } from "@/lib/events"
+
+export const metadata: Metadata = {
+  title: "Events & Competitions - Register Now",
+  description: "Join Sikkim's Premier Talent Platform! Discover extraordinary talents, key milestones, and our dedicated team. Showcase your skills - Contact us now!",
+  openGraph: {
+    title: "Sikkim Rising Star Events - Register for Season 4",
+    description: "Join Sikkim's biggest talent hunt. View upcoming competitions, past events, and sJoin Sikkim's Premier Talent Platform! Discover extraordinary talents, key milestones, and our dedicated team. Showcase your skills - Contact us now!",
+    images: [{ url: '/s4 main.jpg', width: 1200, height: 630 }],
+  },
+  alternates: {
+    canonical: "https://sikkimrisingstar.com/events",
+  },
+}
 
 interface Event {
   id: string

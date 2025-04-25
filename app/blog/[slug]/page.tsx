@@ -1,20 +1,57 @@
-
+import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getBlogPostBySlug, getRecentBlogPosts } from "@/lib/blog";
-import { Calendar, User, Tag, ChevronLeft, ChevronRight, Share2, Facebook, Twitter, Linkedin } from "lucide-react";
+import { Calendar, User, Tag, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import "./blog.css";
 
-type BlogPostPageProps = {
+export async function generateStaticParams() {
+  const posts = await getRecentBlogPosts(); // or a function that fetches ALL slugs
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
+export async function generateMetadata(
+  { params }: { params: { slug: string } }
+): Promise<Metadata> {
+  const post = await getBlogPostBySlug(params.slug);
+
+  if (!post) {
+    return {
+      title: "Blog Post Not Found",
+      description: "The requested blog post could not be found.",
+    };
+  }
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      publishedTime: post.date,
+      authors: [post.author.name],
+      images: [
+        {
+          url: post.image,
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+  };
+}
+
+export default async function BlogPostPage({
+  params,
+}: {
   params: { slug: string };
-};
-
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-
-  const post = await getBlogPostBySlug(slug);
+}) {
+  const post = await getBlogPostBySlug(params.slug);
   const recentPosts = await getRecentBlogPosts(3);
 
   if (!post) notFound();

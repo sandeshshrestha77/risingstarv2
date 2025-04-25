@@ -121,12 +121,10 @@ const categories = [
 ];
 
 export default function Home() {
-  // Fetch data from lib files
   const featuredEvent = getFeaturedEvent();
   const pastEvents = getPastEvents();
   const recentBlogs = getRecentBlogPosts(2);
   
-  // Generate sponsors from past sponsor images
   const sponsors = [
     { name: "Sandesh Creations", logo: "/sandesh logo.png" },
     { name: "ROD Nepal", logo: "/rod logo.png" },
@@ -412,28 +410,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-   {/* Ads */}
-<section className="w-full py-8 sm:py-16 bg-transparent text-transparent">
-  <div className="container px-4 md:px-6">
-    <div className="flex flex-col items-center justify-center text-center">
-      <div className="w-full max-w-[800px] aspect-[20/3] rounded-xl shadow-2xl overflow-hidden">
-        {/* Image/GIF as a clickable link */}
-        <Link href="./" legacyBehavior>
-          <a>
-            <img 
-              src="/ad/ad.gif" 
-              alt="Showcase Your Talent" 
-              className="w-full h-full object-cover cursor-pointer"
-            />
-          </a>
-        </Link>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 
       {/* Recent Blogs */}
       {recentBlogs.length > 0 && (

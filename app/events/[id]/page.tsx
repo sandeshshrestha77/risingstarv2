@@ -1,3 +1,4 @@
+import { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -14,6 +15,38 @@ import {
 import type { Event, PastEvent, UpcomingEvent } from "@/types/events"
 
 export const dynamic = "force-dynamic"
+
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+  const event = await getEventById(params.id)
+  
+  if (!event) {
+    return {
+      title: 'Event Not Found',
+      description: 'The requested event could not be found.',
+    }
+  }
+
+  const isUpcoming = event.registrationOpen
+  const metaDescription = isUpcoming
+    ? `Register now for ${event.title}! Join Sikkim's biggest talent hunt with prizes worth ₹${event.statistics.prizePool}. Event date: ${event.date}`
+    : `Relive the moments from ${event.title}. View highlights, winners, and gallery from this spectacular showcase of talent.`
+
+  return {
+    title: event.title,
+    description: metaDescription,
+    openGraph: {
+      title: event.title,
+      description: metaDescription,
+      type: 'website',
+      images: [{ url: event.image, width: 1200, height: 630 }],
+      url: `https://example.com/events/${event.id}`,
+    },
+    alternates: {
+      canonical: `https://example.com/events/${event.id}`,
+    }
+  }
+}
+
 export async function generateStaticParams() {
   const upcoming = await getUpcomingEvents()
   const past = await getPastEvents()
