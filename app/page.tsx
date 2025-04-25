@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -9,7 +8,6 @@ import { getFeaturedEvent, getPastEvents } from "@/lib/events";
 import { getRecentBlogPosts } from "@/lib/blog";
 import ImagePopup from "@/components/ImagePopup";
 
-// Define talent categories with icons
 const categories = [
   {
     name: "Singing",

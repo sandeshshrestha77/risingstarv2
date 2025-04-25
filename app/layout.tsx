@@ -58,6 +58,26 @@ export const metadata: Metadata = {
   verification: {
     google: 'verification_token',
   },
+  alternates: {
+    canonical: 'https://sikkimrisingstar.com',
+},
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: '/site.webmanifest',
+  themeColor: '#ffffff',
+  appleWebApp: {
+    title: 'Sikkim Rising Star',
+    statusBarStyle: 'default',
+    capable: true,
+  },
+  viewport: {
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
 };
 
 export default function RootLayout({
