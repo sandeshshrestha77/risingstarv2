@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import "./blog.css";
 
 export async function generateStaticParams() {
-  const posts = await getRecentBlogPosts(); // or a function that fetches ALL slugs
+  const posts = await getRecentBlogPosts();
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -40,9 +40,12 @@ export async function generateMetadata(
           url: post.image,
           width: 1200,
           height: 630,
-        },
-      ],
+        }
+      ]
     },
+    alternates: {
+      canonical: `https://sikkimrisingstar.com/blog/${params.slug}`
+    }
   };
 }
 

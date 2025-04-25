@@ -39,10 +39,10 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
       description: metaDescription,
       type: 'website',
       images: [{ url: event.image, width: 1200, height: 630 }],
-      url: `https://example.com/events/${event.id}`,
+      url: `https://sikkimrisingstar.com/events/${event.id}`,
     },
     alternates: {
-      canonical: `https://example.com/events/${event.id}`,
+      canonical: `https://sikkimrisingstar.com/events/${event.id}`,
     }
   }
 }
