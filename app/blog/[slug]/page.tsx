@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -6,6 +6,12 @@ import { getBlogPostBySlug, getRecentBlogPosts } from "@/lib/blog";
 import { Calendar, User, Tag, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import "./blog.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#ffffff",
+};
 
 export async function generateStaticParams() {
   const posts = await getRecentBlogPosts();
@@ -40,12 +46,12 @@ export async function generateMetadata(
           url: post.image,
           width: 1200,
           height: 630,
-        }
-      ]
+        },
+      ],
     },
     alternates: {
-      canonical: `https://sikkimrisingstar.com/blog/${params.slug}`
-    }
+      canonical: `https://sikkimrisingstar.com/blog/${params.slug}`,
+    },
   };
 }
 
@@ -122,7 +128,7 @@ export default async function BlogPostPage({
             {/* Main Content */}
             <div className="lg:col-span-8">
               <div className="blog-content prose prose-lg prose-blue" dangerouslySetInnerHTML={{ __html: post.content }} />
-              
+
               {/* Author Bio */}
               <div className="author-card">
                 <div className="author-avatar relative w-16 h-16 flex-shrink-0">
@@ -139,7 +145,7 @@ export default async function BlogPostPage({
                   <p className="text-gray-600 text-sm">Content Writer</p>
                 </div>
               </div>
-              
+
               {/* Navigation */}
               <div className="mt-12 flex items-center justify-between border-t border-b border-gray-200 py-6">
                 <Link href="/blog">
@@ -150,7 +156,7 @@ export default async function BlogPostPage({
                 </Link>
               </div>
             </div>
-            
+
             {/* Sidebar */}
             <div className="lg:col-span-4">
               <div className="sticky top-24">
@@ -189,7 +195,7 @@ export default async function BlogPostPage({
                     </Link>
                   </div>
                 </div>
-                
+
                 <div className="bg-primary/5 rounded-xl p-6 mt-6 shadow-sm border border-primary/10">
                   <h3 className="text-xl font-bold mb-4 text-primary">Subscribe</h3>
                   <p className="text-gray-600 text-sm mb-4">

@@ -1,4 +1,4 @@
-import { Metadata } from "next"
+import type { Metadata, Viewport } from "next";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Award, Calendar, CheckCircle, Users } from "lucide-react";
@@ -6,16 +6,31 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About Us - Discover Our Journey & Team",
-  description: "Join Sikkim's Premier Talent Platform! Discover extraordinary talents, key milestones, and our dedicated team. Showcase your skills - Contact us now!",
+  description:
+    "Join Sikkim's Premier Talent Platform! Discover extraordinary talents, key milestones, and our dedicated team. Showcase your skills - Contact us now!",
   openGraph: {
     title: "About Us - Discover Our Journey & Team",
-    description: "Join Sikkim's Premier Talent Platform! Discover extraordinary talents, key milestones, and our dedicated team. Showcase your skills - Contact us now!",
-    images: [{ url: '/02 About Section Main.jpg', width: 1200, height: 630 }],
+    description:
+      "Join Sikkim's Premier Talent Platform! Discover extraordinary talents, key milestones, and our dedicated team. Showcase your skills - Contact us now!",
+    images: [
+      {
+        url: "/02 About Section Main.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
   alternates: {
-    canonical: "https://sikkimrisingstar.com/about"
-  }
-}
+    canonical: "https://sikkimrisingstar.com/about",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
+  width: "device-width",
+  initialScale: 1,
+};
+
 
 const SPONSORS = Array.from({ length: 26 }, (_, i) => ({
   name: `Sponsor ${i + 1}`,

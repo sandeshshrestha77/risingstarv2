@@ -1,22 +1,37 @@
-import { Metadata } from "next"
-import Link from "next/link"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Calendar, ArrowRight, Tag } from "lucide-react"
-import { getBlogPosts } from "@/lib/blog"
+import type { Metadata, Viewport } from "next";
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Calendar, ArrowRight, Tag } from "lucide-react";
+import { getBlogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: "Blog - Latest News & Updates",
-  description: "Stay updated with the latest news, event highlights, and success stories from Sikkim Rising Star. Read about our winners, upcoming events, and talent tips.",
+  description:
+    "Stay updated with the latest news, event highlights, and success stories from Sikkim Rising Star. Read about our winners, upcoming events, and talent tips.",
   openGraph: {
     title: "Sikkim Rising Star Blog - News & Stories",
-    description: "Get the latest updates from Sikkim's premier talent platform. Read about event highlights, winner stories, and upcoming competitions.",
-    images: [{ url: '/s4 main.jpg', width: 1200, height: 630 }],
+    description:
+      "Get the latest updates from Sikkim's premier talent platform. Read about event highlights, winner stories, and upcoming competitions.",
+    images: [
+      {
+        url: "/s4 main.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
   alternates: {
     canonical: "https://sikkimrisingstar.com/blog",
   },
-}
+};
+
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
+  width: "device-width",
+  initialScale: 1,
+};
+
 
 export default async function BlogPage() {
   const posts = getBlogPosts();

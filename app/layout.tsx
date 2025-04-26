@@ -35,7 +35,7 @@ export const metadata: Metadata = {
       url: '/s4 main.jpg',
       width: 1200,
       height: 630,
-      alt: 'Sikkim Rising Star Season 4'
+      alt: 'Sikkim Rising Star Season 4 - Talent Hunt Competition Featuring Singing, Dancing, and More',
     }],
   },
   twitter: {
@@ -60,24 +60,26 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://sikkimrisingstar.com',
-},
+  },
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',
     apple: '/apple-touch-icon.png',
   },
   manifest: '/site.webmanifest',
-  themeColor: '#ffffff',
   appleWebApp: {
     title: 'Sikkim Rising Star',
     statusBarStyle: 'default',
     capable: true,
   },
-  viewport: {
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-  },
+  // Move themeColor and viewport here in the viewport export
+};
+
+export const viewport = {
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: true, // Enabling zoom for accessibility
+  themeColor: '#ffffff', // Moved from metadata to viewport export
 };
 
 export default function RootLayout({
@@ -87,7 +89,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.className} font-sans`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
