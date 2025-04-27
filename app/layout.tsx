@@ -66,20 +66,18 @@ export const metadata: Metadata = {
     shortcut: '/favicon.ico',
     apple: '/apple-touch-icon.png',
   },
-  manifest: '/site.webmanifest',
   appleWebApp: {
     title: 'Sikkim Rising Star',
     statusBarStyle: 'default',
     capable: true,
   },
-  // Move themeColor and viewport here in the viewport export
 };
 
 export const viewport = {
   initialScale: 1,
   maximumScale: 1,
-  userScalable: true, // Enabling zoom for accessibility
-  themeColor: '#ffffff', // Moved from metadata to viewport export
+  userScalable: true,
+  themeColor: '#ffffff',
 };
 
 export default function RootLayout({

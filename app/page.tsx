@@ -1,5 +1,4 @@
 'use client';
-
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -122,7 +121,6 @@ export default function Home() {
   const featuredEvent = getFeaturedEvent();
   const pastEvents = getPastEvents();
   const recentBlogs = getRecentBlogPosts(2);
-  
   const sponsors = [
     { name: "Sandesh Creations", logo: "/sandesh logo.png" },
     { name: "ROD Nepal", logo: "/rod logo.png" },
@@ -132,81 +130,71 @@ export default function Home() {
 
   return (
     <>
-    <ImagePopup imageSrc="/s4 main.jpg" targetLink="https://sikkimrisingstar.com/events/201" />
+      <ImagePopup imageSrc="/s4 main.jpg" targetLink="https://sikkimrisingstar.com/events/201" />
       <section className="bg-white py-16">
-  <div className="container mx-auto px-4">
-    {/* Top Notice - Mobile First */}
-    <div className="mb-6 lg:hidden flex justify-center">
-      <div className="inline-block rounded-xl bg-primary/5 px-4 py-2 border border-primary/10">
-        <span className="text-sm font-medium text-primary flex items-center gap-2">
-          <Star className="w-4 h-4" />
-          Season {featuredEvent?.season} Registration Open
-        </span>
-      </div>
-    </div>
-
-    <div className="grid lg:grid-cols-2 gap-12 items-center">
-      {/* IMAGE First on Mobile */}
-      <div className="relative order-1 lg:order-2">
-        <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-          <Image
-            src="/01 Home Page Image.jpg"
-            alt="Rising Star Performance"
-            width={800}
-            height={600}
-            className="object-cover w-full h-auto"
-            priority
-          />
-        </div>
-        <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg">
-          <div className="flex items-center gap-3">
-            <div className="bg-primary/10 p-2 rounded-lg">
-              <Trophy className="w-6 h-6 text-primary" />
+        <div className="container mx-auto px-4">
+          <div className="mb-6 lg:hidden flex justify-center">
+            <div className="inline-block rounded-xl bg-primary/5 px-4 py-2 border border-primary/10">
+              <span className="text-sm font-medium text-primary flex items-center gap-2">
+                <Star className="w-4 h-4" />
+                Season {featuredEvent?.season} Registration Open
+              </span>
             </div>
-            <div>
-              <p className="text-sm text-gray-600">Total Prize Pool</p>
-              <p className="text-xl font-bold text-primary">₹2,00,000+</p>
+          </div>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative order-1 lg:order-2">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/01 Home Page Image.jpg"
+                  alt="Rising Star Performance"
+                  width={800}
+                  height={600}
+                  className="object-cover w-full h-auto"
+                  priority
+                />
+              </div>
+              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg">
+                <div className="flex items-center gap-3">
+                  <div className="bg-primary/10 p-2 rounded-lg">
+                    <Trophy className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-600">Total Prize Pool</p>
+                    <p className="text-xl font-bold text-primary">₹2,00,000+</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-8 text-center lg:text-left order-2 lg:order-1">
+              <div className="hidden lg:inline-block rounded-xl bg-primary/5 px-4 py-2 border border-primary/10">
+                <span className="text-sm font-medium text-primary flex items-center gap-2">
+                  <Star className="w-4 h-4" />
+                  Season {featuredEvent?.season} Registration Open
+                </span>
+              </div>
+              <h1 className="text-5xl md:text-6xl font-bold">
+                <span className="text-secondary">Discover</span>
+                <br />
+                <span className="text-primary">Sikkim's Stars</span>
+              </h1>
+              <p className="text-lg md:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0">
+                Join Sikkim's premier talent hunt competition and showcase your skills on the biggest stage.
+              </p>
+              <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+                <Link
+                  href="https://surveyheart.com/form/6804a758e96bdb66c8dfc332"
+                  passHref
+                  legacyBehavior
+                >
+                  <Button className="bg-secondary hover:bg-secondary/90 text-white">
+                    Register Now
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* TEXT CONTENT */}
-      <div className="space-y-8 text-center lg:text-left order-2 lg:order-1">
-        {/* Show notice again on large screens */}
-        <div className="hidden lg:inline-block rounded-xl bg-primary/5 px-4 py-2 border border-primary/10">
-          <span className="text-sm font-medium text-primary flex items-center gap-2">
-            <Star className="w-4 h-4" />
-            Season {featuredEvent?.season} Registration Open
-          </span>
-        </div>
-
-        <h1 className="text-5xl md:text-6xl font-bold">
-          <span className="text-secondary">Discover</span>
-          <br />
-          <span className="text-primary">Sikkim's Stars</span>
-        </h1>
-        <p className="text-lg md:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0">
-          Join Sikkim's premier talent hunt competition and showcase your skills on the biggest stage.
-        </p>
-        <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-          <Link
-            href="https://surveyheart.com/form/6804a758e96bdb66c8dfc332"
-            passHref
-            legacyBehavior
-          >
-            <Button className="bg-secondary hover:bg-secondary/90 text-white">
-              Register Now
-            </Button>
-          </Link>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-      {/* Featured Event */}
+      </section>
       {featuredEvent && (
         <section className="py-20 md:py-28 bg-gray-100">
           <div className="container px-4">
@@ -224,9 +212,7 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            
             <div className="grid lg:grid-cols-3 gap-8 items-stretch relative z-10">
-              {/* Left Event Card */}
               <div className="lg:col-span-1 bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-md transform transition-all duration-500 hover:scale-[1.02] hover:shadow-lg">
                 <div className="relative aspect-video">
                   <Image
@@ -244,15 +230,12 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                
                 <div className="p-6 md:p-8">
                   <div className="flex items-center gap-2 mb-2">
                     <Star className="h-5 w-5 text-yellow-400" />
                     <span className="text-gray-600 text-sm">Featured</span>
                   </div>
-                  
                   <h3 className="text-2xl md:text-3xl font-bold text-secondary mb-4">{featuredEvent.title}</h3>
-                  
                   <div className="flex flex-col gap-4 mb-6">
                     <div className="flex items-center gap-3 text-gray-600">
                       <Calendar className="h-5 w-5 text-primary" />
@@ -267,7 +250,6 @@ export default function Home() {
                       <span>Prize: ₹{('prizePool' in featuredEvent.statistics) ? featuredEvent.statistics.prizePool : 'TBA'}</span>
                     </div>
                   </div>
-                  
                   <Link href={`/events/${featuredEvent.id}`}>
                     <Button className="w-full bg-primary hover:bg-primary/90 text-white font-bold">
                       View Details
@@ -276,19 +258,14 @@ export default function Home() {
                   </Link>
                 </div>
               </div>
-              
-              {/* Right Content Area */}
               <div className="lg:col-span-2 flex flex-col">
                 <div className="bg-white rounded-2xl border border-gray-200 p-6 md:p-8 mb-6 flex-grow shadow-md">
                   <h3 className="text-2xl font-bold text-secondary mb-6">Event Highlights</h3>
-                  
                   <div className="prose max-w-none">
                     <p className="text-gray-700 text-lg mb-6">
                       {featuredEvent.longDescription || featuredEvent.description}
                     </p>
-                    
                     <div className="grid md:grid-cols-2 gap-5 mt-8">
-                      {/* Categories */}
                       <div className="bg-gray-50 rounded-2xl p-5 border border-gray-200">
                         <h4 className="text-lg font-semibold text-secondary mb-4 flex items-center gap-2">
                           <Tag className="h-5 w-5 text-primary" />
@@ -302,8 +279,6 @@ export default function Home() {
                           ))}
                         </div>
                       </div>
-                      
-                      {/* Statistics */}
                       <div className="bg-gray-50 rounded-2xl p-5 border border-gray-200">
                         <h4 className="text-lg font-semibold text-secondary mb-4 flex items-center gap-2">
                           <Users className="h-5 w-5 text-primary" />
@@ -330,8 +305,6 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                
-                {/* Registration CTA */}
                 <div className="bg-secondary rounded-2xl border border-gray-200 p-6 md:p-8 shadow-md">
                   <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                     <div>
@@ -351,8 +324,6 @@ export default function Home() {
           </div>
         </section>
       )}
-
-      {/* Categories */}
       <section className="py-16 md:py-24 bg-gray-50">
         <div className="container px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -380,9 +351,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-          {/* Stats Section */}
-          <section className="py-20 bg-secondary">
+      <section className="py-20 bg-secondary">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
@@ -391,7 +360,12 @@ export default function Home() {
             </div>
             <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
               <p className="text-4xl font-bold text-white mb-2">
-                {pastEvents.reduce((total, event) => total + (event.statistics?.participants || 0), 0) || '500+'}
+              {pastEvents.reduce((total, event) => {
+                if (event.statistics && 'participants' in event.statistics) {
+                  return total + (event.statistics.participants || 0);
+                }
+                return total;
+              }, 0) || '500+'}
               </p>
               <p className="text-gray-200">Participants</p>
             </div>
@@ -408,8 +382,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Recent Blogs */}
       {recentBlogs.length > 0 && (
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
@@ -457,95 +429,84 @@ export default function Home() {
           </div>
         </section>
       )}
-
-      {/* Sponsors */}
-<section className="py-16 md:py-20 bg-gray-50 border-t border-gray-200">
-  <div className="container px-4">
-    <div className="text-center max-w-2xl mx-auto mb-12">
-      <span className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-3">
-        Trusted By
-      </span>
-      <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 mb-4">
-        Proudly Supported By
-      </h2>
-      <p className="text-gray-600 leading-relaxed">
-        We’re honored to collaborate with forward-thinking brands that help us go further.
-      </p>
-    </div>
-
-    {/* Mobile */}
-<div className="flex flex-wrap justify-center items-center gap-4 md:hidden">
-  {sponsors.map((sponsor, index) => (
-    <div
-      key={`mobile-${sponsor.name}-${index}`}
-      className="bg-white p-3 rounded-md shadow-sm hover:shadow-md transition duration-300 w-1/4 h-16 flex items-center justify-center"
-    >
-      <div className="relative w-full h-full">
-        <Image
-          src={sponsor.logo}
-          alt={`${sponsor.name} logo`}
-          fill
-          className="object-contain grayscale hover:grayscale-0 transition duration-300"
-          sizes="112px"
-        />
-      </div>
-    </div>
-  ))}
-</div>
-
-{/* Desktop: Show all sponsors */}
-<div className="hidden md:flex flex-wrap justify-center items-center gap-10">
-  {sponsors.map((sponsor, index) => (
-    <div
-      key={`desktop-${sponsor.name}-${index}`}
-      className="bg-white p-4 rounded-md shadow-sm hover:shadow-md transition duration-300 w-36 h-20 flex items-center justify-center"
-    >
-      <div className="relative w-full h-full">
-        <Image
-          src={sponsor.logo}
-          alt={`${sponsor.name} logo`}
-          fill
-          className="object-contain grayscale hover:grayscale-0 transition duration-300"
-          sizes="144px"
-        />
-      </div>
-    </div>
-  ))}
-</div>
-    <p className="text-center mt-8 text-gray-600">
-      Interested in becoming a sponsor? <Link href="/contact" className="text-primary underline">Contact us</Link> to learn more about partnership opportunities.
-    </p>
-  </div>
-</section>
-
-
-      {/* CTA */}
-      <section className="w-full py-8 sm:py-16 bg-primary text-white">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-6 text-center">
-        <div className="space-y-3 max-w-3xl">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">Ready to Showcase Your Talent?</h2>
-          <p className="text-lg md:text-xl text-white/90">
-          Register now for upcoming events and let your talent shine on Sikkim's biggest platform.
+      <section className="py-16 md:py-20 bg-gray-50 border-t border-gray-200">
+        <div className="container px-4">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-3">
+              Trusted By
+            </span>
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 mb-4">
+              Proudly Supported By
+            </h2>
+            <p className="text-gray-600 leading-relaxed">
+              We’re honored to collaborate with forward-thinking brands that help us go further.
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center items-center gap-4 md:hidden">
+            {sponsors.map((sponsor, index) => (
+              <div
+                key={`mobile-${sponsor.name}-${index}`}
+                className="bg-white p-3 rounded-md shadow-sm hover:shadow-md transition duration-300 w-1/4 h-16 flex items-center justify-center"
+              >
+                <div className="relative w-full h-full">
+                  <Image
+                    src={sponsor.logo}
+                    alt={`${sponsor.name} logo`}
+                    fill
+                    className="object-contain grayscale hover:grayscale-0 transition duration-300"
+                    sizes="112px"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="hidden md:flex flex-wrap justify-center items-center gap-10">
+            {sponsors.map((sponsor, index) => (
+              <div
+                key={`desktop-${sponsor.name}-${index}`}
+                className="bg-white p-4 rounded-md shadow-sm hover:shadow-md transition duration-300 w-36 h-20 flex items-center justify-center"
+              >
+                <div className="relative w-full h-full">
+                  <Image
+                    src={sponsor.logo}
+                    alt={`${sponsor.name} logo`}
+                    fill
+                    className="object-contain grayscale hover:grayscale-0 transition duration-300"
+                    sizes="144px"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-center mt-8 text-gray-600">
+            Interested in becoming a sponsor? <Link href="/contact" className="text-primary underline">Contact us</Link> to learn more about partnership opportunities.
           </p>
         </div>
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Link href="https://surveyheart.com/form/6804a758e96bdb66c8dfc332" passHref legacyBehavior>
-          <Button className="bg-secondary hover:bg-secondary/90 text-white">
-            Register Now
-          </Button>
-          </Link>
-          <Link href="./events#upcoming">
-          <Button variant="outline" className="border-white text-black hover:bg-white hover:text-primary">
-            Explore Events
-          </Button>
-          </Link>
+      </section>
+      <section className="w-full py-8 sm:py-16 bg-primary text-white">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center justify-center space-y-6 text-center">
+            <div className="space-y-3 max-w-3xl">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">Ready to Showcase Your Talent?</h2>
+              <p className="text-lg md:text-xl text-white/90">
+                Register now for upcoming events and let your talent shine on Sikkim's biggest platform.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="https://surveyheart.com/form/6804a758e96bdb66c8dfc332" passHref legacyBehavior>
+                <Button className="bg-secondary hover:bg-secondary/90 text-white">
+                  Register Now
+                </Button>
+              </Link>
+              <Link href="./events#upcoming">
+                <Button variant="outline" className="border-white text-black hover:bg-white hover:text-primary">
+                  Explore Events
+                </Button>
+              </Link>
+            </div>
+          </div>
         </div>
-        </div>
-      </div>
       </section>
     </>
   );
 }
-  
-

@@ -10,21 +10,7 @@ export const events: Event[] = [
     date: "2018",
     location: "Gangtok",
     image: "/s1 main.jpg",
-    gallery: [
-      "/season 1/1.jpg",
-      "/season 1/2.jpg",
-      "/season 1/3.jpg",
-      "/season 1/4.jpg",
-      "/season 1/5.jpg",
-      "/season 1/6.jpg",
-      "/season 1/7.jpg",
-      "/season 1/8.jpg",
-      "/season 1/9.jpg",
-      "/season 1/10.jpg",
-      "/season 1/11.jpg",
-      "/season 1/12.jpg",
-      "/season 1/13.jpg",
-    ],
+    gallery: Array.from({ length: 13 }, (_, i) => `/season 1/${i + 1}.jpg`),
     winners: [
       { name: "Ocean Rai", category: "Singing", prize: "₹10,000" },
       { name: "Rojan Limbu", category: "Dancing", prize: "₹5,000" },
@@ -35,18 +21,7 @@ export const events: Event[] = [
       audience: 1500,
       categories: 5,
     },
-    testimonials: [
-     // {
-      //  name: "Pema Lhamu",
-      //  quote: "Participating in Rising Star Season 1 was a life-changing experience. The platform gave me confidence and recognition I never imagined possible.",
-     //   role: "Participant",
-    //  },
-    //  {
-     //   name: "Tashi Namgyal",
-     //   quote: "The quality of talent displayed in the first season was remarkable. This initiative truly brings out the best in Sikkim's youth.",
-     //   role: "Judge",
-    //  },
-    ],
+    testimonials: [],
     registrationOpen: false,
   },
   {
@@ -58,37 +33,7 @@ export const events: Event[] = [
     date: "2019",
     location: "Gangtok",
     image: "/s2 main.jpg",
-    gallery: [
-      "/season 2/1.jpg",
-      "/season 2/2.jpg",
-      "/season 2/3.jpg",
-      "/season 2/4.jpg",
-      "/season 2/5.jpg",
-      "/season 2/6.jpg",
-      "/season 2/7.jpg",
-      "/season 2/8.jpg",
-      "/season 2/9.jpg",
-      "/season 2/10.jpg",
-      "/season 2/11.jpg",
-      "/season 2/12.jpg",
-      "/season 2/13.jpg",
-      "/season 2/14.jpg",
-      "/season 2/15.jpg",
-      "/season 2/16.jpg",
-      "/season 2/17.jpg",
-      "/season 2/18.jpg",
-      "/season 2/19.jpg",
-      "/season 2/20.jpg",
-      "/season 2/21.jpg",
-      "/season 2/22.jpg",
-      "/season 2/23.jpg",
-      "/season 2/24.jpg",
-      "/season 2/25.jpg",
-      "/season 2/26.jpg",
-      "/season 2/27.jpg",
-      "/season 2/28.jpg",
-      "/season 2/29.jpg",
-    ],
+    gallery: Array.from({ length: 29 }, (_, i) => `/season 2/${i + 1}.jpg`),
     winners: [
       { name: "Dynamic Flicker", category: "Dancing", prize: "₹80,000" },
       { name: "Ugen Bhutia", category: "Singing", prize: "₹40,000" },
@@ -111,48 +56,7 @@ export const events: Event[] = [
     date: "2022",
     location: "Gangtok",
     image: "/s3 main.jpg",
-    gallery: [
-      "/season 3/1.jpg",
-      "/season 3/2.jpg",
-      "/season 3/3.jpg",
-      "/season 3/4.jpg",
-      "/season 3/5.jpg",
-      "/season 3/6.jpg",
-      "/season 3/7.jpg",
-      "/season 3/8.jpg",
-      "/season 3/9.jpg",
-      "/season 3/10.jpg",
-      "/season 3/11.jpg",
-      "/season 3/12.jpg",
-      "/season 3/13.jpg",
-      "/season 3/14.jpg",
-      "/season 3/15.jpg",
-      "/season 3/16.jpg",
-      "/season 3/17.jpg",
-      "/season 3/18.jpg",
-      "/season 3/19.jpg",
-      "/season 3/20.jpg",
-      "/season 3/21.jpg",
-      "/season 3/22.jpg",
-      "/season 3/23.jpg",
-      "/season 3/24.jpg",
-      "/season 3/25.jpg",
-      "/season 3/26.jpg",
-      "/season 3/27.jpg",
-      "/season 3/28.jpg",
-      "/season 3/29.jpg",
-      "/season 3/30.jpg",
-      "/season 3/31.jpg",
-      "/season 3/32.jpg",
-      "/season 3/33.jpg",
-      "/season 3/34.jpg",
-      "/season 3/35.jpg",
-      "/season 3/36.jpg",
-      "/season 3/37.jpg",
-      "/season 3/38.jpg",
-      "/season 3/39.jpg",
-      "/season 3/40.jpg",
-    ],
+    gallery: Array.from({ length: 40 }, (_, i) => `/season 3/${i + 1}.jpg`),
     winners: [
       { name: "The Dream Band", category: "Singing", prize: "₹1,00,000" },
       { name: "Sidhant Lama", category: "Mimicry", prize: "₹50,000" },
@@ -178,11 +82,11 @@ export const events: Event[] = [
     gallery: [],
     winners: [],
     statistics: {
-      estimatedParticipants: 10000,
+      estimatedParticipants: 5000,
       prizePool: "2,00,000",
       categories: 10,
     },
-    highlights: [ ],
+    highlights: [],
     registrationOpen: true,
     registrationDeadline: "June 6, 2025",
     auditionDates: [
@@ -191,18 +95,20 @@ export const events: Event[] = [
   }
 ]
 
-export function getUpcomingEvents() {
+export function getUpcomingEvents(): Event[] {
   return events.filter(event => event.registrationOpen)
 }
 
-export function getPastEvents() {
-  return events.filter(event => !event.registrationOpen).sort((a, b) => b.season - a.season)
+export function getPastEvents(): Event[] {
+  return events
+    .filter(event => !event.registrationOpen)
+    .sort((a, b) => b.season - a.season)
 }
 
-export function getEventById(id: string) {
+export function getEventById(id: string): Event | undefined {
   return events.find(event => event.id === id)
 }
 
-export function getFeaturedEvent() {
+export function getFeaturedEvent(): Event | undefined {
   return events.find(event => event.registrationOpen)
 }

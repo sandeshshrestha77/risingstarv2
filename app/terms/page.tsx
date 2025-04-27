@@ -5,20 +5,6 @@ import { Button } from "@/components/ui/button"
 export default function TermsPage() {
   return (
     <>
-      {/* Back to home and TOC navigation */}
-      <div className="container px-4 py-6 sticky top-0 bg-white z-20 border-b flex justify-between items-center">
-        <Link href="/" className="text-secondary hover:text-secondary/80 inline-flex items-center">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Home
-        </Link>
-        <div className="flex items-center gap-4">
-          <Link href="#eligibility" className="text-sm text-gray-600 hover:text-secondary">Eligibility</Link>
-          <Link href="#registration" className="text-sm text-gray-600 hover:text-secondary">Registration</Link>
-          <Link href="#content" className="text-sm text-gray-600 hover:text-secondary">Content</Link>
-          <Link href="#liability" className="text-sm text-gray-600 hover:text-secondary">Liability</Link>
-        </div>
-      </div>
-      
       <div className="container px-4 py-12">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl md:text-5xl font-bold mb-6">Terms of Service</h1>
@@ -45,7 +31,8 @@ export default function TermsPage() {
                 <div>
                   <h2 className="text-2xl font-bold mt-0">Acceptance of Terms</h2>
                   <p>
-                  By accessing or using the Sikkim Rising Star website or participating in any related events, users agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you should refrain from using the site or participating in the event.</p>
+                    By accessing or using the Sikkim Rising Star website or participating in any related events, users agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you should refrain from using the site or participating in the event.
+                  </p>
                 </div>
               </div>
             </div>
@@ -58,7 +45,8 @@ export default function TermsPage() {
                 <div>
                   <h2 className="text-2xl font-bold mt-0">Eligibility</h2>
                   <p>
-                  Participation in Sikkim Rising Star events is open to individuals who meet the age, location, and talent requirements as outlined during the registration process. Providing false or misleading information during registration may lead to disqualification. </p>
+                    Participation in Sikkim Rising Star events is open to individuals who meet the age, location, and talent requirements as outlined during the registration process. Providing false or misleading information during registration may lead to disqualification.
+                  </p>
                 </div>
               </div>
             </div>
@@ -71,7 +59,7 @@ export default function TermsPage() {
                 <div>
                   <h2 className="text-2xl font-bold mt-0">Registration and Participation</h2>
                   <p>
-                  Participants must provide accurate, complete, and current information during registration. Participants must comply with all event rules and guidelines as communicated by Sikkim Rising Star.
+                    Participants must provide accurate, complete, and current information during registration. Participants must comply with all event rules and guidelines as communicated by Sikkim Rising Star.
                   </p>
                 </div>
               </div>
@@ -84,9 +72,10 @@ export default function TermsPage() {
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold mt-0">Content Submission</h2>
-                  <p>By submitting content (such as videos, photos, or performances), participants grant Sikkim Rising Star a non-exclusive, royalty-free right to use, reproduce, and display the content for promotional, marketing, or archival purposes. All content must be original and not infringe upon third-party rights.
+                  <p>
+                    By submitting content (such as videos, photos, or performances), participants grant Sikkim Rising Star a non-exclusive, royalty-free right to use, reproduce, and display the content for promotional, marketing, or archival purposes. All content must be original and not infringe upon third-party rights.
                   </p>
-                 </div>
+                </div>
               </div>
             </div>
             
@@ -98,7 +87,7 @@ export default function TermsPage() {
                 <div>
                   <h2 className="text-2xl font-bold mt-0">Indemnification</h2>
                   <p>
-                  Participants agree to indemnify and hold harmless Sikkim Rising Star, its team, and partners from any claims, damages, losses, or liabilities arising from their participation or actions during the event.
+                    Participants agree to indemnify and hold harmless Sikkim Rising Star, its team, and partners from any claims, damages, losses, or liabilities arising from their participation or actions during the event.
                   </p>
                 </div>
               </div>
@@ -111,8 +100,9 @@ export default function TermsPage() {
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold mt-0">Limitation of Liability</h2>
-                  <p>Sikkim Rising Star will not be held liable for any direct, indirect, incidental, or consequential damages arising from participation in the competition or use of the website. Users participate at their own risk.
-                 </p>
+                  <p>
+                    Sikkim Rising Star will not be held liable for any direct, indirect, incidental, or consequential damages arising from participation in the competition or use of the website. Users participate at their own risk.
+                  </p>
                 </div>
               </div>
             </div>
@@ -125,7 +115,8 @@ export default function TermsPage() {
                 <div>
                   <h2 className="text-2xl font-bold mt-0">Modification of Terms</h2>
                   <p>
-                  Sikkim Rising Star reserves the right to update or modify these Terms of Service at any time without prior notice. Continued use of the website or participation in the event constitutes acceptance of the revised terms. </p>
+                    Sikkim Rising Star reserves the right to update or modify these Terms of Service at any time without prior notice. Continued use of the website or participation in the event constitutes acceptance of the revised terms.
+                  </p>
                 </div>
               </div>
             </div>
@@ -138,7 +129,8 @@ export default function TermsPage() {
                 <div>
                   <h2 className="text-2xl font-bold mt-0">Governing Law</h2>
                   <p>
-                  These Terms of Service are governed by the laws of Sikkim, India. Any disputes arising in connection with the terms will be subject to the exclusive jurisdiction of the courts in Sikkim.</p>
+                    These Terms of Service are governed by the laws of Sikkim, India. Any disputes arising in connection with the terms will be subject to the exclusive jurisdiction of the courts in Sikkim.
+                  </p>
                 </div>
               </div>
             </div>
@@ -146,7 +138,7 @@ export default function TermsPage() {
             <div className="mt-16 p-8 bg-secondary/5 rounded-xl border border-secondary/10">
               <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
               <p className="mb-4">
-              For any questions or concerns regarding these Terms of Service, users may contact the organizing team through the official contact details provided on the website.
+                For any questions or concerns regarding these Terms of Service, users may contact the organizing team through the official contact details provided on the website.
               </p>
               <div className="flex flex-col md:flex-row gap-6">
                 <div className="flex-1 p-4 bg-white rounded-lg border border-gray-100 shadow-sm">
@@ -164,4 +156,4 @@ export default function TermsPage() {
       </div>
     </>
   )
-} 
+}

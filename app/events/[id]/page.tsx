@@ -14,23 +14,29 @@ import {
 } from "@/lib/events"
 import type { Event, PastEvent, UpcomingEvent } from "@/types/events"
 
+function isUpcomingEvent(event: Event): event is UpcomingEvent {
+  return 'registrationDeadline' in event;
+}
+
+function isPastEvent(event: Event): event is PastEvent {
+  return 'winners' in event;
+}
+
 export const dynamic = "force-dynamic"
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const event = await getEventById(params.id)
-  
+  const { id } = await params;
+  const event = await getEventById(id);
   if (!event) {
     return {
       title: 'Event Not Found',
       description: 'The requested event could not be found.',
-    }
+    };
   }
-
-  const isUpcoming = event.registrationOpen
+  const isUpcoming = event.registrationOpen;
   const metaDescription = isUpcoming
     ? `Register now for ${event.title}! Join Sikkim's biggest talent hunt with prizes worth ₹${event.statistics.prizePool}. Event date: ${event.date}`
-    : `Relive the moments from ${event.title}. View highlights, winners, and gallery from this spectacular showcase of talent.`
-
+    : `Relive the moments from ${event.title}. View highlights, winners, and gallery from this spectacular showcase of talent.`;
   return {
     title: event.title,
     description: metaDescription,
@@ -44,43 +50,21 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     alternates: {
       canonical: `https://sikkimrisingstar.com/events/${event.id}`,
     }
-  }
-}
-
-export async function generateStaticParams() {
-  const upcoming = await getUpcomingEvents()
-  const past = await getPastEvents()
-  const allEvents = [...upcoming, ...past]
-  return allEvents.map((event) => ({ id: event.id }))
-}
-
-function isUpcomingEvent(event: Event): event is UpcomingEvent {
-  return event.registrationOpen === true
-}
-
-function isPastEvent(event: Event): event is PastEvent {
-  return event.registrationOpen === false
+  };
 }
 
 export default async function EventDetailPage({ params }: { params: { id: string } }) {
   const { id } = await params;
   const event = await getEventById(id);
-
   if (!event) {
     notFound();
   }
   return (
     <div className="min-h-screen bg-gray-50">
-    
-      {/* Event Header */}
       <div className="container mx-auto pt-6 md:pt-8 pb-4 md:pb-6 px-4">
         <div className="flex flex-wrap justify-between items-center gap-3 md:gap-4 mb-6 md:mb-8">
           <Link href="/events">
-            <Button 
-              variant="outline" 
-              className="gap-2 text-sm md:text-base"
-              size="sm"
-            >
+            <Button variant="outline" className="gap-2 text-sm md:text-base" size="sm">
               <ArrowLeft className="h-4 w-4" /> Back to Events
             </Button>
           </Link>
@@ -88,7 +72,6 @@ export default async function EventDetailPage({ params }: { params: { id: string
             {isUpcomingEvent(event) ? 'Registration Open' : 'Past Event'}
           </div>
         </div>
-        
         <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-6 md:gap-8 items-center">
           <div>
             <div className="inline-flex items-center gap-2 text-xs md:text-sm font-medium bg-gray-100 px-2 py-1 md:px-3 md:py-1 rounded-full mb-3 md:mb-4">
@@ -107,7 +90,6 @@ export default async function EventDetailPage({ params }: { params: { id: string
               </div>
             </div>
           </div>
-          
           <div className="relative w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-xl overflow-hidden">
             <Image
               src={event.image}
@@ -120,22 +102,17 @@ export default async function EventDetailPage({ params }: { params: { id: string
           </div>
         </div>
       </div>
-
       <div className="container mx-auto px-4 py-6 md:py-12">
         <div className="flex flex-col md:grid md:grid-cols-3 gap-6 md:gap-8">
-          {/* Main Content */}
           <div className="md:col-span-2">
-            {/* Event Description */}
             <section className="bg-white rounded-xl p-4 md:p-6 lg:p-8 shadow-sm mb-6 md:mb-8">
               <h2 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 pb-2 border-b border-gray-100">About This Event</h2>
               <div className="prose max-w-none text-gray-700 text-sm md:text-base">
-                {event.longDescription.split('\n\n').map((paragraph, index) => (
+                {event.longDescription.split('\n').map((paragraph, index) => (
                   <p key={index} className="mb-3 md:mb-4">{paragraph}</p>
                 ))}
               </div>
             </section>
-            
-            {/* Event Statistics */}
             <section className="mb-6 md:mb-8">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
                 {isUpcomingEvent(event) ? (
@@ -177,8 +154,6 @@ export default async function EventDetailPage({ params }: { params: { id: string
                 )}
               </div>
             </section>
-
-            {/* Winners Section - Only for past events */}
             {isPastEvent(event) && event.winners.length > 0 && (
               <section className="bg-white rounded-xl p-4 md:p-6 lg:p-8 shadow-sm mb-6 md:mb-8">
                 <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 pb-2 border-b border-gray-100 flex items-center gap-2">
@@ -198,27 +173,6 @@ export default async function EventDetailPage({ params }: { params: { id: string
                 </div>
               </section>
             )}
-
-            {/* Highlights Section - For upcoming season */}
-            {isUpcomingEvent(event) && event.highlights && (
-              <section className="bg-white rounded-xl p-4 md:p-6 lg:p-8 shadow-sm mb-6 md:mb-8">
-                <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 pb-2 border-b border-gray-100 flex items-center gap-2">
-                  <Star className="h-5 w-5 text-primary" /> Season Highlights
-                </h2>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
-                  {event.highlights.map((highlight: string, index: number) => (
-                    <li key={index} className="flex items-start gap-3 bg-gray-50 p-3 md:p-4 rounded-lg border border-gray-100">
-                      <div className="mt-0.5 md:mt-1 bg-primary/10 rounded-full p-1 flex-shrink-0">
-                        <Star className="h-3 w-3 md:h-4 md:w-4 text-primary" />
-                      </div>
-                      <span className="text-gray-700 text-sm md:text-base">{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            )}
-
-            {/* Audition Dates - For upcoming season */}
             {isUpcomingEvent(event) && event.auditionDates && (
               <section className="bg-white rounded-xl p-4 md:p-6 lg:p-8 shadow-sm mb-6 md:mb-8">
                 <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 pb-2 border-b border-gray-100 flex items-center gap-2">
@@ -239,15 +193,17 @@ export default async function EventDetailPage({ params }: { params: { id: string
                 </div>
               </section>
             )}
-
-            {/* Testimonials - Only for past events */}
-            {isPastEvent(event) && event.testimonials.length > 0 && (
+            {isPastEvent(event) && event.testimonials && event.testimonials.length > 0 && (
               <section className="bg-white rounded-xl p-4 md:p-6 lg:p-8 shadow-sm mb-6 md:mb-8">
-                <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 pb-2 border-b border-gray-100">Testimonials</h2>
+                <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 pb-2 border-b border-gray-100">
+                  Testimonials
+                </h2>
                 <div className="grid grid-cols-1 gap-4 md:gap-6">
                   {event.testimonials.map((testimonial, index) => (
                     <div key={index} className="bg-gray-50 p-4 md:p-6 rounded-lg border border-gray-100">
-                      <p className="italic text-gray-700 mb-3 md:mb-4 text-base md:text-lg">"{testimonial.quote}"</p>
+                      <p className="italic text-gray-700 mb-3 md:mb-4 text-base md:text-lg">
+                        "{testimonial.quote}"
+                      </p>
                       <div className="flex items-center gap-3">
                         <div className="bg-primary/10 text-primary rounded-full h-10 w-10 md:h-12 md:w-12 flex items-center justify-center font-bold text-base md:text-lg">
                           {testimonial.name.charAt(0)}
@@ -262,8 +218,6 @@ export default async function EventDetailPage({ params }: { params: { id: string
                 </div>
               </section>
             )}
-
-            {/* Gallery Section - Only for past events */}
             {isPastEvent(event) && event.gallery.length > 0 && (
               <section id="gallery" className="bg-white rounded-xl p-4 md:p-6 lg:p-8 shadow-sm mb-6 md:mb-8">
                 <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 pb-2 border-b border-gray-100">Event Gallery</h2>
@@ -288,11 +242,8 @@ export default async function EventDetailPage({ params }: { params: { id: string
               </section>
             )}
           </div>
-
-          {/* Sidebar */}
           <div className="md:col-span-1">
             <div className="sticky top-4 md:top-8">
-              {/* Registration Status */}
               <div className="bg-white rounded-xl p-4 md:p-6 shadow-sm mb-4 md:mb-6">
                 {isUpcomingEvent(event) ? (
                   <>
@@ -332,8 +283,6 @@ export default async function EventDetailPage({ params }: { params: { id: string
                   </>
                 )}
               </div>
-
-              {/* Event Details */}
               <div className="bg-white rounded-xl p-4 md:p-6 shadow-sm mb-4 md:mb-6">
                 <h3 className="font-bold text-gray-900 mb-3 md:mb-4 text-base md:text-lg">Event Details</h3>
                 <div className="space-y-3 md:space-y-4">
@@ -363,8 +312,6 @@ export default async function EventDetailPage({ params }: { params: { id: string
             </div>
           </div>
         </div>
-
-        {/* Back to Events */}
         <div className="mt-6 md:mt-8 text-center">
           <Link href="/events">
             <Button variant="outline" className="gap-2 text-sm md:text-base">

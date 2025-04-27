@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 export default function NotFound() {
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-secondary/5">
-      {/* Left Side - Unsplash Image */}
       <div className="w-full md:w-1/2 h-64 md:h-auto">
         <img
           src="https://images.unsplash.com/photo-1478147427282-58a87a120781?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -14,7 +13,6 @@ export default function NotFound() {
         />
       </div>
 
-      {/* Right Side - Content */}
       <div className="w-full md:w-1/2 px-8 py-16 flex flex-col justify-center items-center text-center">
         <div className="inline-block rounded-full bg-primary/10 p-6 mb-6">
           <span className="text-6xl font-bold text-primary">404</span>

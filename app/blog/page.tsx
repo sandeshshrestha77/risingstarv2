@@ -32,29 +32,24 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-
 export default async function BlogPage() {
   const posts = getBlogPosts();
   const featuredPost = posts[0];
 
   return (
     <div className="min-h-screen">
-      {/* Hero */}
       <section className="bg-secondary/5 py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <div className="inline-block rounded-lg bg-primary/5 px-4 py-2 border border-primary/10 mb-6">
-              <span className="text-sm font-medium text-primary">Our Blog</span>
-            </div>
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6">Latest Updates</h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Stay updated with the latest news, events, and stories from Sikkim Rising Star.
-            </p>
+        <div className="container mx-auto px-4 text-center">
+          <div className="inline-block rounded-lg bg-primary/5 px-4 py-2 border border-primary/10 mb-6">
+            <span className="text-sm font-medium text-primary">Our Blog</span>
           </div>
+          <h1 className="text-4xl lg:text-5xl font-bold mb-6">Latest Updates</h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Stay updated with the latest news, events, and stories from Sikkim Rising Star.
+          </p>
         </div>
       </section>
 
-      {/* Featured Post */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           {featuredPost && (
@@ -93,7 +88,6 @@ export default async function BlogPage() {
         </div>
       </section>
 
-      {/* All Posts */}
       <section className="py-20 bg-secondary/5">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -125,7 +119,9 @@ export default async function BlogPage() {
                   <h3 className="text-xl font-bold mb-2">{post.title}</h3>
                   <p className="text-gray-600 mb-4 line-clamp-2">{post.excerpt}</p>
                   <Link href={`/blog/${post.slug}`}>
-                    <Button variant="outline" className="w-full">Read More</Button>
+                    <Button variant="outline" className="w-full">
+                      Read More
+                    </Button>
                   </Link>
                 </div>
               </div>

@@ -31,10 +31,9 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-
 const SPONSORS = Array.from({ length: 26 }, (_, i) => ({
   name: `Sponsor ${i + 1}`,
-  logo: `/past sponsor/${i + 1}.jpg`
+  logo: `/past sponsor/${i + 1}.jpg`,
 }));
 
 interface TeamMember {
@@ -93,258 +92,209 @@ const TIMELINE: TimelineItem[] = [
 
 export default function AboutPage() {
   return (
-        <div className="min-h-screen">
-          {/* Hero Section */}
-          <section className="relative bg-secondary/5 py-16">
-  <div className="container mx-auto px-4">
-    <div className="grid lg:grid-cols-2 gap-12 items-center">
-      
-      {/* Text Side */}
-      <div className="space-y-6 text-center lg:text-left">
-        <div className="inline-block rounded-lg bg-primary/5 px-4 py-2 border border-primary/10">
-          <span className="text-sm font-medium text-primary">Our Story</span>
-        </div>
-        <h1 className="text-4xl lg:text-5xl font-bold">
-          Sikkim's Premier Talent Platform
-        </h1>
-        <p className="text-lg text-gray-600">
-          Since 2018, we've been discovering and nurturing exceptional talent across Sikkim,
-          transforming dreams into reality on the biggest stage.
-        </p>
-      </div>
-
-      {/* Image Side – Cover, No Black Gaps, Mobile-Friendly */}
-      <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] rounded-xl overflow-hidden shadow-xl">
-        <Image
-          src="/02 About Section Main.jpg"
-          alt="About Us"
-          fill
-          className="object-cover object-center"
-          priority
-        />
-      </div>
-    </div>
-  </div>
-</section>
-
-          {/* Stats */}
-          <section className="py-16 bg-white">
-            <div className="container mx-auto px-4">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                {STATS.map((stat, index) => (
-                  <div key={index} className="p-6 rounded-xl bg-secondary/5 text-center">
-                    <div className="mb-4 flex justify-center">
-                      <div className="p-3 rounded-lg bg-primary/10 text-primary">
-                        {stat.icon}
-                      </div>
-                    </div>
-                    <div className="text-3xl font-bold text-primary mb-2">{stat.value}</div>
-                    <div className="text-gray-600">{stat.label}</div>
-                  </div>
-                ))}
+    <div className="min-h-screen">
+      <section className="relative bg-secondary/5 py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6 text-center lg:text-left">
+              <div className="inline-block rounded-lg bg-primary/5 px-4 py-2 border border-primary/10">
+                <span className="text-sm font-medium text-primary">Our Story</span>
               </div>
-            </div>
-          </section>
-
-          <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
-  <div className="container mx-auto px-4 md:px-6">
-    <div className="text-center space-y-4 mb-12">
-      <span className="inline-block rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">
-        Our Journey
-      </span>
-      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-        Key Milestones
-      </h2>
-      <p className="max-w-3xl mx-auto text-gray-600 text-lg md:text-xl">
-        Celebrating the milestones that define our journey in uncovering Sikkim's extraordinary talents.
-      </p>
-    </div>
-
-    <div className="relative max-w-4xl mx-auto">
-      <div className="absolute left-1/2 -translate-x-1/2 h-full w-1 bg-primary"></div>
-      {TIMELINE.map((item, index) => (
-        <div
-          key={`timeline-${index}`}
-          className={`relative flex flex-col sm:flex-row items-center mb-12 ${index % 2 === 0 ? 'sm:flex-row-reverse' : ''}`}
-        >
-          <div className={`w-full sm:w-5/12 ${index % 2 === 0 ? 'sm:text-right sm:pr-8' : 'sm:text-left sm:pl-8'}`}>
-            <div className="p-6 rounded-xl bg-white shadow-md hover:shadow-lg transition-shadow">
-              <span className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white mb-3">
-                {item.year}
-              </span>
-              <h3 className="text-xl md:text-2xl font-semibold">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-gray-600">
-                {item.description}
+              <h1 className="text-4xl lg:text-5xl font-bold">Sikkim's Premier Talent Platform</h1>
+              <p className="text-lg text-gray-600">
+                Since 2018, we've been discovering and nurturing exceptional talent across Sikkim,
+                transforming dreams into reality on the biggest stage.
               </p>
             </div>
-          </div>
-          <div className="absolute left-1/2 -translate-x-1/2 sm:left-auto sm:right-1/2 sm:-translate-x-1/2">
-            <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center shadow-md">
-              <Calendar className="h-5 w-5 text-white" />
+            <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] rounded-xl overflow-hidden shadow-xl">
+              <Image
+                src="/02 About Section Main.jpg"
+                alt="About Us"
+                fill
+                className="object-cover object-center"
+                priority
+              />
             </div>
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
-
-{/* Values */}
-<section className="w-full py-12 md:py-24 lg:py-32">
-  <div className="container mx-auto px-4 md:px-6">
-    <div className="text-center space-y-4 mb-12">
-      <span className="inline-block rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">
-        Our Values
-      </span>
-      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-        Our Core Principles
-      </h2>
-      <p className="max-w-3xl mx-auto text-gray-600 text-lg md:text-xl">
-        The guiding values that shape our mission and events.
-      </p>
-    </div>
-
-    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      {VALUES.map((value, index) => (
-        <div
-          key={`value-${index}`}
-          className="flex flex-col items-center text-center p-6 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
-        >
-          <div className="p-3 rounded-full bg-primary/10 mb-4">
-            {value.icon}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {STATS.map((stat, index) => (
+              <div key={index} className="p-6 rounded-xl bg-secondary/5 text-center">
+                <div className="mb-4 flex justify-center">
+                  <div className="p-3 rounded-lg bg-primary/10 text-primary">
+                    {stat.icon}
+                  </div>
+                </div>
+                <div className="text-3xl font-bold text-primary mb-2">{stat.value}</div>
+                <div className="text-gray-600">{stat.label}</div>
+              </div>
+            ))}
           </div>
-          <h3 className="text-xl font-semibold mb-2">
-            {value.title}
-          </h3>
-          <p className="text-gray-600">
-            {value.description}
-          </p>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
-
-{/* Team - Final Styled Version */}
-<section className="py-16 bg-neutral-50">
-  <div className="container mx-auto px-6">
-    <div className="text-center mb-12 space-y-4">
-      <span className="inline-block rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">
-        Our Team
-      </span>
-      <h2 className="text-4xl font-extrabold mb-4 text-neutral-800">Meet the People Behind</h2>
-      <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
-        Our dedicated team works tirelessly to discover and showcase Sikkim's brightest talents.
-      </p>
-    </div>
-
-    {/* Horizontal Scroll Without Scrollbar */}
-    <div className="overflow-x-auto pb-2 no-scrollbar">
-      <div className="flex gap-8 min-w-max">
-        {TEAM.map((member, index) => (
-          <div
-            key={index}
-            className="flex-shrink-0 w-64 rounded-xl overflow-hidden relative hover:shadow-xl transition-shadow duration-300"
-          >
-            {/* 256x256 Image Section */}
-            <div className="relative w-[256px] h-[256px] mx-auto grayscale hover:grayscale-0 transition-all duration-300">
-              <div>
-                <Image
-                  src={member.image || '/placeholder.jpg'}
-                  alt={member.name}
-                  width={256}
-                  height={256}
-                  className="object-cover w-[256px] h-[256px] rounded-xl"
-                />
-
-                {/* Overlay - Name & Role in Rounded Rectangle */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/80 px-5 py-3 rounded-lg shadow-sm text-center w-[85%] backdrop-blur">
-                  <h3 className="text-base font-semibold text-neutral-800 leading-tight">{member.name}</h3>
-                  <p className="text-sm text-gray-500">{member.role}</p>
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center space-y-4 mb-12">
+            <span className="inline-block rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">Our Journey</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">Key Milestones</h2>
+            <p className="max-w-3xl mx-auto text-gray-600 text-lg md:text-xl">
+              Celebrating the milestones that define our journey in uncovering Sikkim's extraordinary talents.
+            </p>
+          </div>
+          <div className="relative max-w-4xl mx-auto">
+            <div className="absolute left-1/2 -translate-x-1/2 h-full w-1 bg-primary"></div>
+            {TIMELINE.map((item, index) => (
+              <div
+                key={`timeline-${index}`}
+                className={`relative flex flex-col sm:flex-row items-center mb-12 ${index % 2 === 0 ? 'sm:flex-row-reverse' : ''}`}
+              >
+                <div className={`w-full sm:w-5/12 ${index % 2 === 0 ? 'sm:text-right sm:pr-8' : 'sm:text-left sm:pl-8'}`}>
+                  <div className="p-6 rounded-xl bg-white shadow-md hover:shadow-lg transition-shadow">
+                    <span className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white mb-3">{item.year}</span>
+                    <h3 className="text-xl md:text-2xl font-semibold">{item.title}</h3>
+                    <p className="mt-2 text-gray-600">{item.description}</p>
+                  </div>
+                </div>
+                <div className="absolute left-1/2 -translate-x-1/2 sm:left-auto sm:right-1/2 sm:-translate-x-1/2">
+                  <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center shadow-md">
+                    <Calendar className="h-5 w-5 text-white" />
+                  </div>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="w-full py-12 md:py-24 lg:py-32">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center space-y-4 mb-12">
+            <span className="inline-block rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">Our Values</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">Our Core Principles</h2>
+            <p className="max-w-3xl mx-auto text-gray-600 text-lg md:text-xl">
+              The guiding values that shape our mission and events.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {VALUES.map((value, index) => (
+              <div
+                key={`value-${index}`}
+                className="flex flex-col items-center text-center p-6 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
+              >
+                <div className="p-3 rounded-full bg-primary/10 mb-4">
+                  {value.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
+                <p className="text-gray-600">{value.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-neutral-50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12 space-y-4">
+            <span className="inline-block rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">Our Team</span>
+            <h2 className="text-4xl font-extrabold mb-4 text-neutral-800">Meet the People Behind</h2>
+            <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
+              Our dedicated team works tirelessly to discover and showcase Sikkim's brightest talents.
+            </p>
+          </div>
+          <div className="overflow-x-auto pb-2 no-scrollbar">
+            <div className="flex gap-8 min-w-max">
+              {TEAM.map((member, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 w-64 rounded-xl overflow-hidden relative hover:shadow-xl transition-shadow duration-300"
+                >
+                  <div className="relative w-[256px] h-[256px] mx-auto grayscale hover:grayscale-0 transition-all duration-300">
+                    <div>
+                      <Image
+                        src={member.image || '/placeholder.jpg'}
+                        alt={member.name}
+                        width={256}
+                        height={256}
+                        className="object-cover w-[256px] h-[256px] rounded-xl"
+                      />
+                      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/80 px-5 py-3 rounded-lg shadow-sm text-center w-[85%] backdrop-blur">
+                        <h3 className="text-base font-semibold text-neutral-800 leading-tight">{member.name}</h3>
+                        <p className="text-sm text-gray-500">{member.role}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
+        </div>
+      </section>
 
-{/* Sponsors Section */}
-<section className="py-16 bg-neutral-50">
-  <div className="container mx-auto px-6">
-    <div className="text-center mb-12 space-y-4">
-      <span className="inline-block rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">
-        Supported By
-      </span>
-      <h2 className="text-4xl font-extrabold mb-4 text-neutral-800">
-      Our Esteemed Sponsors</h2>
-      <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
-      We are grateful for the incredible support from our sponsors. Their contributions have been essential to our growth and success.
-      </p>
-    </div>
+      <section className="py-16 bg-neutral-50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12 space-y-4">
+            <span className="inline-block rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">Supported By</span>
+            <h2 className="text-4xl font-extrabold mb-4 text-neutral-800">Our Esteemed Sponsors</h2>
+            <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
+              We are grateful for the incredible support from our sponsors.
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center items-center gap-4 md:hidden">
+            {SPONSORS.map((sponsor, index) => (
+              <div
+                key={`mobile-${sponsor.name}-${index}`}
+                className="bg-white p-3 rounded-md shadow-sm hover:shadow-md transition duration-300 w-1/6 h-16 flex items-center justify-center"
+              >
+                <div className="relative w-full h-full">
+                  <Image
+                    src={sponsor.logo}
+                    alt={`${sponsor.name} logo`}
+                    fill
+                    className="object-contain grayscale hover:grayscale-0 transition duration-300"
+                    sizes="112px"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
 
-{/* Mobile*/}
-<div className="flex flex-wrap justify-center items-center gap-4 md:hidden">
-  {SPONSORS.map((sponsor, index) => (
-    <div
-      key={`mobile-${sponsor.name}-${index}`}
-      className="bg-white p-3 rounded-md shadow-sm hover:shadow-md transition duration-300 w-1/6 h-16 flex items-center justify-center"
-    >
-      <div className="relative w-full h-full">
-        <Image
-          src={sponsor.logo}
-          alt={`${sponsor.name} logo`}
-          fill
-          className="object-contain grayscale hover:grayscale-0 transition duration-300"
-          sizes="112px"
-        />
-      </div>
-    </div>
-  ))}
-</div>
+          <div className="hidden md:flex flex-wrap justify-center items-center gap-10">
+            {SPONSORS.map((sponsor, index) => (
+              <div
+                key={`desktop-${sponsor.name}-${index}`}
+                className="bg-white p-4 rounded-md shadow-sm hover:shadow-md transition duration-300 w-36 h-20 flex items-center justify-center"
+              >
+                <div className="relative w-full h-full">
+                  <Image
+                    src={sponsor.logo}
+                    alt={`${sponsor.name} logo`}
+                    fill
+                    className="object-contain grayscale hover:grayscale-0 transition duration-300"
+                    sizes="144px"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
 
-{/* Desktop: Show all sponsors */}
-<div className="hidden md:flex flex-wrap justify-center items-center gap-10">
-  {SPONSORS.map((sponsor, index) => (
-    <div
-      key={`desktop-${sponsor.name}-${index}`}
-      className="bg-white p-4 rounded-md shadow-sm hover:shadow-md transition duration-300 w-36 h-20 flex items-center justify-center"
-    >
-      <div className="relative w-full h-full">
-        <Image
-          src={sponsor.logo}
-          alt={`${sponsor.name} logo`}
-          fill
-          className="object-contain grayscale hover:grayscale-0 transition duration-300"
-          sizes="144px"
-        />
-      </div>
-    </div>
-  ))}
-</div>
-    <p className="text-center mt-8 text-gray-600">
-      Interested in becoming a sponsor? <Link href="/contact" className="text-primary underline">Contact us</Link> to learn more about partnership opportunities.
-    </p>
-  </div>
-</section>
+          <p className="text-center mt-8 text-gray-600">
+            Interested in becoming a sponsor? <Link href="/contact" className="text-primary underline">Contact us</Link> to learn more about partnership opportunities.
+          </p>
+        </div>
+      </section>
 
-      {/* CTA */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-primary text-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center space-y-6">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-              Join Our Journey
-            </h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">Join Our Journey</h2>
             <p className="max-w-3xl mx-auto text-lg md:text-xl">
               Become a part of Sikkim's leading talent discovery platform and showcase your skills.
             </p>
-            
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link href="/contact" passHref legacyBehavior>
                 <Button className="bg-secondary hover:bg-secondary/90 text-white font-semibold px-6 py-3">
@@ -352,10 +302,7 @@ export default function AboutPage() {
                 </Button>
               </Link>
               <Link href="/events" passHref legacyBehavior>
-                <Button
-                  variant="outline"
-                  className="border-white text-black hover:bg-white hover:text-primary"
-                >
+                <Button variant="outline" className="border-white text-black hover:bg-white hover:text-primary">
                   Upcoming Events
                 </Button>
               </Link>

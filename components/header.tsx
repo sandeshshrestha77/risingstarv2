@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { useState, useCallback } from "react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+import { useState, useCallback } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 
 const NAV_ITEMS = [
   { href: "/", label: "Home" },
@@ -11,23 +11,22 @@ const NAV_ITEMS = [
   { href: "/events", label: "Events" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
-]
+];
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = useCallback(() => {
-    setIsMenuOpen(prev => !prev)
-  }, [])
+    setIsMenuOpen((prev) => !prev);
+  }, []);
 
   const closeMenu = useCallback(() => {
-    setIsMenuOpen(false)
-  }, [])
+    setIsMenuOpen(false);
+  }, []);
 
   return (
-      <header className="sticky top-0 z-50 w-full bg-secondary text-white">
+    <header className="sticky top-0 z-50 w-full bg-secondary text-white">
       <div className="container flex h-16 items-center justify-between px-4">
-        {/* Logo */}
         <Link 
           href="/" 
           className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm"
@@ -43,7 +42,6 @@ export default function Header() {
           />
         </Link>
 
-        {/* Centered Nav */}
         <nav className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 items-center gap-6">
           {NAV_ITEMS.map((item) => (
             <Link
@@ -56,7 +54,6 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Right-aligned Button */}
         <div className="hidden md:flex">
           <Link href="https://surveyheart.com/form/6804a758e96bdb66c8dfc332" legacyBehavior passHref>
             <Button 
@@ -68,7 +65,6 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
         <button 
           className="md:hidden p-2 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" 
           onClick={toggleMenu} 
@@ -83,7 +79,6 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile Navigation */}
       <div 
         className={`md:hidden absolute top-16 left-0 right-0 bg-secondary z-50 border-b transition-all duration-300 ease-in-out ${isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
         aria-hidden={!isMenuOpen}
@@ -113,5 +108,5 @@ export default function Header() {
         </nav>
       </div>
     </header>
-  )
+  );
 }

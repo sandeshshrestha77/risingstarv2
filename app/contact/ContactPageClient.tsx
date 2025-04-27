@@ -1,23 +1,23 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue
-} from "@/components/ui/select"
-import { Label } from "@/components/ui/label"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Mail, MapPin, Phone } from "lucide-react"
-import { useToast } from "@/hooks/use-toast"
+  SelectValue,
+} from "@/components/ui/select";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Mail, MapPin, Phone } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ContactPageClient() {
-  const { toast } = useToast()
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -26,57 +26,65 @@ export default function ContactPageClient() {
     message: "",
     inquiryType: "",
     agreeToTerms: false,
-  })
-  const [loading, setLoading] = useState(false)
+  });
+  const [loading, setLoading] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSelectChange = (value: string) => {
-    setFormData((prev) => ({ ...prev, inquiryType: value }))
-  }
+    setFormData((prev) => ({ ...prev, inquiryType: value }));
+  };
 
   const handleCheckboxChange = (checked: boolean) => {
-    setFormData((prev) => ({ ...prev, agreeToTerms: checked }))
-  }
+    setFormData((prev) => ({ ...prev, agreeToTerms: checked }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.message || !formData.inquiryType || !formData.agreeToTerms) {
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.message ||
+      !formData.inquiryType ||
+      !formData.agreeToTerms
+    ) {
       toast({
         title: "Error",
         description: "Please fill in all required fields and agree to the terms.",
         variant: "destructive",
-      })
-      return
+      });
+      return;
     }
 
-    setLoading(true)
-    const data = new FormData()
-    data.append("access_key", "ce70048d-f810-4230-bdb7-6dd5684c6a48")
-    data.append("name", formData.name)
-    data.append("email", formData.email)
-    data.append("phone", formData.phone)
-    data.append("subject", formData.subject)
-    data.append("message", formData.message)
-    data.append("inquiryType", formData.inquiryType)
+    setLoading(true);
+    const data = new FormData();
+    data.append("access_key", "ce70048d-f810-4230-bdb7-6dd5684c6a48");
+    data.append("name", formData.name);
+    data.append("email", formData.email);
+    data.append("phone", formData.phone);
+    data.append("subject", formData.subject);
+    data.append("message", formData.message);
+    data.append("inquiryType", formData.inquiryType);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: data,
-      })
+      });
 
-      const result = await response.json()
+      const result = await response.json();
 
       if (result.success) {
         toast({
           title: "Success!",
           description: "Your message has been sent. We'll get back to you soon.",
-        })
+        });
         setFormData({
           name: "",
           email: "",
@@ -85,28 +93,27 @@ export default function ContactPageClient() {
           message: "",
           inquiryType: "",
           agreeToTerms: false,
-        })
+        });
       } else {
         toast({
           title: "Submission Failed",
           description: result.message || "Something went wrong. Please try again.",
           variant: "destructive",
-        })
+        });
       }
     } catch (error) {
       toast({
         title: "Network Error",
         description: "Could not reach the server. Please try again later.",
         variant: "destructive",
-      })
+      });
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen">
-      {/* Hero */}
       <section className="bg-secondary/5 py-20">
         <div className="container mx-auto px-4 text-center">
           <div className="inline-block rounded-lg bg-primary/5 px-4 py-2 border border-primary/10 mb-6">
@@ -119,49 +126,44 @@ export default function ContactPageClient() {
         </div>
       </section>
 
-      {/* Info & Form */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Information */}
+            {/* Contact Info */}
             <div className="space-y-8">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-lg bg-primary/10">
-                  <MapPin className="h-6 w-6 text-primary" />
+              {[
+                {
+                  icon: <MapPin className="h-6 w-6 text-primary" />,
+                  title: "Our Location",
+                  content: (
+                    <>
+                      Indira Bypass Road,
+                      <br />
+                      Gangtok East Sikkim
+                      <br />
+                      India
+                    </>
+                  ),
+                },
+                {
+                  icon: <Phone className="h-6 w-6 text-primary" />,
+                  title: "Phone",
+                  content: "+91 9734013211 / 8918215965",
+                },
+                {
+                  icon: <Mail className="h-6 w-6 text-primary" />,
+                  title: "Email",
+                  content: "sikkimrisingstar@gmail.com",
+                },
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-start gap-4">
+                  <div className="p-3 rounded-lg bg-primary/10">{item.icon}</div>
+                  <div>
+                    <h3 className="font-semibold mb-2">{item.title}</h3>
+                    <p className="text-gray-600">{item.content}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold mb-2">Our Location</h3>
-                  <p className="text-gray-600">
-                    Indira Bypass Road,<br />
-                    Gangtok East Sikkim<br />
-                    India
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-lg bg-primary/10">
-                  <Phone className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-2">Phone</h3>
-                  <p className="text-gray-600">
-                    +91 9734013211 / 8918215965
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-lg bg-primary/10">
-                  <Mail className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-2">Email</h3>
-                  <p className="text-gray-600">
-                    sikkimrisingstar@gmail.com
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
 
             {/* Contact Form */}
@@ -193,11 +195,11 @@ export default function ContactPageClient() {
                         <SelectValue placeholder="Select an option" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="general">General Inquiry</SelectItem>
-                        <SelectItem value="registration">Event Registration</SelectItem>
-                        <SelectItem value="sponsorship">Sponsorship</SelectItem>
-                        <SelectItem value="media">Media Inquiry</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
+                        {["general", "registration", "sponsorship", "media", "other"].map((option) => (
+                          <SelectItem key={option} value={option}>
+                            {option.charAt(0).toUpperCase() + option.slice(1).replace(/([A-Z])/g, ' $1')}
+                          </SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                   </div>
@@ -227,7 +229,6 @@ export default function ContactPageClient() {
         </div>
       </section>
 
-      {/* Map */}
       <section className="py-20 bg-secondary/5">
         <div className="container mx-auto px-4">
           <div className="rounded-xl overflow-hidden shadow-lg h-[400px]">
@@ -236,7 +237,7 @@ export default function ContactPageClient() {
               width="100%"
               height="100%"
               style={{ border: 0 }}
-              allowFullScreen={true}
+              allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
@@ -244,5 +245,5 @@ export default function ContactPageClient() {
         </div>
       </section>
     </div>
-  )
+  );
 }

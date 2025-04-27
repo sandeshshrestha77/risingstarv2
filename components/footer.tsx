@@ -11,12 +11,11 @@ export default function Footer() {
   return (
     <footer className="w-full bg-secondary text-white border-t border-gray-800 z-50">
       <div className="container flex flex-col gap-10 px-4 py-10 md:grid md:grid-cols-4">
-        {/* Logo & Description */}
         <div>
           <Link href="/">
             <Image
               src="/logo.png" 
-              alt="SIKKIM Rising Star Logo" 
+              alt="Sikkim Rising Star Logo" 
               className="h-auto max-h-12 mix-blend-screen"
               width={120} 
               height={256}
@@ -38,7 +37,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Quick Links */}
         <div>
           <h3 className="text-lg font-semibold mb-4 hover:underline">Quick Links</h3>
           <ul className="space-y-2">
@@ -49,7 +47,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Contact Info */}
         <div>
           <h3 className="text-lg font-semibold mb-4 hover:underline">Contact Us</h3>
           <address className="not-italic text-gray-300 space-y-2">
@@ -67,7 +64,6 @@ export default function Footer() {
           </address>
         </div>
 
-        {/* Payment */}
         <div>
           <h3 className="text-lg font-semibold mb-4 hover:underline">Payment Method</h3>
           <Image
@@ -81,7 +77,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Footer Bottom */}
       <div className="border-t border-gray-800 mt-8 pt-6 container px-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
         <p>&copy; {new Date().getFullYear()} Sikkim Rising Star. All rights reserved.</p>
         <div className="flex space-x-4 mt-4 md:mt-0">
@@ -90,7 +85,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Credits */}
       <div className="text-center text-gray-400 text-sm mt-4 pb-6">
         Made with ❤️ by{" "}
         <a
@@ -103,7 +97,6 @@ export default function Footer() {
         </a>
       </div>
 
-      {/* QR Modal */}
       {showQR && <QRModal onClose={() => setShowQR(false)} />}
     </footer>
   );

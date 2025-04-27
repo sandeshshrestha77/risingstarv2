@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
 interface ImagePopupProps {
   imageSrc: string;
@@ -12,12 +12,12 @@ const ImagePopup = ({ imageSrc, targetLink }: ImagePopupProps) => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const hasSeenPopup = sessionStorage.getItem('hasSeenImagePopup');
+    const hasSeenPopup = sessionStorage.getItem("hasSeenImagePopup");
 
     if (!hasSeenPopup) {
       const timer = setTimeout(() => {
         setShow(true);
-        sessionStorage.setItem('hasSeenImagePopup', 'true');
+        sessionStorage.setItem("hasSeenImagePopup", "true");
       }, 2500);
 
       return () => clearTimeout(timer);
@@ -25,7 +25,7 @@ const ImagePopup = ({ imageSrc, targetLink }: ImagePopupProps) => {
   }, []);
 
   const handleRedirect = () => {
-    window.location.href = targetLink || 'https://default-link.com';
+    window.location.href = targetLink || "https://default-link.com";
   };
 
   return (

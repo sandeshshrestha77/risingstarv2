@@ -1,6 +1,6 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { CalendarX, ArrowLeft } from "lucide-react"
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { CalendarX, ArrowLeft } from "lucide-react";
 
 export default function EventNotFound() {
   return (
@@ -27,5 +27,5 @@ export default function EventNotFound() {
         </div>
       </div>
     </div>
-  )
-} 
+  );
+}

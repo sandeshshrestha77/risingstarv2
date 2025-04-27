@@ -1,4 +1,3 @@
-import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -7,29 +6,19 @@ import { Calendar, User, Tag, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import "./blog.css";
 
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  themeColor: "#ffffff",
-};
+export const dynamic = "force-dynamic"
 
-export async function generateStaticParams() {
-  const posts = await getRecentBlogPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
-}
-
-export async function generateMetadata(
-  { params }: { params: { slug: string } }
-): Promise<Metadata> {
-  const post = await getBlogPostBySlug(params.slug);
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const slug = (await params).slug;
+  let post;
+  try {
+    post = await getBlogPostBySlug(slug);
+  } catch (error) {
+    return { title: "Blog Post Not Found", description: "The requested blog post could not be found." };
+  }
 
   if (!post) {
-    return {
-      title: "Blog Post Not Found",
-      description: "The requested blog post could not be found.",
-    };
+    return { title: "Blog Post Not Found", description: "The requested blog post could not be found." };
   }
 
   return {
@@ -41,33 +30,21 @@ export async function generateMetadata(
       type: "article",
       publishedTime: post.date,
       authors: [post.author.name],
-      images: [
-        {
-          url: post.image,
-          width: 1200,
-          height: 630,
-        },
-      ],
+      images: [{ url: post.image, width: 1200, height: 630 }],
     },
-    alternates: {
-      canonical: `https://sikkimrisingstar.com/blog/${params.slug}`,
-    },
+    alternates: { canonical: `https://sikkimrisingstar.com/blog/${post.slug}` },
   };
 }
 
-export default async function BlogPostPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const post = await getBlogPostBySlug(params.slug);
+export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+  const slug = (await params).slug;
+  const post = await getBlogPostBySlug(slug);
   const recentPosts = await getRecentBlogPosts(3);
 
   if (!post) notFound();
 
   return (
     <>
-      {/* Hero Section */}
       <section className="w-full py-12 md:py-16 lg:py-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="container px-4 md:px-6 mx-auto">
           <div className="flex flex-col items-center text-center space-y-4 max-w-3xl mx-auto">
@@ -105,12 +82,11 @@ export default async function BlogPostPage({
         </div>
       </section>
 
-      {/* Feature Image */}
       <section className="w-full py-6">
         <div className="container px-4 md:px-6 mx-auto">
           <div className="blog-feature-image relative w-full h-[300px] md:h-[500px] overflow-hidden">
-            <Image 
-              src={post.image || "/placeholder.svg"} 
+            <Image
+              src={post.image || "/placeholder.svg"}
               alt={post.title}
               fill
               className="object-cover"
@@ -121,19 +97,18 @@ export default async function BlogPostPage({
         </div>
       </section>
 
-      {/* Content */}
       <section className="w-full py-12 md:py-16">
         <div className="container px-4 md:px-6 mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            {/* Main Content */}
             <div className="lg:col-span-8">
-              <div className="blog-content prose prose-lg prose-blue" dangerouslySetInnerHTML={{ __html: post.content }} />
-
-              {/* Author Bio */}
-              <div className="author-card">
+              <div
+                className="blog-content prose prose-lg prose-blue"
+                dangerouslySetInnerHTML={{ __html: post.content }}
+              />
+              <div className="author-card mt-12 flex gap-4 items-center">
                 <div className="author-avatar relative w-16 h-16 flex-shrink-0">
-                  <Image 
-                    src={post.author.avatar || "/placeholder.svg"} 
+                  <Image
+                    src={post.author.avatar || "/placeholder.svg"}
                     alt={post.author.name}
                     fill
                     className="object-cover"
@@ -145,8 +120,6 @@ export default async function BlogPostPage({
                   <p className="text-gray-600 text-sm">Content Writer</p>
                 </div>
               </div>
-
-              {/* Navigation */}
               <div className="mt-12 flex items-center justify-between border-t border-b border-gray-200 py-6">
                 <Link href="/blog">
                   <Button variant="outline" className="flex items-center gap-2">
@@ -157,21 +130,20 @@ export default async function BlogPostPage({
               </div>
             </div>
 
-            {/* Sidebar */}
             <div className="lg:col-span-4">
-              <div className="sticky top-24">
+              <div className="sticky top-24 space-y-6">
                 <div className="bg-gray-50 rounded-xl p-6 shadow-sm">
                   <h3 className="text-xl font-bold mb-4 border-b border-gray-200 pb-2">Recent Posts</h3>
                   <div className="space-y-4">
                     {recentPosts.map((recentPost) => (
-                      <Link 
-                        key={recentPost.id} 
+                      <Link
+                        key={recentPost.id}
                         href={`/blog/${recentPost.slug}`}
                         className="group flex gap-4 items-start"
                       >
                         <div className="relative w-16 h-16 rounded-md overflow-hidden flex-shrink-0">
-                          <Image 
-                            src={recentPost.image || "/placeholder.svg"} 
+                          <Image
+                            src={recentPost.image || "/placeholder.svg"}
                             alt={recentPost.title}
                             fill
                             className="object-cover transition-transform group-hover:scale-105"
@@ -207,7 +179,10 @@ export default async function BlogPostPage({
                       placeholder="Your email address"
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/30"
                     />
-                    <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white">
+                    <Button
+                      type="submit"
+                      className="w-full bg-primary hover:bg-primary/90 text-white"
+                    >
                       Subscribe
                     </Button>
                   </form>
