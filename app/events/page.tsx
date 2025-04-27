@@ -1,15 +1,10 @@
-import type { Metadata, Viewport } from "next";
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Calendar, MapPin, ArrowRight } from "lucide-react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { getUpcomingEvents, getPastEvents } from "@/lib/events";
+import type { Metadata, Viewport } from "next"
+import Link from "next/link"
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { Calendar, MapPin, ArrowRight } from "lucide-react"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { getUpcomingEvents, getOngoingEvents, getPastEvents } from "@/lib/events"
 
 export const metadata: Metadata = {
   title: "Events & Competitions - Register Now",
@@ -30,27 +25,17 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://sikkimrisingstar.com/events",
   },
-};
+}
 
 export const viewport: Viewport = {
   themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
-};
-
-
-interface Event {
-  id: string
-  title: string
-  date: string
-  location: string
-  description: string
-  image?: string
-  registrationOpen: boolean
 }
 
 export default async function EventsPage() {
   const upcomingEvents = await getUpcomingEvents()
+  const ongoingEvents = await getOngoingEvents()
   const pastEvents = await getPastEvents()
 
   return (
@@ -67,151 +52,218 @@ export default async function EventsPage() {
           </p>
         </div>
       </section>
-    <div className="flex flex-col items-center">
-    {/* Upcoming Events */}
-    <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Upcoming Events</h2>
-            <p className="text-gray-600">Don't miss out on these exciting opportunities</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {upcomingEvents.map((event) => (
-              <div key={event.id} className="group bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100">
-                <div className="relative h-48">
-                  <Image
-                    src={event.image || "/placeholder.svg"}
-                    alt={event.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  {event.registrationOpen && (
-                    <div className="absolute top-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
-                      Registration Open
+      <div className="flex flex-col items-center">
+        {/* Ongoing Events */}
+        {ongoingEvents.length > 0 && (
+          <section id="ongoing" className="py-20 bg-gradient-to-b from-primary/5 to-white">
+            <div className="container mx-auto px-4">
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center justify-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full mb-4">
+                  <span className="relative flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+                  </span>
+                  <span className="text-sm font-medium">Happening Now</span>
+                </div>
+                <h2 className="text-3xl font-bold mb-4">Ongoing Events</h2>
+                <p className="text-gray-600">Currently running events you can attend</p>
+              </div>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {ongoingEvents.map((event) => (
+                  <div
+                    key={event.id}
+                    className="group bg-white rounded-xl overflow-hidden shadow-lg border border-primary/20 ring-2 ring-primary/5"
+                  >
+                    <div className="relative h-48">
+                      <Image
+                        src={event.image || "/placeholder.svg"}
+                        alt={event.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute top-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                        </span>
+                        Ongoing
+                      </div>
                     </div>
-                  )}
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="h-4 w-4" />
-                      {event.date}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <MapPin className="h-4 w-4" />
-                      {event.location}
-                    </span>
+                    <div className="p-6">
+                      <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="h-4 w-4" />
+                          {event.date}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <MapPin className="h-4 w-4" />
+                          {event.location}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold mb-2">{event.title}</h3>
+                      <p className="text-gray-600 mb-4 line-clamp-2">{event.description}</p>
+                      <Link href={`/events/${event.id}`}>
+                        <Button className="w-full bg-primary hover:bg-primary/90">
+                          View Details
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold mb-2">{event.title}</h3>
-                  <p className="text-gray-600 mb-4 line-clamp-2">{event.description}</p>
-                  <Link href={`/events/${event.id}`}>
-                    <Button className="w-full">
-                      View Details
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
+          </section>
+        )}
 
-      {/* Past Events */}
-      <section className="py-20 bg-secondary/5">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Past Events</h2>
-            <p className="text-gray-600">Relive our previous successful events</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {pastEvents.map((event) => (
-              <div key={event.id} className="bg-white rounded-xl overflow-hidden shadow-lg">
-                <div className="relative h-48">
-                  <Image
-                    src={event.image || "/placeholder.svg"}
-                    alt={event.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="h-4 w-4" />
-                      {event.date}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <MapPin className="h-4 w-4" />
-                      {event.location}
-                    </span>
+        {/* Upcoming Events */}
+        <section id="upcoming" className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Upcoming Events</h2>
+              <p className="text-gray-600">Don't miss out on these exciting opportunities</p>
+            </div>
+            {upcomingEvents.length > 0 ? (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {upcomingEvents.map((event) => (
+                  <div
+                    key={event.id}
+                    className="group bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100"
+                  >
+                    <div className="relative h-48">
+                      <Image
+                        src={event.image || "/placeholder.svg"}
+                        alt={event.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      {event.registrationOpen && (
+                        <div className="absolute top-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
+                          Registration Open
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-6">
+                      <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="h-4 w-4" />
+                          {event.date}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <MapPin className="h-4 w-4" />
+                          {event.location}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold mb-2">{event.title}</h3>
+                      <p className="text-gray-600 mb-4 line-clamp-2">{event.description}</p>
+                      <Link href={`/events/${event.id}`}>
+                        <Button className="w-full">
+                          View Details
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold mb-2">{event.title}</h3>
-                  <p className="text-gray-600 mb-4 line-clamp-2">{event.description}</p>
-                  <Link href={`/events/${event.id}`}>
-                    <Button variant="outline" className="w-full">View Details</Button>
-                  </Link>
-                </div>
+                ))}
               </div>
-            ))}
+            ) : (
+              <div className="text-center py-10">
+                <p className="text-gray-500">No upcoming events at the moment. Check back soon!</p>
+              </div>
+            )}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* FAQs */}
-      <section className="w-full py-8 sm:py-16">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-        <div className="inline-block rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">
-          FAQs
-        </div>
-        <h2 className="text-2xl md:text-3xl font-bold tracking-tighter">Frequently Asked Questions</h2>
-        <p className="max-w-[700px] text-gray-500 text-sm md:text-lg">
-          Everything you need to know about our events and registration process.
-        </p>
-        </div>
-        <div className="mx-auto max-w-3xl mt-8">
-        <Accordion type="single" collapsible className="w-full">
-          {faqs.map((faq, index) => (
-          <AccordionItem key={index} value={`item-${index}`} className="border-b border-gray-200">
-            <AccordionTrigger className="text-left py-4 text-sm sm:text-lg font-medium hover:text-primary">
-            {faq.question}
-            </AccordionTrigger>
-            <AccordionContent className="text-gray-600 pt-1 pb-4 text-sm sm:text-base">
-            {faq.answer}
-            </AccordionContent>
-          </AccordionItem>
-          ))}
-        </Accordion>
-        </div>
-      </div>
-      </section>
+        {/* Past Events */}
+        <section className="py-20 bg-secondary/5">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Past Events</h2>
+              <p className="text-gray-600">Relive our previous successful events</p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {pastEvents.map((event) => (
+                <div key={event.id} className="bg-white rounded-xl overflow-hidden shadow-lg">
+                  <div className="relative h-48">
+                    <Image src={event.image || "/placeholder.svg"} alt={event.title} fill className="object-cover" />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                      <span className="flex items-center gap-1">
+                        <Calendar className="h-4 w-4" />
+                        {event.date}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <MapPin className="h-4 w-4" />
+                        {event.location}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-bold mb-2">{event.title}</h3>
+                    <p className="text-gray-600 mb-4 line-clamp-2">{event.description}</p>
+                    <Link href={`/events/${event.id}`}>
+                      <Button variant="outline" className="w-full">
+                        View Details
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-      {/* CTA */}
-      <section className="w-full py-8 sm:py-16 bg-primary text-white">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-6 text-center">
-        <div className="space-y-3 max-w-3xl">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">Ready to Showcase Your Talent?</h2>
-          <p className="text-lg md:text-xl text-white/90">
-          Register now for upcoming events and let your talent shine on Sikkim's biggest platform.
-          </p>
-        </div>
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Link href="https://surveyheart.com/form/6804a758e96bdb66c8dfc332" passHref legacyBehavior>
-          <Button className="bg-secondary hover:bg-secondary/90 text-white">
-            Register Now
-          </Button>
-          </Link>
-          <Link href="#upcoming">
-          <Button variant="outline" className="border-white text-black hover:bg-white hover:text-primary">
-            Explore Events
-          </Button>
-          </Link>
-        </div>
-        </div>
-      </div>
-      </section>
+        {/* FAQs */}
+        <section className="w-full py-8 sm:py-16">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+              <div className="inline-block rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">
+                FAQs
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold tracking-tighter">Frequently Asked Questions</h2>
+              <p className="max-w-[700px] text-gray-500 text-sm md:text-lg">
+                Everything you need to know about our events and registration process.
+              </p>
+            </div>
+            <div className="mx-auto max-w-3xl mt-8">
+              <Accordion type="single" collapsible className="w-full">
+                {faqs.map((faq, index) => (
+                  <AccordionItem key={index} value={`item-${index}`} className="border-b border-gray-200">
+                    <AccordionTrigger className="text-left py-4 text-sm sm:text-lg font-medium hover:text-primary">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-600 pt-1 pb-4 text-sm sm:text-base">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="w-full py-8 sm:py-16 bg-primary text-white">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-6 text-center">
+              <div className="space-y-3 max-w-3xl">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">Ready to Showcase Your Talent?</h2>
+                <p className="text-lg md:text-xl text-white/90">
+                  Register now for upcoming events and let your talent shine on Sikkim's biggest platform.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="https://surveyheart.com/form/6804a758e96bdb66c8dfc332" passHref legacyBehavior>
+                  <Button className="bg-secondary hover:bg-secondary/90 text-white">Register Now</Button>
+                </Link>
+                <Link href="#upcoming">
+                  <Button variant="outline" className="border-white text-black hover:bg-white hover:text-primary">
+                    Explore Events
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   )
