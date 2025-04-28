@@ -137,6 +137,9 @@ export default function Home() {
 
   return (
     <>
+    <script dangerouslySetInnerHTML={{
+     __html: `(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="heXM7DBQvSAvji83O3lKk";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();`
+      }} />
       <ImagePopup imageSrc="/s4 main.jpg" targetLink="https://sikkimrisingstar.com/events/rising-star-season-4" />
       <section className="bg-white py-16">
         <div className="container mx-auto px-4">
