@@ -1,4 +1,4 @@
-import { BlogPost } from "@/types/blog";
+import type { BlogPost } from "@/types/blog"
 
 const blogPosts: BlogPost[] = [
   {
@@ -38,41 +38,127 @@ const blogPosts: BlogPost[] = [
     image: "/s4 main.jpg",
     author: {
       name: "Sikkim Rising Star Team",
-      avatar: "/favicon.ico"
-    }
-  }
-];
+      avatar: "/favicon.ico",
+    },
+  },
+]
 
 export function getBlogPosts() {
-  return blogPosts;
+  return blogPosts
 }
 
 export function getBlogPostBySlug(slug: string) {
-  const post = blogPosts.find(post => post.slug === slug);
-  if (post) return post;
+  const post = blogPosts.find((post) => post.slug === slug)
+  if (post) return post
 
-  return blogPosts.find(post => {
-    const generatedSlug = post.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
-    return generatedSlug === slug;
-  });
+  return blogPosts.find((post) => {
+    const generatedSlug = post.title
+      .toLowerCase()
+      .replace(/\s+/g, "-")
+      .replace(/[^\w-]+/g, "")
+    return generatedSlug === slug
+  })
 }
 
-export function getRecentBlogPosts(count: number = 3) {
-  const sevenDaysAgo = new Date();
-  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
-  
-  const recentPosts = blogPosts.filter(post => {
-    const postDate = new Date(post.date);
-    return postDate >= sevenDaysAgo;
-  });
-  
-  return recentPosts.length === 0 ? blogPosts.slice(0, count) : recentPosts.slice(0, count);
+export function getRecentBlogPosts(count = 3, excludeId?: string) {
+  const sevenDaysAgo = new Date()
+  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7)
+
+  let filteredPosts = blogPosts
+
+  if (excludeId) {
+    filteredPosts = filteredPosts.filter((post) => post.id !== excludeId)
+  }
+
+  const recentPosts = filteredPosts.filter((post) => {
+    const postDate = new Date(post.date)
+    return postDate >= sevenDaysAgo
+  })
+
+  if (recentPosts.length < count) {
+    return filteredPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, count)
+  }
+
+  return recentPosts.slice(0, count)
 }
 
 export function getBlogCategories() {
-  const categories = new Set<string>();
-  blogPosts.forEach(post => {
-    if (post.category) categories.add(post.category);
-  });
-  return Array.from(categories);
+  const categories = new Set<string>()
+  blogPosts.forEach((post) => {
+    if (post.category) categories.add(post.category)
+  })
+  return Array.from(categories)
+}
+
+export function searchBlogPosts(query: string) {
+  const searchTerm = query.toLowerCase()
+  return blogPosts.filter(
+    (post) =>
+      post.title.toLowerCase().includes(searchTerm) ||
+      post.excerpt.toLowerCase().includes(searchTerm) ||
+      post.content.toLowerCase().includes(searchTerm) ||
+      post.category.toLowerCase().includes(searchTerm),
+  )
+}
+
+export function getRelatedPosts(postId: string, category: string, count = 3) {
+  return blogPosts.filter((post) => post.id !== postId && post.category === category).slice(0, count)
+}
+
+export function getPaginatedPosts(page = 1, postsPerPage = 6, filteredPosts = blogPosts) {
+  const startIndex = (page - 1) * postsPerPage
+  const endIndex = startIndex + postsPerPage
+  return {
+    posts: filteredPosts.slice(startIndex, endIndex),
+    totalPages: Math.ceil(filteredPosts.length / postsPerPage),
+  }
+}
+
+/**
+ * Formats a date string into a more readable format
+ * @param dateString Date string in any valid format
+ * @returns Formatted date string (e.g., "April 22, 2025")
+ */
+export function formatDate(dateString: string): string {
+  const date = new Date(dateString)
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  })
+}
+
+/**
+ * Estimates reading time based on content length
+ * @param content The blog post content
+ * @returns Estimated reading time in minutes
+ */
+export function calculateReadingTime(content: string): number {
+  const wordsPerMinute = 200
+  const textOnly = content.replace(/<[^>]*>/g, "")
+  const wordCount = textOnly.split(/\s+/).length
+  return Math.ceil(wordCount / wordsPerMinute)
+}
+
+/**
+ * Generates a share URL for social media
+ * @param platform The social media platform
+ * @param url The URL to share
+ * @param title The title of the content
+ * @returns A properly formatted share URL
+ */
+export function getShareUrl(platform: "twitter" | "facebook" | "linkedin", url: string, title: string): string {
+  const encodedUrl = encodeURIComponent(url)
+  const encodedTitle = encodeURIComponent(title)
+
+  switch (platform) {
+    case "twitter":
+      return `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`
+    case "facebook":
+      return `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`
+    case "linkedin":
+      return `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`
+    default:
+      return "#"
+  }
 }

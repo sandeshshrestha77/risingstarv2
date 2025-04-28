@@ -1,10 +1,12 @@
-import Link from "next/link";
-import Image from "next/image";
-import { notFound } from "next/navigation";
-import { getBlogPostBySlug, getRecentBlogPosts } from "@/lib/blog";
-import { Calendar, User, Tag, ChevronLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import "./blog.css";
+import Link from "next/link"
+import Image from "next/image"
+import { notFound } from "next/navigation"
+import { getBlogPostBySlug, getRecentBlogPosts, formatDate, calculateReadingTime, getBlogPosts } from "@/lib/blog"
+import { Calendar, User, Tag, ChevronLeft } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { ShareButtons } from "@/components/share-buttons"
+import { RelatedPosts } from "@/components/related-posts"
+import "./blog.css"
 
 export const dynamic = "force-dynamic"
 
@@ -39,9 +41,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const slug = (await params).slug;
   const post = await getBlogPostBySlug(slug);
-  const recentPosts = await getRecentBlogPosts(3);
 
   if (!post) notFound();
+
+  const readingTime = calculateReadingTime(post.content)
+  const recentPosts = await getRecentBlogPosts(3, post.id)
+  const allPosts = await getBlogPosts()
 
   return (
     <>
@@ -67,7 +72,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             <div className="blog-info mt-4">
               <div className="blog-meta-item">
                 <Calendar className="h-4 w-4 text-primary" />
-                <span>{post.date}</span>
+                <span>{formatDate(post.date)}</span>
               </div>
               <div className="blog-meta-item">
                 <Tag className="h-4 w-4 text-primary" />
@@ -76,6 +81,9 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
               <div className="blog-meta-item">
                 <User className="h-4 w-4 text-primary" />
                 <span>{post.author.name}</span>
+              </div>
+              <div className="blog-meta-item">
+                <span>{readingTime} min read</span>
               </div>
             </div>
           </div>
@@ -86,7 +94,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         <div className="container px-4 md:px-6 mx-auto">
           <div className="blog-feature-image relative w-full h-[300px] md:h-[500px] overflow-hidden">
             <Image
-              src={post.image || "/placeholder.svg"}
+              src={post.image || "/placeholder.svg?height=500&width=1200"}
               alt={post.title}
               fill
               className="object-cover"
@@ -105,10 +113,20 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 className="blog-content prose prose-lg prose-blue"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
+
+              <div className="mt-8 flex flex-wrap justify-between items-center gap-4">
+                <div className="flex flex-wrap gap-2">
+                  <span className="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-medium text-gray-800">
+                    {post.category}
+                  </span>
+                </div>
+                <ShareButtons url={`/blog/${post.slug}`} title={post.title} />
+              </div>
+
               <div className="author-card mt-12 flex gap-4 items-center">
                 <div className="author-avatar relative w-16 h-16 flex-shrink-0">
                   <Image
-                    src={post.author.avatar || "/placeholder.svg"}
+                    src={post.author.avatar || "/placeholder.svg?height=64&width=64"}
                     alt={post.author.name}
                     fill
                     className="object-cover"
@@ -120,6 +138,9 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                   <p className="text-gray-600 text-sm">Content Writer</p>
                 </div>
               </div>
+
+              <RelatedPosts currentPostId={post.id} posts={allPosts} category={post.category} />
+
               <div className="mt-12 flex items-center justify-between border-t border-b border-gray-200 py-6">
                 <Link href="/blog">
                   <Button variant="outline" className="flex items-center gap-2">
@@ -143,7 +164,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                       >
                         <div className="relative w-16 h-16 rounded-md overflow-hidden flex-shrink-0">
                           <Image
-                            src={recentPost.image || "/placeholder.svg"}
+                            src={recentPost.image || "/placeholder.svg?height=64&width=64"}
                             alt={recentPost.title}
                             fill
                             className="object-cover transition-transform group-hover:scale-105"
@@ -154,7 +175,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                           <h4 className="font-medium line-clamp-2 group-hover:text-primary transition-colors">
                             {recentPost.title}
                           </h4>
-                          <p className="text-xs text-gray-500">{recentPost.date}</p>
+                          <p className="text-xs text-gray-500">{formatDate(recentPost.date)}</p>
                         </div>
                       </Link>
                     ))}
@@ -167,31 +188,11 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                     </Link>
                   </div>
                 </div>
-
-                <div className="bg-primary/5 rounded-xl p-6 mt-6 shadow-sm border border-primary/10">
-                  <h3 className="text-xl font-bold mb-4 text-primary">Subscribe</h3>
-                  <p className="text-gray-600 text-sm mb-4">
-                    Get the latest posts delivered straight to your inbox.
-                  </p>
-                  <form className="space-y-2">
-                    <input
-                      type="email"
-                      placeholder="Your email address"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/30"
-                    />
-                    <Button
-                      type="submit"
-                      className="w-full bg-primary hover:bg-primary/90 text-white"
-                    >
-                      Subscribe
-                    </Button>
-                  </form>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
     </>
-  );
+  )
 }
