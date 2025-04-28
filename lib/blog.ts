@@ -2,45 +2,107 @@ import type { BlogPost } from "@/types/blog"
 
 const blogPosts: BlogPost[] = [
   {
-    id: "1",
-    title: "Season 4 Announced – Bigger and Better Than Ever",
-    slug: "season-4-announced",
-    date: "April 22, 2025",
+    id: "2",
+    title: "Sikkim Rising Star: Illuminating Dreams, One Talent at a Time",
+    slug: "illuminating-dreams",
+    date: "April 29, 2025",
     category: "Announcements",
-    excerpt: "Sikkim Rising Star returns with its biggest season yet. Here's what to expect.",
+    excerpt: "From the heart of the Himalayas, Sikkim Rising Star Season 4 is set to ignite the world stage with over ₹2,00,000 in rewards. This season, dreams will rise higher than ever before.",
     content: `
-      <p>The stage is set. The spotlight is on. Sikkim Rising Star Season 4 is officially here—and it's bigger, bolder, and brimming with talent!</p>
-  
-      <h2>Registration Now Open</h2>
-      <p>Registrations for Season 4 are now open! Whether you're a singer, dancer, actor, rapper, or have a unique talent, this is your chance to shine. The competition is fierce, and the spotlight awaits!</p>
-  
-      <h2>Audition Dates</h2>
-      <p>Mark your calendars! Auditions are scheduled for:</p>
+      <p>In the verdant heart of the Himalayas, where the peaks meet the sky and the rivers hum with timeless wisdom, a movement was born—a movement called <strong>Sikkim Rising Star</strong>.</p>
+
+      <p>Since its inception in 2018, Sikkim Rising Star has transcended the conventional idea of a talent hunt. It has evolved into a beacon of hope, an incubator for dreams, and a launchpad for changemakers. More than just a competition, it's a community fueled by passion, purpose, and performance.</p>
+
+      <h2>🎤 A Stage for Every Dream</h2>
+      <p>At Sikkim Rising Star, we believe that talent knows no boundaries. Our stage is open to all who dare to dream and showcase their gift. Whether you’re a soulful singer, an electrifying dancer, a captivating actor, or a comedian who sparks laughter like wildfire, we welcome you with open arms.</p>
+
+      <p>We celebrate diversity in talent, embracing unique performers like magicians, spoken word poets, and those whose gifts defy traditional categories. If you have the passion, we have the stage. After all, every talent has a home here.</p>
+
+      <h2>🏆 Season 4: The Revolution Continues</h2>
+      <p>This year, the stakes are higher, the dreams are bigger, and the opportunities are endless. The countdown to <strong>Sikkim Rising Star Season 4</strong> has begun!</p>
       <ul>
-        <li><strong>June 7, 2025</strong></li>
-        <li><strong>June 8, 2025</strong></li>
+        <li><strong>Launch Date:</strong> June 7, 2025 — live from the vibrant streets of Gangtok.</li>
+        <li><strong>Prize Pool:</strong> Over ₹2,00,000 in rewards, scholarships, and brand collaborations.</li>
+        <li><strong>Participants:</strong> We’re expecting more than 10,000 artists, visionaries, and creators to join us.</li>
+        <li><strong>International Jury:</strong> Esteemed professionals from across the globe will grace our judging panel.</li>
+        <li><strong>Live Streaming:</strong> For the first time ever, every moment will be broadcasted live, ensuring your talent reaches a global audience.</li>
       </ul>
-      <p>Prepare your best performance and get ready to showcase your talent to the world.</p>
-  
-      <h2>Competition Format</h2>
-      <p>Season 4 introduces an exciting new format:</p>
+      <p><strong>Sikkim Rising Star Season 4</strong> isn’t just a competition — it’s a cultural renaissance in motion. A new era of creativity, collaboration, and celebration is upon us!</p>
+
+      <h2>📈 Our Legacy: Numbers That Tell a Story</h2>
+      <p>In just three seasons, we have accomplished so much together. Here’s a glimpse at the legacy we’re building:</p>
       <ul>
-        <li>Multiple performance categories</li>
-        <li>Enhanced judging criteria</li>
-        <li>Live audience voting</li>
-        <li>Exclusive mentorship opportunities</li>
+        <li>3 Seasons of empowering talent</li>
+        <li>1,750+ participants who dared to dream</li>
+        <li>9 winners who now shine brightly in their respective fields</li>
+        <li>10+ districts touched by our vision of inclusive excellence</li>
       </ul>
-      <p>This revamped format ensures a dynamic and engaging experience for both participants and viewers.</p>
-  
-      <h2>Get Ready to Shine</h2>
-      <p>The wait is almost over! Sikkim Rising Star Season 4 is just around the corner. Stay tuned for more updates and get ready to witness the rise of new stars!</p>
+      <p>Each number represents more than just statistics. They’re stories of lives transformed, dreams ignited, and futures rewritten.</p>
+
+      <h2>🤝 Powered by Purposeful Partnerships</h2>
+      <p>Great movements are powered by great allies, and we are proud to be joined by visionary brands like <strong>Sandesh Creations, ROD Nepal, Falano Crafts,</strong> and <strong>Ole Sikkim</strong>, who stand with us in nurturing the stars of tomorrow.</p>
+
+      <h2>✨ More Than Stardom: A Movement for the Future</h2>
+      <p>Sikkim Rising Star isn’t just about winning applause today — it’s about shaping the world of tomorrow. It’s about creating a world where talent, from the smallest village to the busiest streets of Gangtok, has an equal shot at greatness. It’s about building a community where every voice matters and every dream takes flight.</p>
+
+      <h3>Vision 2030:</h3>
+      <p>We envision Sikkim as the creative capital of South Asia — a vibrant hub of art, innovation, and unapologetic originality. This vision is powered by the stars we are discovering today.</p>
+
+      <h2>📢 Ready to Rise? Join Us.</h2>
+      <p>Are you ready to ignite your passion, step into your destiny, and make your mark on history? <strong>Registrations for Season 4 are officially open!</strong></p>
+      <p><strong>👉 <a href="https://surveyheart.com/form/6804a758e96bdb66c8dfc332">Register Now</a></strong></p>
+
+      <p>Together, let’s set the stage on fire!</p>
+
+      <p><em>"Here in Sikkim, stars aren’t found — they are made."</em></p>
     `,
     image: "/s4 main.jpg",
     author: {
       name: "Sikkim Rising Star Team",
       avatar: "/favicon.ico",
     },
-  },
+},
+
+  {
+    id: "1",
+    title: "Season 4 Announced – Bigger, Bolder, and More Talented Than Ever!",
+    slug: "season-4-announced",
+    date: "April 22, 2025",
+    category: "Announcements",
+    excerpt: "Sikkim Rising Star returns with its biggest season yet. Get ready for epic performances, fierce competition, and new opportunities.",
+    content: `
+      <p>The stage is set. The spotlight is on. Sikkim Rising Star Season 4 is officially here—and it's turning up the heat! This season promises to be bigger, bolder, and packed with more talent than ever before. Whether you're an aspiring star or a fan of heart-pounding competition, this season will leave you on the edge of your seat.</p>
+
+      <h2>Registration Now Open: Your Moment to Shine</h2>
+      <p>Do you have what it takes to be the next Sikkim Rising Star? Registrations for Season 4 are officially open! From singers and dancers to actors, rappers, and those with truly unique talents, this is your golden opportunity to step into the spotlight. The competition is fierce, and the stage is yours to claim!</p>
+
+      <h2>Audition Dates – Mark Your Calendars!</h2>
+      <p>Get ready to show the world your talent! The official audition dates for Season 4 are:</p>
+      <ul>
+        <li><strong>June 7, 2025</strong></li>
+        <li><strong>June 8, 2025</strong></li>
+      </ul>
+      <p>Don't miss out! Make sure to mark your calendars, prepare your best performance, and bring your A-game. The spotlight is waiting for you!</p>
+
+      <h2>New and Improved Competition Format</h2>
+      <p>We’ve reimagined the competition this season to bring you an even more thrilling and dynamic experience. Here’s what you can expect:</p>
+      <ul>
+        <li>Expanded performance categories to highlight a wider range of talents, giving everyone a chance to shine.</li>
+        <li>Enhanced judging criteria that will ensure every performance gets the attention it deserves.</li>
+        <li>Live audience voting, giving YOU the power to shape the outcome of the competition.</li>
+        <li>Exclusive mentorship opportunities designed to help contestants hone their craft and elevate their performances.</li>
+      </ul>
+      <p>This revamped format will keep you on the edge of your seat with every episode, making Season 4 the most exciting one yet!</p>
+
+      <h2>Get Ready to Witness History in the Making</h2>
+      <p>The countdown to Sikkim Rising Star Season 4 has officially begun. We can’t wait to bring you the most electrifying season yet, filled with unforgettable performances, fierce competition, and inspiring stories. Stay tuned for more updates as we gear up to witness the rise of the next big star!</p>
+    `,
+    image: "/s4 main.jpg",
+    author: {
+      name: "Sikkim Rising Star Team",
+      avatar: "/favicon.ico",
+    },
+}
 ]
 
 export function getBlogPosts() {
