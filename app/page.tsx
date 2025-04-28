@@ -121,16 +121,23 @@ export default function Home() {
   const featuredEvent = getFeaturedEvent();
   const pastEvents = getPastEvents();
   const recentBlogs = getRecentBlogPosts(2);
-  const sponsors = [
-    { name: "Sandesh Creations", logo: "/sandesh logo.png" },
-    { name: "ROD Nepal", logo: "/rod logo.png" },
-    { name: "Falano Crafts", logo: "/falanocrafts logo.png" },
-    { name: "Ole Sikkim", logo: "/ole logo.png" }
+  const sponsorData = [
+    { name: "Sandesh Creations", logo: "sandesh logo.png" },
+    { name: "ROD Nepal", logo: "rod logo.png" },
+    { name: "Falano Crafts", logo: "falanocrafts logo.png" },
+    { name: "Ole Sikkim", logo: "ole logo.png" },
+    { name: "SG Vlogs", logo: "sg vlogs.png" },
   ];
+  
+  const SPONSORS = sponsorData.map(({ name, logo }) => ({
+    name,
+    logo: `/sponsor/${logo}`,
+  }));
+  
 
   return (
     <>
-      <ImagePopup imageSrc="/s4 main.jpg" targetLink="https://sikkimrisingstar.com/events/201" />
+      <ImagePopup imageSrc="/s4 main.jpg" targetLink="https://sikkimrisingstar.com/events/rising-star-season-4" />
       <section className="bg-white py-16">
         <div className="container mx-auto px-4">
           <div className="mb-6 lg:hidden flex justify-center">
@@ -443,7 +450,7 @@ export default function Home() {
             </p>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-4 md:hidden">
-            {sponsors.map((sponsor, index) => (
+            {SPONSORS.map((sponsor, index) => (
               <div
                 key={`mobile-${sponsor.name}-${index}`}
                 className="bg-white p-3 rounded-md shadow-sm hover:shadow-md transition duration-300 w-1/4 h-16 flex items-center justify-center"
@@ -461,7 +468,7 @@ export default function Home() {
             ))}
           </div>
           <div className="hidden md:flex flex-wrap justify-center items-center gap-10">
-            {sponsors.map((sponsor, index) => (
+            {SPONSORS.map((sponsor, index) => (
               <div
                 key={`desktop-${sponsor.name}-${index}`}
                 className="bg-white p-4 rounded-md shadow-sm hover:shadow-md transition duration-300 w-36 h-20 flex items-center justify-center"
