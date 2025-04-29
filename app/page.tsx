@@ -1,8 +1,9 @@
 'use client';
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, MapPin, Mic, Star, Trophy, ChevronRight, Play, Tag, User, Users } from "lucide-react";
+import { ArrowRight, Calendar, MapPin, Star, Trophy, ChevronRight, Play, Tag, User, Users, Music, PartyPopper, Theater, Guitar, Laugh, Sparkles } from "lucide-react";
 import { getFeaturedEvent, getPastEvents } from "@/lib/events";
 import { getRecentBlogPosts } from "@/lib/blog";
 import ImagePopup from "@/components/ImagePopup";
@@ -10,109 +11,32 @@ import ImagePopup from "@/components/ImagePopup";
 const categories = [
   {
     name: "Singing",
-    icon: <Mic className="h-6 w-6 text-primary" />,
+    icon: <Music className="h-6 w-6 text-primary" />,
     description: "Showcase your vocal talent through various genres"
   },
   {
     name: "Dancing",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="h-6 w-6 text-primary"
-      >
-        <path d="m12 4 8 4-8 4-8-4 8-4Z"></path>
-        <path d="m4 12 8 4 8-4"></path>
-        <path d="m4 18 8 4 8-4"></path>
-      </svg>
-    ),
+    icon: <PartyPopper className="h-6 w-6 text-primary" />,
     description: "From classical to contemporary, express yourself through movement"
   },
   {
     name: "Acting",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="h-6 w-6 text-primary"
-      >
-        <circle cx="12" cy="12" r="10"></circle>
-        <path d="M8 14h.01"></path>
-        <path d="M16 14h.01"></path>
-        <path d="M8 10h.01"></path>
-        <path d="M16 10h.01"></path>
-        <path d="M12 14h.01"></path>
-        <path d="M12 2v2"></path>
-        <path d="M12 22v-2"></path>
-        <path d="m5 8-2-2"></path>
-        <path d="m19 8 2-2"></path>
-        <path d="m5 16-2 2"></path>
-        <path d="m19 16 2 2"></path>
-      </svg>
-    ),
+    icon: <Theater className="h-6 w-6 text-primary" />,
     description: "Bring characters to life through dramatic performances"
   },
   {
     name: "Music",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="h-6 w-6 text-primary"
-      >
-        <circle cx="8" cy="18" r="4"></circle>
-        <path d="M12 18V2l7 4"></path>
-      </svg>
-    ),
+    icon: <Guitar className="h-6 w-6 text-primary" />,
     description: "Instrumentalists and composers showcase their musical talent"
   },
   {
     name: "Comedy",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="h-6 w-6 text-primary"
-      >
-        <circle cx="12" cy="12" r="10"></circle>
-        <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-        <line x1="9" x2="9.01" y1="9" y2="9"></line>
-        <line x1="15" x2="15.01" y1="9" y2="9"></line>
-      </svg>
-    ),
+    icon: <Laugh className="h-6 w-6 text-primary" />,
     description: "Make audiences laugh with stand-up, skits, and more"
   },
   {
     name: "Others",
-    icon: <Trophy className="h-6 w-6 text-primary" />,
+    icon: <Sparkles className="h-6 w-6 text-primary" />,
     description: "Magic, spoken word, and other unique talents welcome"
   }
 ];
@@ -345,16 +269,16 @@ export default function Home() {
               Choose your category and let your talent shine in Sikkim's biggest talent hunt competition
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
             {categories.map((category) => (
               <div
                 key={category.name}
-                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 text-center group"
+                className="bg-white rounded-xl shadow p-5 flex flex-col items-center text-center"
               >
-                <div className="mx-auto w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  {category.icon}
+                <div className="w-16 h-16 flex items-center justify-center mb-3">
+                  {React.cloneElement(category.icon, { className: 'h-8 w-8 text-primary' }) }
                 </div>
-                <h3 className="font-medium mb-2">{category.name}</h3>
+                <h3 className="text-base font-semibold mb-1">{category.name}</h3>
                 <p className="text-gray-500 text-sm hidden md:block">{category.description}</p>
               </div>
             ))}

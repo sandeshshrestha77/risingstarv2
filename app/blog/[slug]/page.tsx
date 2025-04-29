@@ -110,7 +110,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <div className="lg:col-span-8">
               <div
-                className="blog-content prose prose-lg prose-blue"
+                className="blog-content prose prose-lg prose-blue max-w-3xl mx-auto bg-white/90 rounded-2xl shadow-lg px-6 py-8 md:px-12 md:py-10 border border-gray-100 text-gray-900 leading-relaxed"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
 
@@ -138,29 +138,18 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                   <p className="text-gray-600 text-sm">Content Writer</p>
                 </div>
               </div>
-
-              <RelatedPosts currentPostId={post.id} posts={allPosts} category={post.category} />
-
-              <div className="mt-12 flex items-center justify-between border-t border-b border-gray-200 py-6">
-                <Link href="/blog">
-                  <Button variant="outline" className="flex items-center gap-2">
-                    <ChevronLeft className="h-4 w-4" />
-                    Back to Blog
-                  </Button>
-                </Link>
-              </div>
             </div>
 
             <div className="lg:col-span-4">
               <div className="sticky top-24 space-y-6">
-                <div className="bg-gray-50 rounded-xl p-6 shadow-sm">
+                <div className="bg-white rounded-2xl p-7 shadow-xl border border-gray-100 transition-transform hover:shadow-2xl duration-300">
                   <h3 className="text-xl font-bold mb-4 border-b border-gray-200 pb-2">Recent Posts</h3>
                   <div className="space-y-4">
                     {recentPosts.map((recentPost) => (
                       <Link
                         key={recentPost.id}
                         href={`/blog/${recentPost.slug}`}
-                        className="group flex gap-4 items-start"
+                        className="group flex gap-4 items-start rounded-lg hover:bg-primary/5 transition-colors duration-200 p-2 -mx-2"
                       >
                         <div className="relative w-16 h-16 rounded-md overflow-hidden flex-shrink-0">
                           <Image
