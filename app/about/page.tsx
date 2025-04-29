@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Award, Calendar, CheckCircle, Users } from "lucide-react";
 import Link from "next/link";
+import { getPastEvents } from "@/lib/events";
 
 export const metadata: Metadata = {
   title: "About Us - Discover Our Journey & Team",
@@ -69,13 +70,6 @@ const TEAM: TeamMember[] = [
   { name: "Giwan Chettri", role: "Photographer", image: "" },
 ];
 
-const STATS: Stat[] = [
-  { icon: <Users className="w-6 h-6 text-primary" />, value: "2500+", label: "Participants" },
-  { icon: <Calendar className="w-6 h-6 text-primary" />, value: "4", label: "Events" },
-  { icon: <Award className="w-6 h-6 text-primary" />, value: "5+", label: "Awards" },
-  { icon: <CheckCircle className="w-6 h-6 text-primary" />, value: "10+", label: "Talent Categories" },
-];
-
 const VALUES: Value[] = [
   { icon: <CheckCircle className="w-6 h-6 text-primary" />, title: "Excellence", description: "We strive for excellence in every aspect of our events and competitions." },
   { icon: <Award className="w-6 h-6 text-primary" />, title: "Recognition", description: "Providing well-deserved recognition to talented individuals across Sikkim." },
@@ -91,6 +85,36 @@ const TIMELINE: TimelineItem[] = [
 ];
 
 export default function AboutPage() {
+  const pastEvents = getPastEvents();
+  
+  const stats = [
+    { 
+      icon: <Calendar className="w-6 h-6 text-primary" />, 
+      value: pastEvents.length.toString(), 
+      label: "Seasons" 
+    },
+    { 
+      icon: <Users className="w-6 h-6 text-primary" />, 
+      value: `${pastEvents.reduce((total, event) => {
+        if (event.statistics && 'participants' in event.statistics) {
+          return total + (event.statistics.participants || 0);
+        }
+        return total;
+      }, 0) || '500+'}+`, 
+      label: "Participants" 
+    },
+    { 
+      icon: <Award className="w-6 h-6 text-primary" />, 
+      value: `${pastEvents.reduce((total, event) => total + (event.winners?.length || 0), 0) || '50+'}+`, 
+      label: "Winners" 
+    },
+    { 
+      icon: <CheckCircle className="w-6 h-6 text-primary" />, 
+      value: "10+", 
+      label: "Districts" 
+    },
+  ];
+
   return (
     <div className="min-h-screen">
       <section className="relative bg-secondary/5 py-16">
@@ -122,7 +146,7 @@ export default function AboutPage() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {STATS.map((stat, index) => (
+            {stats.map((stat, index) => (
               <div key={index} className="p-6 rounded-xl bg-secondary/5 text-center">
                 <div className="mb-4 flex justify-center">
                   <div className="p-3 rounded-lg bg-primary/10 text-primary">
@@ -146,27 +170,38 @@ export default function AboutPage() {
               Celebrating the milestones that define our journey in uncovering Sikkim's extraordinary talents.
             </p>
           </div>
-          <div className="relative max-w-4xl mx-auto">
-            <div className="absolute left-1/2 -translate-x-1/2 h-full w-1 bg-primary"></div>
-            {TIMELINE.map((item, index) => (
-              <div
-                key={`timeline-${index}`}
-                className={`relative flex flex-col sm:flex-row items-center mb-12 ${index % 2 === 0 ? 'sm:flex-row-reverse' : ''}`}
-              >
-                <div className={`w-full sm:w-5/12 ${index % 2 === 0 ? 'sm:text-right sm:pr-8' : 'sm:text-left sm:pl-8'}`}>
-                  <div className="p-6 rounded-xl bg-white shadow-md hover:shadow-lg transition-shadow">
-                    <span className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white mb-3">{item.year}</span>
-                    <h3 className="text-xl md:text-2xl font-semibold">{item.title}</h3>
-                    <p className="mt-2 text-gray-600">{item.description}</p>
+          
+          <div className="max-w-4xl mx-auto">
+            <div className="relative">
+              {/* Vertical line */}
+              <div className="absolute left-1/2 h-full w-0.5 bg-primary/10 hidden md:block"></div>
+              
+              {/* Timeline items */}
+              <div className="space-y-8">
+                {TIMELINE.map((item, index) => (
+                  <div 
+                    key={`timeline-${index}`} 
+                    className={`relative ${index % 2 === 0 ? 'md:pr-6 md:pl-0' : 'md:pl-6 md:pr-0'}`}
+                  >
+                    {/* Dot */}
+                    <div className="absolute left-0 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-primary -ml-1.5 z-10 hidden md:block"></div>
+                    
+                    {/* Content */}
+                    <div className={`bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 ${index % 2 === 0 ? 'md:ml-auto md:mr-0' : 'md:mr-auto md:ml-0'} md:max-w-[45%]`}>
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                          <span className="text-base font-bold text-primary">{item.year}</span>
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-semibold mb-0.5">{item.title}</h3>
+                          <p className="text-sm text-gray-600">{item.description}</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="absolute left-1/2 -translate-x-1/2 sm:left-auto sm:right-1/2 sm:-translate-x-1/2">
-                  <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center shadow-md">
-                    <Calendar className="h-5 w-5 text-white" />
-                  </div>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>

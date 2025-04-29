@@ -43,6 +43,7 @@ export default function Footer() {
             <li><Link href="/" className="text-gray-300 hover:text-primary">Home</Link></li>
             <li><Link href="/about" className="text-gray-300 hover:text-primary">About Us</Link></li>
             <li><Link href="/events" className="text-gray-300 hover:text-primary">Events</Link></li>
+            <li><Link href="/blog" className="text-gray-300 hover:text-primary">Blog</Link></li>
             <li><Link href="/contact" className="text-gray-300 hover:text-primary">Contact</Link></li>
           </ul>
         </div>
@@ -66,14 +67,24 @@ export default function Footer() {
 
         <div>
           <h3 className="text-lg font-semibold mb-4 hover:underline">Payment Method</h3>
-          <Image
-            src="/phonepe.svg"
-            alt="PhonePe"
-            width={120}
-            height={120}
-            className="cursor-pointer hover:scale-105 transition-transform"
-            onClick={() => setShowQR(true)}
-          />
+          <div className="flex flex-col gap-4">
+            <Image
+              src="/PhonePe.png"
+              alt="PhonePe"
+              width={120}
+              height={120}
+              className="cursor-pointer hover:scale-105 transition-transform w-[120px] h-[40px] object-contain"
+              onClick={() => setShowQR(true)}
+            />
+            <Image
+              src="/upi.png"
+              alt="Upi"
+              width={120}
+              height={120}
+              className="cursor-pointer hover:scale-105 transition-transform w-[120px] h-[40px] object-contain"
+              onClick={() => setShowQR(true)}
+            />
+          </div>
         </div>
       </div>
 
@@ -113,7 +124,7 @@ function QRModal({ onClose }: { onClose: () => void }) {
         >
           ✕
         </button>
-        <h2 className="text-lg font-bold mb-4 text-black">Scan to Pay via PhonePe</h2>
+        <h2 className="text-lg font-bold mb-4 text-black">Scan to Pay</h2>
         <Image
           src="/qr-phonepe.png"
           alt="PhonePe QR Code"
