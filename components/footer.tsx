@@ -81,7 +81,7 @@ export default function Footer() {
               alt="Upi"
               width={120}
               height={120}
-              className="cursor-pointer hover:scale-105 transition-transform w-[120px] h-[40px] object-contain"
+              className="cursor-pointer hover:scale-105 transition-transform w-[90px] h-[40px] object-contain"
               onClick={() => setShowQR(true)}
             />
           </div>
