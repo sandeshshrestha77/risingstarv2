@@ -76,7 +76,7 @@ function SheetControlledNav() {
         </button>
       </SheetTrigger>
       <SheetContent 
-        className="bg-black/70 backdrop-blur-xl w-[75vw] max-w-[400px] sm:w-[400px] border-l border-gray-800"
+        className="bg-black/70 backdrop-blur w-[75vw] max-w-[400px] sm:w-[400px] border-l border-gray-800"
         onOpenAutoFocus={(e) => e.preventDefault()}
       >
         <SheetHeader>
