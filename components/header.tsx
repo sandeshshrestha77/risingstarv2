@@ -67,14 +67,13 @@ function SheetControlledNav() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button 
-          variant="outline" 
-          size="icon" 
-          className="bg-black/70 backdrop-blur-md hover:bg-gray-800/70 border-gray-700 text-white shadow-lg"
+        <button
           aria-label="Open menu"
+          className="md:hidden p-0 m-0 bg-transparent shadow-none border-none rounded-none h-auto w-auto text-white flex items-center justify-center"
+          type="button"
         >
-          <Menu className="h-5 w-5" />
-        </Button>
+          <Menu className="h-7 w-7" />
+        </button>
       </SheetTrigger>
       <SheetContent 
         className="bg-black/70 backdrop-blur-xl w-[75vw] max-w-[400px] sm:w-[400px] border-l border-gray-800"
