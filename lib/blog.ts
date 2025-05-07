@@ -49,7 +49,7 @@ const blogPosts: BlogPost[] = [
   
       <p><em>“In Sikkim, the mountains don’t just echo footsteps—they carry the sound of dreams.”</em></p>
     `,
-    image: "/talent-scene.jpg",
+    image: "s4 main.jpg",
     author: {
       name: "Sikkim Rising Star Team",
       avatar: "/favicon.ico",
