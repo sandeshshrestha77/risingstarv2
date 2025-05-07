@@ -64,10 +64,11 @@ interface Value {
 const TEAM: TeamMember[] = [
   { name: "Dinesh Rai", role: "Founder", image: "/team/dineshrai.jpg" },
   { name: "Basant Rai", role: "Event Manager", image: "" },
-  { name: "Sandesh Shrestha", role: "Tech Lead", image: "/team/sandeshshrestha.jpeg" },
   { name: "Gyatsen Gurung", role: "Executive Head", image: "" },
   { name: "Yangchen Lhamu Tamang", role: "Co-Executive Head", image: "" },
-  { name: "Giwan Chettri", role: "Photographer", image: "" },
+  { name: "Giwan Chettri", role: "Official Photographer", image: "" },
+  { name: "Jemima Rai", role: "Official Emcee", image: "" },
+  { name: "Fradin Sheikh", role: "Official Videographer", image: "" },
 ];
 
 const VALUES: Value[] = [

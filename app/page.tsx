@@ -30,9 +30,9 @@ const categories = [
     description: "Instrumentalists and composers showcase their musical talent"
   },
   {
-    name: "Comedy",
-    icon: <Laugh className="h-6 w-6 text-primary" />,
-    description: "Make audiences laugh with stand-up, skits, and more"
+    name: "Rap",
+    icon: <Music className="h-6 w-6 text-primary" />,
+    description: "Showcase your rap skills and lyrical talent"
   },
   {
     name: "Others",
@@ -94,7 +94,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="text-sm text-gray-600">Total Prize Pool</p>
-                    <p className="text-xl font-bold text-primary">₹2,00,000+</p>
+                    <p className="text-xl font-bold text-primary">₹1,00,000+</p>
                   </div>
                 </div>
               </div>

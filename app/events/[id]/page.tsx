@@ -36,9 +36,9 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   let metaDescription = ""
 
   if (isUpcomingEvent(event)) {
-    metaDescription = `Register now for ${event.title}! Join Sikkim's biggest talent hunt with prizes worth ₹${event.statistics.prizePool}. Event date: ${event.date}`
+    metaDescription = `Register now for ${event.title}! Join Sikkim's biggest talent hunt with first prize ₹${event.statistics.firstPrize}, second prize ₹${event.statistics.secondPrize}, third prize ₹${event.statistics.thirdPrize}. Event date: ${event.date}`
   } else if (isOngoingEvent(event)) {
-    metaDescription = `${event.title} is happening now! Join Sikkim's biggest talent hunt with prizes worth ₹${event.statistics.prizePool}. Event date: ${event.date}`
+    metaDescription = `${event.title} is happening now! Join Sikkim's biggest talent hunt with first prize ₹${event.statistics.firstPrize}, second prize ₹${event.statistics.secondPrize}, third prize ₹${event.statistics.thirdPrize}. Event date: ${event.date}`
   } else {
     metaDescription = `Relive the moments from ${event.title}. View highlights, winners, and gallery from this spectacular showcase of talent.`
   }
@@ -153,9 +153,25 @@ export default async function EventDetailPage({ params }: { params: { id: string
                       <p className="text-gray-600 text-sm md:text-base">{event.statistics.estimatedParticipants}</p>
                     </div>
                     <div className="bg-white p-4 md:p-6 rounded-xl shadow-sm text-center">
-                      <Trophy className="h-6 w-6 md:h-8 md:w-8 text-primary mx-auto mb-2" />
-                      <h3 className="text-base md:text-lg font-semibold mb-1">Total Prize Pool</h3>
-                      <p className="text-gray-600 text-sm md:text-base">₹{event.statistics.prizePool}</p>
+                      <Trophy className="h-6 w-6 md:h-8 md:w-8 text-yellow-500 mx-auto mb-2" />
+                      <h3 className="text-base md:text-lg font-semibold mb-1">First Prize</h3>
+                      <p className="text-gray-600 text-sm md:text-base">
+                      {event.statistics.firstPrize.toLocaleString()}
+                      </p>
+                    </div>
+                    <div className="bg-white p-4 md:p-6 rounded-xl shadow-sm text-center">
+                      <Trophy className="h-6 w-6 md:h-8 md:w-8 text-gray-400 mx-auto mb-2" />
+                      <h3 className="text-base md:text-lg font-semibold mb-1">Second Prize</h3>
+                      <p className="text-gray-600 text-sm md:text-base">
+                      {event.statistics.secondPrize.toLocaleString()}
+                      </p>
+                    </div>
+                    <div className="bg-white p-4 md:p-6 rounded-xl shadow-sm text-center">
+                      <Trophy className="h-6 w-6 md:h-8 md:w-8 text-amber-700 mx-auto mb-2" />
+                      <h3 className="text-base md:text-lg font-semibold mb-1">Third Prize</h3>
+                      <p className="text-gray-600 text-sm md:text-base">
+                      {event.statistics.thirdPrize.toLocaleString()}
+                      </p>
                     </div>
                   </>
                 ) : isOngoingEvent(event) ? (

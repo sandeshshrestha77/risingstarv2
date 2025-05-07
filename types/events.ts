@@ -1,3 +1,5 @@
+import { ReactNode } from "react"
+
 export interface Winner {
   name: string
   category: string
@@ -23,11 +25,16 @@ export interface PastEventStatistics {
 
 export interface UpcomingEventStatistics {
   estimatedParticipants: number
-  prizePool: string
+  firstPrize: string
+  secondPrize: string
+  thirdPrize: string
   categories: number
 }
 
 export interface OngoingEventStatistics {
+  thirdPrize: any
+  secondPrize: any
+  firstPrize: any
   registeredParticipants: number
   prizePool: string
   categories: number

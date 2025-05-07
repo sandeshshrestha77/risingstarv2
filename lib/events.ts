@@ -109,29 +109,31 @@ export const events: Event[] = [
   status: "ongoing",
 },
 */
-  {
-    id: "rising-star-season-4",
-    season: 4,
-    title: "Rising Star Season 4",
-    description: "The highly anticipated fourth season is here. New talents. Bigger stage. Higher stakes.",
-    longDescription:
-      "Be part of Sikkim's biggest talent hunt! Showcase your skills on a grand stage with international judges, live streaming, and unprecedented opportunities. Join us for an unforgettable journey of talent, creativity, and stardom.",
-    date: "June 7, 2025",
-    location: "Gangtok",
-    image: "/s4 main.jpg",
-    gallery: [],
-    winners: [],
-    statistics: {
-      estimatedParticipants: 5000,
-      prizePool: "2,00,000",
-      categories: 10,
-    },
-    highlights: [],
-    registrationOpen: true,
-    registrationDeadline: "June 6, 2025",
-    auditionDates: [{ city: "Gangtok", date: "June 7 & 8, 2025" }],
-    status: "upcoming",
+{
+  id: "rising-star-season-4",
+  season: 4,
+  title: "Rising Star Season 4",
+  description: "The highly anticipated fourth season is here. New talents. Bigger stage. Higher stakes.",
+  longDescription:
+    "Be part of Sikkim's biggest talent hunt! Showcase your skills on a grand stage with international judges, live streaming, and unprecedented opportunities. Join us for an unforgettable journey of talent, creativity, and stardom.",
+  date: "June 7, 2025",
+  location: "Gangtok",
+  image: "/s4 main.jpg",
+  gallery: [],
+  winners: [],
+  statistics: {
+    estimatedParticipants: 5000,
+    firstPrize: "₹50,000",
+    secondPrize: "₹30,000",
+    thirdPrize: "₹20,000",
+    categories: 10,
   },
+  highlights: [],
+  registrationOpen: true,
+  registrationDeadline: "June 6, 2025",
+  auditionDates: [{ city: "Gangtok", date: "June 7 & 8, 2025" }],
+  status: "upcoming",
+},
 ]
 
 function hasDatePassed(dateString: string): boolean {
