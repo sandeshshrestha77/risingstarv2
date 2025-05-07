@@ -131,7 +131,10 @@ export const events: Event[] = [
   highlights: [],
   registrationOpen: true,
   registrationDeadline: "June 6, 2025",
-  auditionDates: [{ city: "Gangtok", date: "June 7 & 8, 2025" }],
+  auditionDates: 
+  [{ city: "Gangtok", date: "June 7, 2025" },
+   { city: "Gangtok", date: "June 8, 2025" }
+  ],
   status: "upcoming",
 },
 ]
