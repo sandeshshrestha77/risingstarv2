@@ -25,18 +25,18 @@ export interface PastEventStatistics {
 
 export interface UpcomingEventStatistics {
   estimatedParticipants: number
-  firstPrize: string
-  secondPrize: string
-  thirdPrize: string
+  firstPrize: number
+  secondPrize: number
+  thirdPrize: number
   categories: number
 }
 
 export interface OngoingEventStatistics {
-  thirdPrize: any
-  secondPrize: any
-  firstPrize: any
+  thirdPrize: number
+  secondPrize: number
+  firstPrize: number
   registeredParticipants: number
-  prizePool: string
+  prizePool: number
   categories: number
 }
 
@@ -64,7 +64,7 @@ export interface UpcomingEvent extends BaseEvent {
   statistics: UpcomingEventStatistics
   winners: never[]
   gallery: never[]
-  highlights: string[]
+  highlights?: string[]
   registrationDeadline: string
   auditionDates: AuditionDate[]
   registrationOpen: true
@@ -75,7 +75,7 @@ export interface OngoingEvent extends BaseEvent {
   statistics: OngoingEventStatistics
   winners: never[]
   gallery: string[]
-  highlights: string[]
+  highlights?: string[]
   registrationDeadline: string
   auditionDates: AuditionDate[]
   registrationOpen: false

@@ -68,12 +68,12 @@ const blogPosts: BlogPost[] = [
 
       <p>Since its inception in 2018, Sikkim Rising Star has transcended the conventional idea of a talent hunt. It has evolved into a beacon of hope, an incubator for dreams, and a launchpad for changemakers. More than just a competition, it's a community fueled by passion, purpose, and performance.</p>
 
-      <h2>🎤 A Stage for Every Dream</h2>
+      <h2>A Stage for Every Dream</h2>
       <p>At Sikkim Rising Star, we believe that talent knows no boundaries. Our stage is open to all who dare to dream and showcase their gift. Whether you’re a soulful singer, an electrifying dancer, a captivating actor, or a comedian who sparks laughter like wildfire, we welcome you with open arms.</p>
 
       <p>We celebrate diversity in talent, embracing unique performers like magicians, spoken word poets, and those whose gifts defy traditional categories. If you have the passion, we have the stage. After all, every talent has a home here.</p>
 
-      <h2>🏆 Season 4: The Revolution Continues</h2>
+      <h2>Season 4: The Revolution Continues</h2>
       <p>This year, the stakes are higher, the dreams are bigger, and the opportunities are endless. The countdown to <strong>Sikkim Rising Star Season 4</strong> has begun!</p>
       <ul>
         <li><strong>Launch Date:</strong> June 7, 2025 — live from the vibrant streets of Gangtok.</li>
@@ -84,7 +84,7 @@ const blogPosts: BlogPost[] = [
       </ul>
       <p><strong>Sikkim Rising Star Season 4</strong> isn’t just a competition — it’s a cultural renaissance in motion. A new era of creativity, collaboration, and celebration is upon us!</p>
 
-      <h2>📈 Our Legacy: Numbers That Tell a Story</h2>
+      <h2>Our Legacy: Numbers That Tell a Story</h2>
       <p>In just three seasons, we have accomplished so much together. Here’s a glimpse at the legacy we’re building:</p>
       <ul>
         <li>3 Seasons of empowering talent</li>
@@ -94,16 +94,16 @@ const blogPosts: BlogPost[] = [
       </ul>
       <p>Each number represents more than just statistics. They’re stories of lives transformed, dreams ignited, and futures rewritten.</p>
 
-      <h2>🤝 Powered by Purposeful Partnerships</h2>
+      <h2>Powered by Purposeful Partnerships</h2>
       <p>Great movements are powered by great allies, and we are proud to be joined by visionary brands like <strong>Sandesh Creations, ROD Nepal, Falano Crafts,</strong> and <strong>Ole Sikkim</strong>, who stand with us in nurturing the stars of tomorrow.</p>
 
-      <h2>✨ More Than Stardom: A Movement for the Future</h2>
+      <h2>More Than Stardom: A Movement for the Future</h2>
       <p>Sikkim Rising Star isn’t just about winning applause today — it’s about shaping the world of tomorrow. It’s about creating a world where talent, from the smallest village to the busiest streets of Gangtok, has an equal shot at greatness. It’s about building a community where every voice matters and every dream takes flight.</p>
 
       <h3>Vision 2030:</h3>
       <p>We envision Sikkim as the creative capital of South Asia — a vibrant hub of art, innovation, and unapologetic originality. This vision is powered by the stars we are discovering today.</p>
 
-      <h2>📢 Ready to Rise? Join Us.</h2>
+      <h2>Ready to Rise? Join Us.</h2>
       <p>Are you ready to ignite your passion, step into your destiny, and make your mark on history? <strong>Registrations for Season 4 are officially open!</strong></p>
       <p><strong>👉 <a href="https://surveyheart.com/form/6804a758e96bdb66c8dfc332">Register Now</a></strong></p>
 

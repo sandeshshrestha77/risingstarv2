@@ -76,67 +76,63 @@ export const events: Event[] = [
     registrationOpen: false,
     status: "past",
   },
-/*
-{
-  id: "rising-star-season-3-5",
-  season: 3.5,
-  title: "Rising Star Special Edition",
-  description: "A special mid-season showcase featuring the best talents from previous seasons.",
-  longDescription:
-    "This special edition brings together the most exceptional performers from our previous seasons for a unique showcase. Featuring collaborative performances, special celebrity guests, and interactive audience participation, this event bridges the gap between Season 3 and the upcoming Season 4. Don't miss this once-in-a-lifetime gathering of Sikkim's finest talents on one stage!",
-  date: "April 15, 2025",
-  location: "Gangtok",
-  image: "/s3 main.jpg",
-  gallery: Array.from({ length: 5 }, (_, i) => `/special edition/${i + 1}.jpg`),
-  statistics: {
-    registeredParticipants: 120,
-    prizePool: "1,50,000",
-    categories: 6,
+  /*
+  {
+    id: "rising-star-season-3-5",
+    season: 3.5,
+    title: "Rising Star Special Edition",
+    description: "A special mid-season showcase featuring the best talents from previous seasons.",
+    longDescription:
+      "This special edition brings together the most exceptional performers from our previous seasons for a unique showcase. Featuring collaborative performances, special celebrity guests, and interactive audience participation, this event bridges the gap between Season 3 and the upcoming Season 4. Don't miss this once-in-a-lifetime gathering of Sikkim's finest talents on one stage!",
+    date: "April 15, 2025",
+    location: "Gangtok",
+    image: "/s3 main.jpg",
+    gallery: Array.from({ length: 5 }, (_, i) => `/special edition/${i + 1}.jpg`),
+    statistics: {
+      registeredParticipants: 1200,
+      firstPrize: 75000,
+      secondPrize: 45000,
+      thirdPrize: 30000,
+      prizePool: 150000,
+      categories: 6,
+    },
+    winners: [],
+    registrationDeadline: "April 1, 2025",
+    auditionDates: [
+      { city: "Gangtok", date: "April 5 & 6, 2025" },
+      { city: "Namchi", date: "April 8, 2025" },
+    ],
+    registrationOpen: false,
+    status: "ongoing",
   },
-  winners: [],
-  highlights: [
-    "Special celebrity performances",
-    "Collaboration between past winners",
-    "Interactive audience voting",
-    "Live streaming across Sikkim",
-  ],
-  registrationDeadline: "April 1, 2025",
-  auditionDates: [
-    { city: "Gangtok", date: "April 5 & 6, 2025" },
-    { city: "Namchi", date: "April 8, 2025" },
-  ],
-  registrationOpen: false,
-  status: "ongoing",
-},
-*/
-{
-  id: "rising-star-season-4",
-  season: 4,
-  title: "Rising Star Season 4",
-  description: "The highly anticipated fourth season is here. New talents. Bigger stage. Higher stakes.",
-  longDescription:
-    "Be part of Sikkim's biggest talent hunt! Showcase your skills on a grand stage with international judges, live streaming, and unprecedented opportunities. Join us for an unforgettable journey of talent, creativity, and stardom.",
-  date: "June 7, 2025",
-  location: "Gangtok",
-  image: "/s4 main.jpg",
-  gallery: [],
-  winners: [],
-  statistics: {
-    estimatedParticipants: 5000,
-    firstPrize: "₹50,000",
-    secondPrize: "₹30,000",
-    thirdPrize: "₹20,000",
-    categories: 10,
+  */
+  {
+    id: "rising-star-season-4",
+    season: 4,
+    title: "Rising Star Season 4",
+    description: "The highly anticipated fourth season is here. New talents. Bigger stage. Higher stakes.",
+    longDescription:
+      "Be part of Sikkim's biggest talent hunt! Showcase your skills on a grand stage with international judges, live streaming, and unprecedented opportunities. Join us for an unforgettable journey of talent, creativity, and stardom.",
+    date: "June 7, 2025",
+    location: "Gangtok",
+    image: "/s4 main.jpg",
+    gallery: [],
+    winners: [],
+    statistics: {
+      estimatedParticipants: 5000,
+      firstPrize: 50000,
+      secondPrize: 30000,
+      thirdPrize: 20000,
+      categories: 10,
+    },
+    registrationOpen: true,
+    registrationDeadline: "June 6, 2025",
+    auditionDates: 
+    [{ city: "Gangtok", date: "June 7, 2025" },
+     { city: "Gangtok", date: "June 8, 2025" }
+    ],
+    status: "upcoming",
   },
-  highlights: [],
-  registrationOpen: true,
-  registrationDeadline: "June 6, 2025",
-  auditionDates: 
-  [{ city: "Gangtok", date: "June 7, 2025" },
-   { city: "Gangtok", date: "June 8, 2025" }
-  ],
-  status: "upcoming",
-},
 ]
 
 function hasDatePassed(dateString: string): boolean {
