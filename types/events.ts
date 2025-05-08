@@ -17,6 +17,14 @@ export interface AuditionDate {
   date: string
 }
 
+export interface EventFixture {
+  day: number
+  date: string
+  location: string
+  description: string
+  round?: string
+}
+
 export interface PastEventStatistics {
   participants: number
   audience: number
@@ -76,8 +84,7 @@ export interface OngoingEvent extends BaseEvent {
   winners: never[]
   gallery: string[]
   highlights?: string[]
-  registrationDeadline: string
-  auditionDates: AuditionDate[]
+  fixtures: EventFixture[]
   registrationOpen: false
   status: "ongoing"
 }

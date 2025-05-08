@@ -178,18 +178,39 @@ export default async function EventDetailPage({ params }: { params: { id: string
                   <>
                     <div className="bg-white p-4 md:p-6 rounded-xl shadow-sm text-center">
                       <Users className="h-6 w-6 md:h-8 md:w-8 text-primary mx-auto mb-2" />
-                      <h3 className="text-base md:text-lg font-semibold mb-1">Registered Participants</h3>
+                      <h3 className="text-base md:text-lg font-semibold mb-1">Live Participants</h3>
                       <p className="text-gray-600 text-sm md:text-base">{event.statistics.registeredParticipants}</p>
+                      <p className="text-primary text-xs mt-1">Currently Competing</p>
+                    </div>
+                    <div className="bg-white p-4 md:p-6 rounded-xl shadow-sm text-center">
+                      <Trophy className="h-6 w-6 md:h-8 md:w-8 text-yellow-500 mx-auto mb-2" />
+                      <h3 className="text-base md:text-lg font-semibold mb-1">First Prize</h3>
+                      <p className="text-gray-600 text-sm md:text-base">₹{event.statistics.firstPrize.toLocaleString()}</p>
+                      <p className="text-primary text-xs mt-1">Up for Grabs</p>
+                    </div>
+                    <div className="bg-white p-4 md:p-6 rounded-xl shadow-sm text-center">
+                      <Trophy className="h-6 w-6 md:h-8 md:w-8 text-gray-400 mx-auto mb-2" />
+                      <h3 className="text-base md:text-lg font-semibold mb-1">Second Prize</h3>
+                      <p className="text-gray-600 text-sm md:text-base">₹{event.statistics.secondPrize.toLocaleString()}</p>
+                      <p className="text-primary text-xs mt-1">Up for Grabs</p>
+                    </div>
+                    <div className="bg-white p-4 md:p-6 rounded-xl shadow-sm text-center">
+                      <Trophy className="h-6 w-6 md:h-8 md:w-8 text-amber-700 mx-auto mb-2" />
+                      <h3 className="text-base md:text-lg font-semibold mb-1">Third Prize</h3>
+                      <p className="text-gray-600 text-sm md:text-base">₹{event.statistics.thirdPrize.toLocaleString()}</p>
+                      <p className="text-primary text-xs mt-1">Up for Grabs</p>
                     </div>
                     <div className="bg-white p-4 md:p-6 rounded-xl shadow-sm text-center">
                       <Trophy className="h-6 w-6 md:h-8 md:w-8 text-primary mx-auto mb-2" />
-                      <h3 className="text-base md:text-lg font-semibold mb-1">Prize Pool</h3>
-                      <p className="text-gray-600 text-sm md:text-base">₹{event.statistics.prizePool}</p>
+                      <h3 className="text-base md:text-lg font-semibold mb-1">Total Prize Pool</h3>
+                      <p className="text-gray-600 text-sm md:text-base">₹{event.statistics.prizePool.toLocaleString()}</p>
+                      <p className="text-primary text-xs mt-1">To Be Won</p>
                     </div>
                     <div className="bg-white p-4 md:p-6 rounded-xl shadow-sm text-center">
-                      <Calendar className="h-6 w-6 md:h-8 md:w-8 text-primary mx-auto mb-2" />
-                      <h3 className="text-base md:text-lg font-semibold mb-1">Event Started</h3>
-                      <p className="text-gray-600 text-sm md:text-base">{event.date}</p>
+                      <Star className="h-6 w-6 md:h-8 md:w-8 text-primary mx-auto mb-2" />
+                      <h3 className="text-base md:text-lg font-semibold mb-1">Categories</h3>
+                      <p className="text-gray-600 text-sm md:text-base">{event.statistics.categories}</p>
+                      <p className="text-primary text-xs mt-1">Active Competitions</p>
                     </div>
                   </>
                 ) : (
@@ -239,7 +260,7 @@ export default async function EventDetailPage({ params }: { params: { id: string
                 </div>
               </section>
             )}
-            {(isUpcomingEvent(event) || isOngoingEvent(event)) && event.auditionDates && (
+            {isUpcomingEvent(event) && (
               <section className="bg-white rounded-xl p-4 md:p-6 lg:p-8 shadow-sm mb-6 md:mb-8">
                 <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 pb-2 border-b border-gray-100 flex items-center gap-2">
                   <Calendar className="h-5 w-5 text-primary" /> Audition Schedule
@@ -259,6 +280,86 @@ export default async function EventDetailPage({ params }: { params: { id: string
                       </div>
                     </div>
                   ))}
+                </div>
+              </section>
+            )}
+            {isOngoingEvent(event) && (
+              <section className="bg-white rounded-xl p-4 md:p-6 lg:p-8 shadow-sm mb-6 md:mb-8">
+                <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 pb-2 border-b border-gray-100 flex items-center gap-2">
+                  <Calendar className="h-5 w-5 text-primary" /> Live Event Schedule
+                </h2>
+                <div className="relative">
+                  {/* Timeline line */}
+                  <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-200"></div>
+                  
+                  <div className="space-y-6">
+                    {event.fixtures.map((fixture, index) => {
+                      const isCurrentDay = new Date(fixture.date) <= new Date() && 
+                        new Date(fixture.date) >= new Date(new Date().setHours(0, 0, 0, 0));
+                      
+                      return (
+                        <div key={index} className="relative">
+                          {/* Timeline dot */}
+                          <div className={`absolute left-8 -translate-x-1/2 w-4 h-4 rounded-full border-2 
+                            ${isCurrentDay ? 'bg-primary border-primary animate-pulse' : 'bg-white border-gray-300'}`}>
+                          </div>
+                          
+                          <div className={`ml-12 p-4 md:p-6 rounded-xl border transition-all duration-200
+                            ${isCurrentDay 
+                              ? 'bg-primary/5 border-primary/20 shadow-lg' 
+                              : 'bg-gray-50 border-gray-100 hover:border-primary/20'}`}>
+                            
+                            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-3">
+                              <div className="flex items-center gap-3">
+                                <div className={`rounded-full p-2 ${isCurrentDay ? 'bg-primary/10' : 'bg-gray-100'}`}>
+                                  <Calendar className={`h-4 w-4 ${isCurrentDay ? 'text-primary' : 'text-gray-500'}`} />
+                                </div>
+                                <div>
+                                  <div className="flex items-center gap-2">
+                                    <h3 className="font-semibold text-gray-900 text-base md:text-lg">
+                                      Day {fixture.day}
+                                    </h3>
+                                    {fixture.round && (
+                                      <span className={`px-2 py-0.5 rounded-full text-xs font-medium
+                                        ${isCurrentDay 
+                                          ? 'bg-primary text-white' 
+                                          : 'bg-primary/10 text-primary'}`}>
+                                        {fixture.round}
+                                      </span>
+                                    )}
+                                  </div>
+                                  <p className="text-gray-600 text-sm">{fixture.date}</p>
+                                </div>
+                              </div>
+                              
+                              {isCurrentDay && (
+                                <div className="flex items-center gap-2 text-primary text-sm font-medium">
+                                  <span className="relative flex h-2 w-2">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                                  </span>
+                                  Live Now
+                                </div>
+                              )}
+                            </div>
+
+                            <div className="space-y-3">
+                              <div className="flex items-center gap-2">
+                                <MapPin className="h-4 w-4 text-primary" />
+                                <p className="text-gray-700 text-sm md:text-base">{fixture.location}</p>
+                              </div>
+                              <div className="flex items-start gap-2">
+                                <div className="bg-primary/10 rounded-full p-1 mt-0.5">
+                                  <Star className="h-3 w-3 text-primary" />
+                                </div>
+                                <p className="text-gray-700 text-sm md:text-base">{fixture.description}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               </section>
             )}

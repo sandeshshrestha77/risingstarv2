@@ -97,10 +97,28 @@ export const events: Event[] = [
       categories: 6,
     },
     winners: [],
-    registrationDeadline: "April 1, 2025",
-    auditionDates: [
-      { city: "Gangtok", date: "April 5 & 6, 2025" },
-      { city: "Namchi", date: "April 8, 2025" },
+    fixtures: [
+      {
+        day: 1,
+        date: "April 15, 2025",
+        location: "Gangtok Convention Hall",
+        description: "Opening Ceremony & Group Performances",
+        round: "Opening"
+      },
+      {
+        day: 2,
+        date: "April 16, 2025",
+        location: "Gangtok Convention Hall",
+        description: "Solo Performances & Special Guest Show",
+        round: "Semi-Finals"
+      },
+      {
+        day: 3,
+        date: "April 17, 2025",
+        location: "Gangtok Convention Hall",
+        description: "Grand Finale & Award Ceremony",
+        round: "Finals"
+      }
     ],
     registrationOpen: false,
     status: "ongoing",
