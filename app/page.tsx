@@ -181,7 +181,13 @@ export default function Home() {
                     </div>
                     <div className="flex items-center gap-3 text-gray-600">
                       <Trophy className="h-5 w-5 text-primary" />
-                      <span>Prize: ₹{('prizePool' in featuredEvent.statistics) ? featuredEvent.statistics.prizePool : 'TBA'}</span>
+                      <span>
+                        {('firstPrize' in featuredEvent.statistics)
+                          ? `First Prize: ${featuredEvent.statistics.firstPrize}`
+                          : ('prizePool' in featuredEvent.statistics)
+                            ? `Prize Pool: ₹${featuredEvent.statistics.prizePool}`
+                            : 'Prize: TBA'}
+                      </span>
                     </div>
                   </div>
                   <Link href={`/events/${featuredEvent.id}`}>
@@ -206,7 +212,7 @@ export default function Home() {
                           Categories
                         </h4>
                         <div className="flex flex-wrap gap-2">
-                          {["Singing", "Dancing", "Acting", "Comedy", "Music", "Other"].map((category) => (
+                          {["Singing", "Dancing", "Acting", "Rap", "Music", "Other"].map((category) => (
                             <span key={category} className="text-xs bg-gray-200 text-gray-700 px-3 py-1 rounded-full">
                               {category}
                             </span>
