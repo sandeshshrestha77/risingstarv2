@@ -131,7 +131,7 @@ export const events: Event[] = [
     description: "The highly anticipated fourth season is here. New talents. Bigger stage. Higher stakes.",
     longDescription:
       "Be part of Sikkim's biggest talent hunt! Showcase your skills on a grand stage with international judges, live streaming, and unprecedented opportunities. Join us for an unforgettable journey of talent, creativity, and stardom.",
-    date: "June 15, 2025",
+    date: "June 22, 2025",
     location: "Gangtok",
     image: "/s4 main.jpg",
     gallery: [],
@@ -144,9 +144,9 @@ export const events: Event[] = [
       categories: 10,
     },
     registrationOpen: true,
-    registrationDeadline: "June 14, 2025",
+    registrationDeadline: "June 21, 2025",
     auditionDates: 
-    [{ city: "Gangtok", date: "June 15, 2025" }
+    [{ city: "Gangtok", date: "June 22, 2025" }
     ],
     status: "upcoming",
   },
